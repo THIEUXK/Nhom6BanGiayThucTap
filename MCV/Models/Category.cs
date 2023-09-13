@@ -8,6 +8,6 @@
 
         public bool Status { get; set; }
 
-        public List<ShoeDetail> PhanLoaiSps { get; set; }
+        public List<ShoeDetail> ShoeDetails { get; set; }
     }
 }

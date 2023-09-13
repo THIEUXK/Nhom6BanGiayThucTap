@@ -10,6 +10,12 @@
         public string Avatar { get; set; }
         public bool Status { get; set; }
 
+
+
+
         public Role? Role { get; set; }
+        public List<Address> Address { get; set; }
+        public List<Order> Order { get; set; }
+
     }
 }
