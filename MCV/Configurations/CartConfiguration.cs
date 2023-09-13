@@ -9,6 +9,7 @@ namespace MCV.Configurations
         public void Configure(EntityTypeBuilder<Cart> builder)
         {
             builder.HasKey(c => c.id);
+            builder.HasOne(c => c.Account).WithMany(c => c.Carts).HasForeignKey(c => c.AccountId);
         }
     }
 }
