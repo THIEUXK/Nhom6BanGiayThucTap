@@ -11,6 +11,8 @@
         public string District { get; set; }
         public string Province { get; set; }
         public string Note { get; set; }
+
+        public virtual Account? Account { get; set; }
         
     }
 }
