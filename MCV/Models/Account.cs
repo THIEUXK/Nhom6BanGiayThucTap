@@ -16,6 +16,7 @@
         public Role? Role { get; set; }
         public List<Address> Address { get; set; }
         public List<Order> Order { get; set; }
+        public List<Cart> Carts { get; set; }
 
     }
 }
