@@ -23,18 +23,6 @@ namespace MCV.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Carts",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Status = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Carts", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
@@ -192,6 +180,24 @@ namespace MCV.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Carts",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AccountId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    Status = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Carts", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Carts_Accounts_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "Accounts",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Order",
                 columns: table => new
                 {
@@ -220,6 +226,24 @@ namespace MCV.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Image",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ShoeDetailId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Image", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Image_ShoeDetail_ShoeDetailId",
+                        column: x => x.ShoeDetailId,
+                        principalTable: "ShoeDetail",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CartDetail",
                 columns: table => new
                 {
@@ -243,24 +267,6 @@ namespace MCV.Migrations
                         principalTable: "ShoeDetail",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Image",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ShoeDetailId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Image", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Image_ShoeDetail_ShoeDetailId",
-                        column: x => x.ShoeDetailId,
-                        principalTable: "ShoeDetail",
-                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
@@ -325,6 +331,11 @@ namespace MCV.Migrations
                 name: "IX_CartDetail_CartId",
                 table: "CartDetail",
                 column: "CartId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Carts_AccountId",
+                table: "Carts",
+                column: "AccountId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Image_ShoeDetailId",

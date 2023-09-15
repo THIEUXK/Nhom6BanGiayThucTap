@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MCV.Migrations
 {
     [DbContext(typeof(DBnhom6TT))]
-    [Migration("20230913114419_aa")]
+    [Migration("20230915084048_aa")]
     partial class aa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -127,10 +127,15 @@ namespace MCV.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("AccountId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
                     b.HasKey("id");
+
+                    b.HasIndex("AccountId");
 
                     b.ToTable("Carts");
                 });
@@ -444,6 +449,15 @@ namespace MCV.Migrations
                     b.Navigation("Account");
                 });
 
+            modelBuilder.Entity("MCV.Models.Cart", b =>
+                {
+                    b.HasOne("MCV.Models.Account", "Account")
+                        .WithMany("Carts")
+                        .HasForeignKey("AccountId");
+
+                    b.Navigation("Account");
+                });
+
             modelBuilder.Entity("MCV.Models.CartDetail", b =>
                 {
                     b.HasOne("MCV.Models.Cart", "Cart")
@@ -541,6 +555,8 @@ namespace MCV.Migrations
             modelBuilder.Entity("MCV.Models.Account", b =>
                 {
                     b.Navigation("Address");
+
+                    b.Navigation("Carts");
 
                     b.Navigation("Order");
                 });
