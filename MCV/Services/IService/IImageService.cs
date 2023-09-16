@@ -2,7 +2,7 @@
 
 namespace MCV.Services.IService
 {
-    public interface ImageService
+    public interface IImageService
     {
         public List<Image> GetAll();
         public Image GetById(Guid id);
