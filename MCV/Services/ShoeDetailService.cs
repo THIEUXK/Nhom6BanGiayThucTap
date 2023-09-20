@@ -55,7 +55,7 @@ namespace MCV.Services
             try
             {
                 var b = GetById(id);
-                _db.ShoeDetails.Remove(b);
+                _db.ShoeDetail.Remove(b);
                 _db.SaveChanges();
                 return true;
             }
