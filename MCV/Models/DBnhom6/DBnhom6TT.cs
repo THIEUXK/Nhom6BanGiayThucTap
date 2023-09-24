@@ -27,7 +27,7 @@ namespace MCV.Models.DBnhom6
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=MSI;Initial Catalog=bainhom6tt;User ID=sa;Password=thieu12345");
+            optionsBuilder.UseSqlServer(@"Data Source=THUYNHU\SQLEXPRESS;Initial Catalog=bainhom6tt;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
