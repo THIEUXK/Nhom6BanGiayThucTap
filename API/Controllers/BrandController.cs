@@ -14,6 +14,7 @@ namespace API.Controllers
             private readonly IAllServices<Brand> services;
             DbSet<Brand> dbSet;
             DBnhom6TT context = new DBnhom6TT();
+
             public BrandController()
             {
                 dbSet = context.Brands;
