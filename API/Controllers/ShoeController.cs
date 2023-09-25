@@ -2,8 +2,6 @@
 using API.Services;
 using MCV.Models;
 using MCV.Models.DBnhom6;
-using MCV.Models;
-using MCV.Services.IService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

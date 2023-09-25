@@ -7,6 +7,7 @@ namespace API.Services
     public class AllServices<T> : IAllServices<T> where T : class
 
     {
+        //aaa
         private readonly DBnhom6TT context;
         private readonly DbSet<T> dbSet;
         public AllServices()

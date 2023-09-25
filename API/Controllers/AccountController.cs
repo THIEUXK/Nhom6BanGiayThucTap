@@ -61,6 +61,7 @@ namespace API.Controllers
             }
             return false;
         }
+        //delete
         // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
