@@ -16,7 +16,7 @@ namespace API.Controllers
         DbSet<Order> dbSet;
         DBnhom6TT context = new DBnhom6TT();
 
-        public OrderController()
+        public OderController()
         {
             dbSet = context.Order;
             AllServices<Order> all = new AllServices<Order>(context, dbSet);
