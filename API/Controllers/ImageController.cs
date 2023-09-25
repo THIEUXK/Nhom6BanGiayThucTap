@@ -48,7 +48,7 @@ namespace API.Controllers
 
         // PUT api/<ColorController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid shoeDetailId, string imgUrl)
+        public bool Put(Guid id, Guid shoeDetailId, string imgUrl)
         {
             var image = services.GetAll().FirstOrDefault(x => x.id == id);
             if (image != null)

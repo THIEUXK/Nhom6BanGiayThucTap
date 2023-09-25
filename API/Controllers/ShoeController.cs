@@ -52,7 +52,7 @@ namespace API.Controllers
             var sh = services.GetAll().FirstOrDefault(x => x.id == id);
             if (sh != null)
             {
-                sh.Name = name;
+                sh.name = name;
                 sh.Status = status;
                 return services.Update(sh);
             }
