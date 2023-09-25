@@ -1,13 +1,12 @@
-﻿using AppAPI.Services;
+﻿using API.IServices;
+using API.Services;
 using MCV.Models;
 using MCV.Models.DBnhom6;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ShopOganicAPI.IServices;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace AppAPI.Controllers
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,13 +1,12 @@
-﻿using AppAPI.Services;
+﻿using API.IServices;
+using API.Services;
 using MCV.Models;
 using MCV.Models.DBnhom6;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ShopOganicAPI.IServices;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace AppAPI.Controllers
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -39,7 +38,7 @@ namespace AppAPI.Controllers
 
         // POST api/<SizeController>
         [HttpPost]
-        public bool Post(string name, bool status )
+        public bool Post(string name, bool status)
         {
             Size size = new Size();
             size.id = Guid.NewGuid();
@@ -52,7 +51,7 @@ namespace AppAPI.Controllers
         [HttpPut("{id}")]
         public bool Put(Guid id, string name, bool status)
         {
-            var size = services.GetAll().FirstOrDefault(x=>x.id == id);
+            var size = services.GetAll().FirstOrDefault(x => x.id == id);
             if (size != null)
             {
                 size.name = name;

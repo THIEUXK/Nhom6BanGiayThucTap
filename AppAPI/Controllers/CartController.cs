@@ -1,13 +1,12 @@
-﻿using AppAPI.Services;
-using MCV.Models.DBnhom6;
+﻿using API.IServices;
+using API.Services;
 using MCV.Models;
+using MCV.Models.DBnhom6;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ShopOganicAPI.IServices;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace AppAPI.Controllers
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -53,9 +52,9 @@ namespace AppAPI.Controllers
         public bool Put(Guid id, Guid accountId, bool status)
         {
             var cart = services.GetAll().FirstOrDefault(x => x.id == id);
-            if(cart != null)
+            if (cart != null)
             {
-                cart.AccountId = accountId; 
+                cart.AccountId = accountId;
                 cart.Status = status;
                 services.Update(cart);
                 return true;

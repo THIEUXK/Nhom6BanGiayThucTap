@@ -10,57 +10,53 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ColorController : ControllerBase
+    public class ShoeController : ControllerBase
     {
-        private readonly IAllServices<Color> services;
-        DbSet<Color> dbSet;
+        private readonly IAllServices<Shoe> services;
+        DbSet<Shoe> dbSet;
         DBnhom6TT context = new DBnhom6TT();
-        public ColorController()
+        public ShoeController()
         {
-            dbSet = context.Color;
-            AllServices<Color> all = new AllServices<Color>(context, dbSet);
+            dbSet = context.Shoe;
+            AllServices<Shoe> all = new AllServices<Shoe>(context, dbSet);
             services = all;
         }
-        // GET: api/<ColorController>
         [HttpGet]
-        public List<Color> Get()
+        public List<Shoe> Get()
         {
             return services.GetAll();
         }
 
-        // GET api/<ColorController>/5
+        // GET api/<ProductController>/5
         [HttpGet("{id}")]
-        public Color Get(Guid id)
+        public Shoe Get(Guid id)
         {
             return services.GetAll().FirstOrDefault(x => x.id == id);
         }
 
-        // POST api/<ColorController>
         [HttpPost]
         public bool Post(string name, bool status)
         {
-            Color color = new Color();
-            color.id = Guid.NewGuid();
-            color.name = name;
-            color.Status = status;
-            return services.Add(color);
+            Shoe sh = new Shoe();
+            sh.id = Guid.NewGuid();
+            sh.name = name;
+            sh.Status = status;
+            return services.Add(sh);
         }
-
-        // PUT api/<ColorController>/5
+        // PUT api/< PaymentMethodController>/5
         [HttpPut("{id}")]
         public bool Put(Guid id, string name, bool status)
         {
-            var color = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (color != null)
+            var sh = services.GetAll().FirstOrDefault(x => x.id == id);
+            if (sh != null)
             {
-                color.name = name;
-                color.Status = status;
-                return services.Update(color);
+                sh.name = name;
+                sh.Status = status;
+                return services.Update(sh);
             }
             return false;
         }
-
-        // DELETE api/<ColorController>/5
+        // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
