@@ -61,6 +61,7 @@ namespace API.Controllers
             }
             return false;
         }
+        //aaaaaa
         //delete
         // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
