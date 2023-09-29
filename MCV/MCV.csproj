@@ -7,31 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Home\blog.cshtml" />
-    <Content Remove="Views\Home\cart.cshtml" />
-    <Content Remove="Views\Home\category.cshtml" />
-    <Content Remove="Views\Home\checkout.cshtml" />
-    <Content Remove="Views\Home\confirmation.cshtml" />
-    <Content Remove="Views\Home\contact.cshtml" />
-    <Content Remove="Views\Home\elements.cshtml" />
-    <Content Remove="Views\Home\login.cshtml" />
-    <Content Remove="Views\Home\single-blog.cshtml" />
-    <Content Remove="Views\Home\single-product.cshtml" />
-    <Content Remove="Views\Home\tracking.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\Home\blog.cshtml" />
-    <None Include="Views\Home\cart.cshtml" />
-    <None Include="Views\Home\category.cshtml" />
-    <None Include="Views\Home\checkout.cshtml" />
-    <None Include="Views\Home\confirmation.cshtml" />
-    <None Include="Views\Home\contact.cshtml" />
-    <None Include="Views\Home\elements.cshtml" />
-    <None Include="Views\Home\login.cshtml" />
-    <None Include="Views\Home\single-blog.cshtml" />
-    <None Include="Views\Home\single-product.cshtml" />
-    <None Include="Views\Home\tracking.cshtml" />
     <None Include="wwwroot\css\.DS_Store" />
     <None Include="wwwroot\css\bootstrap.map" />
     <None Include="wwwroot\css\main.css.map" />
@@ -121,6 +96,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>
