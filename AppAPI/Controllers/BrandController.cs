@@ -1,9 +1,10 @@
-﻿using API.IServices;
-using API.Services;
+﻿
+using AppAPI.Services;
 using MCV.Models;
 using MCV.Models.DBnhom6;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ShopOganicAPI.IServices;
 
 namespace API.Controllers
 {
