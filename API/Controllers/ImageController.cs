@@ -37,27 +37,23 @@ namespace API.Controllers
 
         // POST api/<BrandController>
         [HttpPost]
-        public bool Post(Guid shoeDetailId, string imgUrl)
+        public bool Post(Image img)
         {
             Image image = new Image();
-            image.id = Guid.NewGuid();
-            image.ShoeDetailId = shoeDetailId;
-            image.ImgUrl = imgUrl;
+            image.id = img.id;
+            image.ShoeDetailId = img.ShoeDetailId;
+            image.ImgUrl = img.ImgUrl;
             return services.Add(image);
         }
 
         // PUT api/<ColorController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id,Guid shoeDetailId, string imgUrl)
+        public bool Put(Image img)
         {
-            var image = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (image != null)
-            {
-                image.ShoeDetailId = shoeDetailId;
-                image.ImgUrl = imgUrl;
-                return services.Update(image);
-            }
-            return false;
+            Image image= services.GetAll().FirstOrDefault(x => x.id ==img.id);
+            image.ShoeDetailId = img.ShoeDetailId;
+            image.ImgUrl = img.ImgUrl;
+            return services.Update(image);
         }
 
         // DELETE api/<BrandController>/5

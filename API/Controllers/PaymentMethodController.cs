@@ -38,33 +38,30 @@ namespace API.Controllers
 
         // POST api/< PaymentMethodController>
         [HttpPost]
-        public bool Post(Guid orderId, string mehthod, float total, string note, bool status)
+        public bool Post(PaymentMethod obj)
         {
             PaymentMethod payment = new PaymentMethod();
-            payment.id = Guid.NewGuid();
-            payment.Orderid = orderId;
-            payment.Method = mehthod;
-            payment.Note = note;
-            payment.Total = total;
-            payment.Status = status;
+            payment.id = obj.id;
+            payment.Orderid = obj.Orderid;
+            payment.Method = obj.Method;
+            payment.Note = obj.Note;
+            payment.Total = obj.Total;
+            payment.Status = obj.Status;
             return services.Add(payment);
         }
 
         // PUT api/< PaymentMethodController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id, Guid orderId, string mehthod, float total, string note, bool status)
+        public bool Put(PaymentMethod obj)
         {
-            var payment = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (payment != null)
-            {
-                payment.Orderid = orderId;
-                payment.Method = mehthod;
-                payment.Note = note;
-                payment.Total = total;
-                payment.Status = status;
-                return services.Update(payment);
-            }
-            return false;
+            PaymentMethod payment = services.GetAll().FirstOrDefault(x => x.id == obj.id);
+            payment.id = obj.id;
+            payment.Orderid = obj.Orderid;
+            payment.Method = obj.Method;
+            payment.Note = obj.Note;
+            payment.Total = obj.Total;
+            payment.Status = obj.Status;
+            return services.Update(payment);
         }
 
         // DELETE api/< PaymentMethodController>/5

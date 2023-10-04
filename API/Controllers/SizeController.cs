@@ -38,27 +38,23 @@ namespace API.Controllers
 
         // POST api/<SizeController>
         [HttpPost]
-        public bool Post(string name, bool status)
+        public bool Post(Size obj)
         {
             Size size = new Size();
-            size.id = Guid.NewGuid();
-            size.name = name;
-            size.Status = status;
+            size.id = obj.id;
+            size.name = obj.name;
+            size.Status = obj.Status;
             return services.Add(size);
         }
 
         // PUT api/<SizeController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id, string name, bool status)
+        public bool Put(Size obj)
         {
-            var size = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (size != null)
-            {
-                size.name = name;
-                size.Status = status;
-                return services.Update(size);
-            }
-            return false;
+            Size size = services.GetAll().FirstOrDefault(x => x.id == obj.id);
+            size.name = obj.name;
+            size.Status = obj.Status;
+            return services.Add(size);
         }
 
         // DELETE api/<SizeController>/5

@@ -39,47 +39,43 @@ namespace API.Controllers
 
         // POST api/<OrderController>
         [HttpPost]
-        public bool Post(Guid accountId, string code, string customerName, int phoneNumber, string address, float shipFee, float moneyReduce, DateTime createDate, DateTime payDate, DateTime shipDate, DateTime receiveDate, bool status)
+        public bool Post(Order obj)
         {
             Order order = new Order();
-            order.id = Guid.NewGuid();
-            order.AccountId = accountId;
-            order.Code = code;
-            order.CustomerName = customerName;
-            order.PhoneNumber = phoneNumber;
-            order.Address = address;
-            order.ShipFee = shipFee;
-            order.MoneyReduce = moneyReduce;
-            order.CreateDate = createDate;
-            order.PayDate = payDate;
-            order.ShipDate = shipDate;
-            order.ReceiveDate = receiveDate;
-            order.Status = status;
+            order.id = obj.id;
+            order.AccountId = obj.AccountId;
+            order.Code = obj.Code;
+            order.CustomerName = obj.CustomerName;
+            order.PhoneNumber = obj.PhoneNumber;
+            order.Address = obj.Address;
+            order.ShipFee = obj.ShipFee;
+            order.MoneyReduce = obj.MoneyReduce;
+            order.CreateDate = obj.CreateDate;
+            order.PayDate = obj.PayDate;
+            order.ShipDate = obj.ShipDate;
+            order.ReceiveDate = obj.ReceiveDate;
+            order.Status = obj.Status;
             return services.Add(order);
         }
 
         // PUT api/<OrderController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id, Guid accountId, string code, string customerName, int phoneNumber, string address, float shipFee, float moneyReduce, DateTime createDate, DateTime payDate, DateTime shipDate, DateTime receiveDate, bool status)
+        public bool Put(Order obj)
         {
-            var order = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (order != null)
-            {
-                order.AccountId = accountId;
-                order.Code = code;
-                order.CustomerName = customerName;
-                order.PhoneNumber = phoneNumber;
-                order.Address = address;
-                order.ShipFee = shipFee;
-                order.MoneyReduce = moneyReduce;
-                order.CreateDate = createDate;
-                order.PayDate = payDate;
-                order.ShipDate = shipDate;
-                order.ReceiveDate = receiveDate;
-                order.Status = status;
-                return services.Update(order);
-            }
-            return false;
+            Order order = services.GetAll().FirstOrDefault(x => x.id == obj.id);
+            order.AccountId = obj.AccountId;
+            order.Code = obj.Code;
+            order.CustomerName = obj.CustomerName;
+            order.PhoneNumber = obj.PhoneNumber;
+            order.Address = obj.Address;
+            order.ShipFee = obj.ShipFee;
+            order.MoneyReduce = obj.MoneyReduce;
+            order.CreateDate = obj.CreateDate;
+            order.PayDate = obj.PayDate;
+            order.ShipDate = obj.ShipDate;
+            order.ReceiveDate = obj.ReceiveDate;
+            order.Status = obj.Status;
+            return services.Update(order);
         }
 
         // DELETE api/<OrderController>/5

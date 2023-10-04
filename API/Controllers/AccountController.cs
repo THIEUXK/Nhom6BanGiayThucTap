@@ -32,34 +32,30 @@ namespace API.Controllers
             return services.GetAll().FirstOrDefault(x => x.id == id);
         }
         [HttpPost]
-        public bool Post(Guid roleID,string name, bool status,string email,string password,string avatar)
+        public bool Post(Account obj)
         {
             Account account = new Account();
-            account.id = Guid.NewGuid();
-            account.RoleId = roleID;
-            account.Avatar = avatar;
-            account.Email = email;
-            account.Password = password;
-            account.Name = name;
-            account.Status = status;
+            account.id = obj.id;
+            account.RoleId =obj.RoleId;
+            account.Avatar = obj.Avatar;
+            account.Email = obj.Email;
+            account.Password = obj.Password;
+            account.Name = obj.Name;
+            account.Status = obj.Status;
             return services.Add(account);
         }
         // PUT api/< PaymentMethodController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id,Guid roleID, string name, bool status, string email, string password, string avatar)
+        public bool Put(Account obj)
         {
-            var account = services.GetAll().FirstOrDefault(x => x.id ==id );
-            if (account != null)
-            {
-                account.RoleId = roleID;
-                account.Avatar = avatar;
-                account.Email = email;
-                account.Password = password;
-                account.Name = name;
-                account.Status = status;
-                return services.Update(account);
-            }
-            return false;
+            Account account = services.GetAll().FirstOrDefault(x => x.id ==obj.id );
+            account.RoleId = obj.RoleId;
+            account.Avatar = obj.Avatar;
+            account.Email = obj.Email;
+            account.Password = obj.Password;
+            account.Name = obj.Name;
+            account.Status = obj.Status;
+            return services.Update(account);
         }
         //aaaaaa
         //delete

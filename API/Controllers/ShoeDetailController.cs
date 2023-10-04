@@ -35,44 +35,38 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public bool Post(Guid shoeId,Guid sizeID,Guid brandID,Guid categoryId,Guid colorId,
-            string code, int priceInput, int priceOutput, int quantity, bool status)
+        public bool Post(ShoeDetail obj)
         {
             ShoeDetail shDetail = new ShoeDetail();
-            shDetail.id = Guid.NewGuid();
-            shDetail.ShoeId = shoeId;
-            shDetail.SizeId = sizeID; 
-            shDetail.BrandId = brandID; 
-            shDetail.CategoryId = categoryId; 
-            shDetail.ColorId = colorId; 
-            shDetail.Code = code; 
-            shDetail.PriceInput = priceInput; 
-            shDetail.PriceOutput = priceOutput;
-            shDetail.Quantity = quantity;
-            shDetail.Status = status;
+            shDetail.id = obj.id;
+            shDetail.ShoeId = obj.ShoeId;
+            shDetail.SizeId = obj.SizeId; 
+            shDetail.BrandId = obj.BrandId; 
+            shDetail.CategoryId = obj.CategoryId; 
+            shDetail.ColorId = obj.ColorId; 
+            shDetail.Code = obj.Code; 
+            shDetail.PriceInput = obj.PriceInput; 
+            shDetail.PriceOutput = obj.PriceOutput;
+            shDetail.Quantity = obj.Quantity;
+            shDetail.Status = obj.Status;
             return services.Add(shDetail);
         }
         // PUT api/< PaymentMethodController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id, Guid shoeId, Guid sizeID, Guid brandID, Guid categoryId, Guid colorId,
-            string code, int priceInput, int priceOutput, int quantity, bool status)
+        public bool Put(ShoeDetail obj)
         {
-            var shDetail = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (shDetail != null)
-            {
-                shDetail.ShoeId = shoeId;
-                shDetail.SizeId = sizeID;
-                shDetail.BrandId = brandID;
-                shDetail.CategoryId = categoryId;
-                shDetail.ColorId = colorId;
-                shDetail.Code = code;
-                shDetail.PriceInput = priceInput;
-                shDetail.PriceOutput = priceOutput;
-                shDetail.Quantity = quantity;
-                shDetail.Status = status;
-                return services.Update(shDetail);
-            }
-            return false;
+            ShoeDetail shDetail = services.GetAll().FirstOrDefault(x => x.id == obj.id);
+            shDetail.ShoeId = obj.ShoeId;
+            shDetail.SizeId = obj.SizeId;
+            shDetail.BrandId = obj.BrandId;
+            shDetail.CategoryId = obj.CategoryId;
+            shDetail.ColorId = obj.ColorId;
+            shDetail.Code = obj.Code;
+            shDetail.PriceInput = obj.PriceInput;
+            shDetail.PriceOutput = obj.PriceOutput;
+            shDetail.Quantity = obj.Quantity;
+            shDetail.Status = obj.Status;
+            return services.Update(shDetail);
         }
         // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]

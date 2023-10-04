@@ -37,28 +37,24 @@ namespace API.Controllers
 
             // POST api/<BrandController>
             [HttpPost]
-            public bool Post(string name, bool status)
+            public bool Post(Brand obj)
             {
                 Brand brand = new Brand();
-                brand.id = Guid.NewGuid();
-                brand.name = name;
-                brand.Status = status;
+                brand.id = obj.id;
+                brand.name = obj.name;
+                brand.Status = obj.Status;
                 return services.Add(brand);
             }
 
             // PUT api/<ColorController>/5
             [HttpPut("{id}")]
-            public bool Put(Guid id, string name, bool status)
+            public bool Put(Brand obj)
             {
-                var brand = services.GetAll().FirstOrDefault(x => x.id == id);
-                if (brand != null)
-                {
-                    brand.name = name;
-                    brand.Status = status;
-                    return services.Update(brand);
-                }
-                return false;
-            }
+                Brand brand = services.GetAll().FirstOrDefault(x => x.id == obj.id);
+                brand.name = obj.name;
+                brand.Status = obj.Status;
+                return services.Add(brand);
+        }
 
             // DELETE api/<BrandController>/5
             [HttpDelete("{id}")]

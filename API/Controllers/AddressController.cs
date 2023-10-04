@@ -35,38 +35,34 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public bool Post(Guid AccountId, string name, string specificAddress, string phoneNumber, string ward, string district, string province, string note)
+        public bool Post(Address obj)
         {
             Address ad = new Address();
-            ad.id = Guid.NewGuid();
-            ad.AccountId = AccountId;
-            ad.Name = name; 
-            ad.SpecificAddress = specificAddress; 
-            ad.PhoneNumber = phoneNumber; 
-            ad.Ward = ward;
-            ad.District = district;
-            ad.Province = province;
-            ad.Note = note;
+            ad.id = obj.id;
+            ad.AccountId = obj.AccountId;
+            ad.Name = obj.Name; 
+            ad.SpecificAddress = obj.SpecificAddress; 
+            ad.PhoneNumber = obj.PhoneNumber; 
+            ad.Ward = obj.Ward;
+            ad.District = obj.District;
+            ad.Province = obj.Province;
+            ad.Note = obj.Note;
             return services.Add(ad);
         }
         // PUT api/< PaymentMethodController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id,Guid AccountId, string name, string specificAddress, string phoneNumber, string ward, string district, string province, string note)
+        public bool Put(Address obj)
         {
-            var ad = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (ad != null)
-            {
-                ad.AccountId = AccountId;
-                ad.Name = name;
-                ad.SpecificAddress = specificAddress;
-                ad.PhoneNumber = phoneNumber;
-                ad.Ward = ward;
-                ad.District = district;
-                ad.Province = province;
-                ad.Note = note;
-                return services.Update(ad);
-            }
-            return false;
+            Address ad = services.GetAll().FirstOrDefault(x => x.id == obj.id);
+            ad.AccountId = obj.AccountId;
+            ad.Name = obj.Name;
+            ad.SpecificAddress = obj.SpecificAddress;
+            ad.PhoneNumber = obj.PhoneNumber;
+            ad.Ward = obj.Ward;
+            ad.District = obj.District;
+            ad.Province = obj.Province;
+            ad.Note = obj.Note;
+            return services.Update(ad);
         }
         // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]

@@ -38,27 +38,23 @@ namespace API.Controllers
 
         // POST api/<RoleController>
         [HttpPost]
-        public bool Post(string name, bool status)
+        public bool Post(Role obj)
         {
             Role role = new Role();
-            role.id = Guid.NewGuid();
-            role.name = name;
-            role.Status = status;
+            role.id = obj.id;
+            role.name = obj.name;
+            role.Status = obj.Status;
             return services.Add(role);
         }
 
         // PUT api/<RoleController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id, string name, bool status)
+        public bool Put(Role obj)
         {
-            var role = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (role != null)
-            {
-                role.name = name;
-                role.Status = status;
-                return services.Update(role);
-            }
-            return false;
+            var role = services.GetAll().FirstOrDefault(x => x.id == obj.id);
+            role.name = obj.name;
+            role.Status = obj.Status;
+            return services.Update(role);
         }
 
         // DELETE api/<RoleController>/5

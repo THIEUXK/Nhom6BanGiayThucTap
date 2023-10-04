@@ -37,29 +37,25 @@ namespace API.Controllers
 
         // POST api/<CartController>
         [HttpPost]
-        public bool Post(Guid accountId, bool status)
+        public bool Post(Cart obj)
         {
             Cart cart = new Cart();
-            cart.id = Guid.NewGuid();
-            cart.AccountId = accountId;
-            cart.Status = status;
+            cart.id = obj.id;
+            cart.AccountId = obj.AccountId;
+            cart.Status = obj.Status;
             services.Add(cart);
-            return true;
+            return services.Add(cart);
         }
 
         // PUT api/<CartController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id, Guid accountId, bool status)
+        public bool Put(Cart obj)
         {
-            var cart = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (cart != null)
-            {
-                cart.AccountId = accountId;
-                cart.Status = status;
-                services.Update(cart);
-                return true;
-            }
-            return false;
+            Cart cart = services.GetAll().FirstOrDefault(x => x.id == obj.id);
+            cart.AccountId = obj.AccountId;
+            cart.Status = obj.Status;
+            services.Add(cart);
+            return services.Update(cart);
         }
 
         // DELETE api/<CartController>/5

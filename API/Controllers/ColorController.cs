@@ -37,27 +37,24 @@ namespace API.Controllers
 
         // POST api/<ColorController>
         [HttpPost]
-        public bool Post(string name, bool status)
+        public bool Post(Color obj)
         {
             Color color = new Color();
-            color.id = Guid.NewGuid();
-            color.name = name;
-            color.Status = status;
+            color.id = obj.id;
+            color.name = obj.name;
+            color.Status = obj.Status;
             return services.Add(color);
         }
 
         // PUT api/<ColorController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id, string name, bool status)
+        public bool Put(Color obj)
         {
-            var color = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (color != null)
-            {
-                color.name = name;
-                color.Status = status;
-                return services.Update(color);
-            }
-            return false;
+            Color color = services.GetAll().FirstOrDefault(x => x.id == obj.id);
+            color.id = obj.id;
+            color.name = obj.name;
+            color.Status = obj.Status;
+            return services.Update(color);
         }
 
         // DELETE api/<ColorController>/5

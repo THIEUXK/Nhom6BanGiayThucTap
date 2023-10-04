@@ -39,35 +39,31 @@ namespace API.Controllers
 
         // POST api/<OrderDetailController>
         [HttpPost]
-        public bool Post(Guid shoeDetailId, Guid orderId, int quantity, float price, float discount, bool status)
+        public bool Post(OrderDetail obj)
         {
             OrderDetail order = new OrderDetail();
-            order.id = Guid.NewGuid();
-            order.ShoeDetailId = shoeDetailId;
-            order.OrderId = orderId;
-            order.Quantity = quantity;
-            order.Price = price;
-            order.Discount = discount;
-            order.Status = status;
+            order.id = obj.id;
+            order.ShoeDetailId = obj.ShoeDetailId;
+            order.OrderId = obj.OrderId;
+            order.Quantity = obj.Quantity;
+            order.Price = obj.Price;
+            order.Discount = obj.Discount;
+            order.Status = obj.Status;
             return services.Add(order);
         }
 
         // PUT api/<OrderDetailController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id, Guid shoeDetailId, Guid orderId, int quantity, float price, float discount, bool status)
+        public bool Put(OrderDetail obj)
         {
-            var order = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (order != null)
-            {
-                order.ShoeDetailId = shoeDetailId;
-                order.OrderId = orderId;
-                order.Quantity = quantity;
-                order.Price = price;
-                order.Discount = discount;
-                order.Status = status;
-                return services.Update(order);
-            }
-            return false;
+            var order = services.GetAll().FirstOrDefault(x => x.id == obj.id);
+            order.ShoeDetailId = obj.ShoeDetailId;
+            order.OrderId = obj.OrderId;
+            order.Quantity = obj.Quantity;
+            order.Price = obj.Price;
+            order.Discount = obj.Discount;
+            order.Status = obj.Status;
+            return services.Update(order);
         }
 
         // DELETE api/<OrderDetailController>/5
