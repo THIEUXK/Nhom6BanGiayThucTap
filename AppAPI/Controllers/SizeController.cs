@@ -37,37 +37,48 @@ namespace API.Controllers
             return services.GetAll().FirstOrDefault(x => x.id == id);
         }
 
-        // POST api/<SizeController>
         [HttpPost]
-        public bool Post(string name, bool status)
+        public bool Post(Size a)
         {
-            Size size = new Size();
-            size.id = Guid.NewGuid();
-            size.name = name;
-            size.Status = status;
-            return services.Add(size);
-        }
-
-        // PUT api/<SizeController>/5
-        [HttpPut("{id}")]
-        public bool Put(Guid id, string name, bool status)
-        {
-            var size = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (size != null)
+            try
             {
-                size.name = name;
-                size.Status = status;
-                return services.Update(size);
+                return services.Add(a);
             }
-            return false;
-        }
+            catch (Exception e)
+            {
+                return false;
+            }
 
-        // DELETE api/<SizeController>/5
+        }
+        // PUT api/< PaymentMethodController>/5
+        [HttpPut("{id}")]
+        public bool Put(Size a)
+        {
+            try
+            {
+                return services.Update(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+        //aaaaaa
+        //delete
+        // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

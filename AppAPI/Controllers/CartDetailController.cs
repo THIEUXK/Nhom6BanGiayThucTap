@@ -36,35 +36,47 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public bool Post(Guid cartId,Guid shoeDetailId,int quantity)
+        public bool Post(CartDetail a)
         {
-            CartDetail cd = new CartDetail();
-            cd.id = Guid.NewGuid();
-            cd.CartId = cartId;
-            cd.ShoeDetailId = shoeDetailId;
-            cd.Quantity = quantity;
-            return services.Add(cd);
+            try
+            {
+                return services.Add(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
         }
         // PUT api/< PaymentMethodController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id, Guid cartId, Guid shoeDetailId, int quantity)
+        public bool Put(CartDetail a)
         {
-            var cd = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (cd != null)
+            try
             {
-                cd.CartId = cartId;
-                cd.ShoeDetailId = shoeDetailId;
-                cd.Quantity = quantity;
-                return services.Update(cd);
+                return services.Update(a);
             }
-            return false;
+            catch (Exception e)
+            {
+                return false;
+            }
+
         }
+        //aaaaaa
+        //delete
         // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

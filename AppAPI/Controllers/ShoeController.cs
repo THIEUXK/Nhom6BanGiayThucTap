@@ -34,35 +34,48 @@ namespace API.Controllers
         {
             return services.GetAll().FirstOrDefault(x => x.id == id);
         }
-
         [HttpPost]
-        public bool Post(string name, bool status)
+        public bool Post(Shoe a)
         {
-            Shoe sh = new Shoe();
-            sh.id = Guid.NewGuid();
-            sh.name = name;
-            sh.Status = status;
-            return services.Add(sh);
+            try
+            {
+                return services.Add(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
         }
         // PUT api/< PaymentMethodController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id, string name, bool status)
+        public bool Put(Shoe a)
         {
-            var sh = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (sh != null)
+            try
             {
-                sh.name = name;
-                sh.Status = status;
-                return services.Update(sh);
+                return services.Update(a);
             }
-            return false;
+            catch (Exception e)
+            {
+                return false;
+            }
+
         }
+        //aaaaaa
+        //delete
         // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

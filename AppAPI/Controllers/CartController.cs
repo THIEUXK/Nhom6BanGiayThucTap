@@ -38,37 +38,48 @@ namespace API.Controllers
 
         // POST api/<CartController>
         [HttpPost]
-        public bool Post(Guid accountId, bool status)
+        [HttpPost]
+        public bool Post(Cart a)
         {
-            Cart cart = new Cart();
-            cart.id = Guid.NewGuid();
-            cart.AccountId = accountId;
-            cart.Status = status;
-            services.Add(cart);
-            return true;
-        }
-
-        // PUT api/<CartController>/5
-        [HttpPut("{id}")]
-        public bool Put(Guid id, Guid accountId, bool status)
-        {
-            var cart = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (cart != null)
+            try
             {
-                cart.AccountId = accountId;
-                cart.Status = status;
-                services.Update(cart);
-                return true;
+                return services.Add(a);
             }
-            return false;
-        }
+            catch (Exception e)
+            {
+                return false;
+            }
 
-        // DELETE api/<CartController>/5
+        }
+        // PUT api/< PaymentMethodController>/5
+        [HttpPut("{id}")]
+        public bool Put(Cart a)
+        {
+            try
+            {
+                return services.Update(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+        //aaaaaa
+        //delete
+        // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

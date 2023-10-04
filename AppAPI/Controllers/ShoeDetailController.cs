@@ -36,51 +36,47 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public bool Post(Guid shoeId,Guid sizeID,Guid brandID,Guid categoryId,Guid colorId,
-            string code, int priceInput, int priceOutput, int quantity, bool status)
+        public bool Post(ShoeDetail a)
         {
-            ShoeDetail shDetail = new ShoeDetail();
-            shDetail.id = Guid.NewGuid();
-            shDetail.ShoeId = shoeId;
-            shDetail.SizeId = sizeID; 
-            shDetail.BrandId = brandID; 
-            shDetail.CategoryId = categoryId; 
-            shDetail.ColorId = colorId; 
-            shDetail.Code = code; 
-            shDetail.PriceInput = priceInput; 
-            shDetail.PriceOutput = priceOutput;
-            shDetail.Quantity = quantity;
-            shDetail.Status = status;
-            return services.Add(shDetail);
+            try
+            {
+                return services.Add(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
         }
         // PUT api/< PaymentMethodController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id, Guid shoeId, Guid sizeID, Guid brandID, Guid categoryId, Guid colorId,
-            string code, int priceInput, int priceOutput, int quantity, bool status)
+        public bool Put(ShoeDetail a)
         {
-            var shDetail = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (shDetail != null)
+            try
             {
-                shDetail.ShoeId = shoeId;
-                shDetail.SizeId = sizeID;
-                shDetail.BrandId = brandID;
-                shDetail.CategoryId = categoryId;
-                shDetail.ColorId = colorId;
-                shDetail.Code = code;
-                shDetail.PriceInput = priceInput;
-                shDetail.PriceOutput = priceOutput;
-                shDetail.Quantity = quantity;
-                shDetail.Status = status;
-                return services.Update(shDetail);
+                return services.Update(a);
             }
-            return false;
+            catch (Exception e)
+            {
+                return false;
+            }
+
         }
+        //aaaaaa
+        //delete
         // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }
