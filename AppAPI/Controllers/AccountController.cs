@@ -30,37 +30,35 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public Account Get(Guid id)
         {
+
             return services.GetAll().FirstOrDefault(x => x.id == id);
         }
         [HttpPost]
-        public bool Post(Guid roleID,string name, bool status,string email,string password,string avatar)
+        public bool Post(Account a)
         {
-            Account account = new Account();
-            account.id = Guid.NewGuid();
-            account.RoleId = roleID;
-            account.Avatar = avatar;
-            account.Email = email;
-            account.Password = password;
-            account.Name = name;
-            account.Status = status;
-            return services.Add(account);
+            try
+            {
+                return services.Add(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+           
         }
         // PUT api/< PaymentMethodController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id,Guid roleID, string name, bool status, string email, string password, string avatar)
+        public bool Put(Account a)
         {
-            var account = services.GetAll().FirstOrDefault(x => x.id ==id );
-            if (account != null)
+            try
             {
-                account.RoleId = roleID;
-                account.Avatar = avatar;
-                account.Email = email;
-                account.Password = password;
-                account.Name = name;
-                account.Status = status;
-                return services.Update(account);
+                return services.Update(a);
             }
-            return false;
+            catch (Exception e)
+            {
+                return false;
+            }
+               
         }
         //aaaaaa
         //delete
@@ -68,9 +66,15 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
-
     }
 }

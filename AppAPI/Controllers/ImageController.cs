@@ -38,35 +38,47 @@ namespace API.Controllers
 
         // POST api/<BrandController>
         [HttpPost]
-        public bool Post(Guid shoeDetailId, string imgUrl)
+        public bool Post(Image a)
         {
-            Image image = new Image();
-            image.id = Guid.NewGuid();
-            image.ShoeDetailId = shoeDetailId;
-            image.ImgUrl = imgUrl;
-            return services.Add(image);
-        }
-
-        // PUT api/<ColorController>/5
-        [HttpPut("{id}")]
-        public bool Put(Guid id,Guid shoeDetailId, string imgUrl)
-        {
-            var image = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (image != null)
+            try
             {
-                image.ShoeDetailId = shoeDetailId;
-                image.ImgUrl = imgUrl;
-                return services.Update(image);
+                return services.Add(a);
             }
-            return false;
-        }
+            catch (Exception e)
+            {
+                return false;
+            }
 
-        // DELETE api/<BrandController>/5
+        }
+        // PUT api/< PaymentMethodController>/5
+        [HttpPut("{id}")]
+        public bool Put(Image a)
+        {
+            try
+            {
+                return services.Update(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+        //aaaaaa
+        //delete
+        // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

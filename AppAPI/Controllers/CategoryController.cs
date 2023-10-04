@@ -38,35 +38,47 @@ namespace API.Controllers
 
         // POST api/<BrandController>
         [HttpPost]
-        public bool Post(string name, bool status)
+        public bool Post(Category a)
         {
-            Category categori = new Category();
-            categori.id = Guid.NewGuid();
-            categori.name = name;
-            categori.Status = status;
-            return services.Add(categori);
-        }
-
-        // PUT api/<ColorController>/5
-        [HttpPut("{id}")]
-        public bool Put(Guid id, string name, bool status)
-        {
-            var categori = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (categori != null)
+            try
             {
-                categori.name = name;
-                categori.Status = status;
-                return services.Update(categori);
+                return services.Add(a);
             }
-            return false;
-        }
+            catch (Exception e)
+            {
+                return false;
+            }
 
-        // DELETE api/<BrandController>/5
+        }
+        // PUT api/< PaymentMethodController>/5
+        [HttpPut("{id}")]
+        public bool Put(Category a)
+        {
+            try
+            {
+                return services.Update(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+        //aaaaaa
+        //delete
+        // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

@@ -39,41 +39,47 @@ namespace API.Controllers
 
         // POST api/< PaymentMethodController>
         [HttpPost]
-        public bool Post(Guid orderId, string mehthod, float total, string note, bool status)
+        public bool Post(PaymentMethod a)
         {
-            PaymentMethod payment = new PaymentMethod();
-            payment.id = Guid.NewGuid();
-            payment.Orderid = orderId;
-            payment.Method = mehthod;
-            payment.Note = note;
-            payment.Total = total;
-            payment.Status = status;
-            return services.Add(payment);
-        }
+            try
+            {
+                return services.Add(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
 
+        }
         // PUT api/< PaymentMethodController>/5
         [HttpPut("{id}")]
-        public bool Put(Guid id, Guid orderId, string mehthod, float total, string note, bool status)
+        public bool Put(PaymentMethod a)
         {
-            var payment = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (payment != null)
+            try
             {
-                payment.Orderid = orderId;
-                payment.Method = mehthod;
-                payment.Note = note;
-                payment.Total = total;
-                payment.Status = status;
-                return services.Update(payment);
+                return services.Update(a);
             }
-            return false;
-        }
+            catch (Exception e)
+            {
+                return false;
+            }
 
+        }
+        //aaaaaa
+        //delete
         // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

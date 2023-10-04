@@ -39,35 +39,47 @@ namespace API.Controllers
 
         // POST api/<RoleController>
         [HttpPost]
-        public bool Post(string name, bool status)
+        public bool Post(Role a)
         {
-            Role role = new Role();
-            role.id = Guid.NewGuid();
-            role.name = name;
-            role.Status = status;
-            return services.Add(role);
-        }
-
-        // PUT api/<RoleController>/5
-        [HttpPut("{id}")]
-        public bool Put(Guid id, string name, bool status)
-        {
-            var role = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (role != null)
+            try
             {
-                role.name = name;
-                role.Status = status;
-                return services.Update(role);
+                return services.Add(a);
             }
-            return false;
-        }
+            catch (Exception e)
+            {
+                return false;
+            }
 
-        // DELETE api/<RoleController>/5
+        }
+        // PUT api/< PaymentMethodController>/5
+        [HttpPut("{id}")]
+        public bool Put(Role a)
+        {
+            try
+            {
+                return services.Update(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+        //aaaaaa
+        //delete
+        // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }
