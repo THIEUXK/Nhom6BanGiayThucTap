@@ -38,35 +38,47 @@ namespace API.Controllers
 
         // POST api/<ColorController>
         [HttpPost]
-        public bool Post(string name, bool status)
+        public bool Post(Color a)
         {
-            Color color = new Color();
-            color.id = Guid.NewGuid();
-            color.name = name;
-            color.Status = status;
-            return services.Add(color);
-        }
-
-        // PUT api/<ColorController>/5
-        [HttpPut("{id}")]
-        public bool Put(Guid id, string name, bool status)
-        {
-            var color = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (color != null)
+            try
             {
-                color.name = name;
-                color.Status = status;
-                return services.Update(color);
+                return services.Add(a);
             }
-            return false;
-        }
+            catch (Exception e)
+            {
+                return false;
+            }
 
-        // DELETE api/<ColorController>/5
+        }
+        // PUT api/< PaymentMethodController>/5
+        [HttpPut("{id}")]
+        public bool Put(Color a)
+        {
+            try
+            {
+                return services.Update(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+        //aaaaaa
+        //delete
+        // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

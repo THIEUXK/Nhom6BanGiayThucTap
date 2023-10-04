@@ -38,35 +38,48 @@ namespace API.Controllers
 
             // POST api/<BrandController>
             [HttpPost]
-            public bool Post(string name, bool status)
+        [HttpPost]
+            public bool Post(Brand a)
             {
-                Brand brand = new Brand();
-                brand.id = Guid.NewGuid();
-                brand.name = name;
-                brand.Status = status;
-                return services.Add(brand);
-            }
-
-            // PUT api/<ColorController>/5
-            [HttpPut("{id}")]
-            public bool Put(Guid id, string name, bool status)
-            {
-                var brand = services.GetAll().FirstOrDefault(x => x.id == id);
-                if (brand != null)
+                try
                 {
-                    brand.name = name;
-                    brand.Status = status;
-                    return services.Update(brand);
+                    return services.Add(a);
                 }
-                return false;
-            }
+                catch (Exception e)
+                {
+                    return false;
+                }
 
-            // DELETE api/<BrandController>/5
+            }
+            // PUT api/< PaymentMethodController>/5
+            [HttpPut("{id}")]
+            public bool Put(Brand a)
+            {
+                try
+                {
+                    return services.Update(a);
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+
+            }
+            //aaaaaa
+            //delete
+            // DELETE api/< PaymentMethodController>/5
             [HttpDelete("{id}")]
             public bool Delete(Guid id)
             {
-                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-                return services.Delete(sv);
+                try
+                {
+                    var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                    return services.Delete(sv);
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
             }
     }
 }

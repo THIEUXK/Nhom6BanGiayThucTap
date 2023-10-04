@@ -41,53 +41,47 @@ namespace AppAPI.Controllers
 
         // POST api/<OrderController>
         [HttpPost]
-        public bool Post(Guid accountId, string code, string customerName, int phoneNumber, string address, float shipFee, float moneyReduce, DateTime createDate, DateTime payDate , DateTime shipDate, DateTime receiveDate,bool status)
+        public bool Post(Order a)
         {
-            Order order = new Order();
-            order.id = Guid.NewGuid();
-            order.AccountId = accountId;
-            order.CustomerName = customerName;
-            order.PhoneNumber = phoneNumber;
-            order.Address = address;
-            order.ShipFee = shipFee;
-            order.MoneyReduce = moneyReduce;
-            order.CreateDate = createDate;
-            order.PayDate = payDate;
-            order.ShipDate = shipDate;
-            order.ReceiveDate = receiveDate;
-            order.Status = status;
-            return services.Add(order);
-        }
-
-        // PUT api/<OrderController>/5
-        [HttpPut("{id}")]
-        public bool Put(Guid id, Guid accountId, string code, string customerName, int phoneNumber, string address, float shipFee, float moneyReduce, DateTime createDate, DateTime payDate, DateTime shipDate, DateTime receiveDate, bool status)
-        {
-            var order = services.GetAll().FirstOrDefault(x => x.id == id);
-            if (order != null)
+            try
             {
-                order.AccountId = accountId;
-                order.CustomerName = customerName;
-                order.PhoneNumber = phoneNumber;
-                order.Address = address;
-                order.ShipFee = shipFee;
-                order.MoneyReduce = moneyReduce;
-                order.CreateDate = createDate;
-                order.PayDate = payDate;
-                order.ShipDate = shipDate;
-                order.ReceiveDate = receiveDate;
-                order.Status = status;
-                return services.Update(order);
+                return services.Add(a);
             }
-            return false;
-        }
+            catch (Exception e)
+            {
+                return false;
+            }
 
-        // DELETE api/<OrderController>/5
+        }
+        // PUT api/< PaymentMethodController>/5
+        [HttpPut("{id}")]
+        public bool Put(Order a)
+        {
+            try
+            {
+                return services.Update(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+        //aaaaaa
+        //delete
+        // DELETE api/< PaymentMethodController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }
