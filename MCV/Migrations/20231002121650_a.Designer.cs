@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MCV.Migrations
 {
     [DbContext(typeof(DBnhom6TT))]
-    [Migration("20230915084048_aa")]
-    partial class aa
+    [Migration("20231002121650_a")]
+    partial class a
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

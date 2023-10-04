@@ -22,11 +22,50 @@ namespace MCV.Controllers
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult blog()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+	        return View();
         }
+        public IActionResult cart()
+        {
+            return View();
+        }
+        public IActionResult category()
+        {
+            return View();
+        }
+        public IActionResult confirmation()
+        {
+            return View();
+        }
+        public IActionResult contact()
+        {
+            return View();
+        }
+        public IActionResult checkout()
+        {
+            return View();
+        }
+        public IActionResult elements()
+        {
+            return View();
+        }
+        public IActionResult login()
+        {
+            return View();
+        }
+        public IActionResult singleblog()
+        {
+            return View();
+        }
+        public IActionResult singleproduct()
+        {
+            return View();
+        }
+        public IActionResult tracking()
+        {
+            return View();
+        }
+
     }
 }
