@@ -20,15 +20,15 @@
 
        
 
-        public List<Image> Images { get; set; }
-        public Size? Size { get; set; }
-        public Category? Category { get; set; }
-        public Brand? Brand { get; set; }
-        public Color? Color { get; set; }
-        public Shoe? Shoe { get; set; }
+        public virtual List<Image> Images { get; set; }
+        public virtual Size? Size { get; set; }
+        public virtual Category? Category { get; set; }
+        public virtual Brand? Brand { get; set; }
+        public virtual Color? Color { get; set; }
+        public virtual Shoe? Shoe { get; set; }
 
-        public List<CartDetail> Carts { get; set; }
+        public virtual List<CartDetail>? Carts { get; set; }
 
-        public List<OrderDetail> OrderDetails { get; set; }
+        public virtual List<OrderDetail>? OrderDetails { get; set; }
     }
 }

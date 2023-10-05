@@ -4,77 +4,92 @@ using ShopOganicAPI.IServices;
 
 namespace AppAPI.Services
 {
-    public class AllServices<T> :IAllServices<T> where T : class
-
-    {
-        private readonly DBnhom6TT context;
-        private readonly DbSet<T> dbSet;
-
-        public AllServices()
+ 
+        public class AllServices<T> : IAllServices<T> where T : class
         {
-        }
+            private readonly DBnhom6TT dbContext;
+            private readonly DbSet<T> dbSet;
 
-        public AllServices(DBnhom6TT context, DbSet<T> dbSet)
-        {
-            this.context = context;
-            this.dbSet = dbSet;
-        }
-
-        public bool Add(T item)
-        {
-            try
+            public AllServices()
             {
-                dbSet.Add(item);
-                context.SaveChanges();
-                return true;
+                dbContext = new DBnhom6TT();
+                dbSet = dbContext.Set<T>();
             }
-            catch (Exception)
+
+            public async Task<bool> CreateAsync(T entity)
             {
-                return false;
+                try
+                {
+                    await dbSet.AddAsync(entity);
+                    await dbContext.SaveChangesAsync();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
             }
-        }
 
-        public bool Delete(T item)
-        {
-            try
+            public async Task<bool> DeleteAsync(Guid id)
             {
-                dbSet.Remove(item);
-                context.SaveChanges();
-                return true;
+                try
+                {
+                    var entity = await GetByIdAsync(id);
+                    dbSet.Remove(entity);
+                    await dbContext.SaveChangesAsync();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
             }
-            catch (Exception)
+
+            public async Task<List<T>> GetAllAsync()
             {
-                return false;
+                return await dbSet.ToListAsync();
             }
-        }
 
-        public List<T> GetAll()
-        {
-            return dbSet.ToList();
-        }
-
-        public List<T> GetById(Guid id)
-        {
-            return dbSet.ToList();
-        }
-
-        public List<T> SearchAsync(Func<T, bool> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(T item)
-        {
-            try
+            public async Task<T> GetByIdAsync(Guid id)
             {
-                dbSet.Update(item);
-                context.SaveChanges();
-                return true;
+                return await dbSet.FindAsync(id);
             }
-            catch (Exception)
+
+            public async Task<bool> UpdateAsync(T entity)
             {
-                return false;
+                try
+                {
+                    dbSet.Update(entity);
+                    await dbContext.SaveChangesAsync();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            public async Task<List<T>> SearchAsync(Func<T, bool> predicate)
+            {
+                return await Task.Run(() => dbSet.Where(predicate).ToList());
+            }
+            public async Task<T> FindByAttributeAsync(Func<T, bool> predicate)
+            {
+                return await Task.Run(() => dbSet.FirstOrDefault(predicate));
+            }
+
+            public async Task<bool> CreateListAsync(List<T> entities)
+            {
+                try
+                {
+                    await dbSet.AddRangeAsync(entities);
+                    await dbContext.SaveChangesAsync();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
             }
         }
     }
-}
+

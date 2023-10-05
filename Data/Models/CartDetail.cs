@@ -7,8 +7,8 @@
         public Guid? ShoeDetailId { get; set; }
         public int Quantity { get; set; }
 
-        public Cart Cart { get; set; }
-        public ShoeDetail ShoeDetail { get; set; }
+        public virtual Cart? Cart { get; set; }
+        public virtual ShoeDetail? ShoeDetail { get; set; }
 
     }
 }

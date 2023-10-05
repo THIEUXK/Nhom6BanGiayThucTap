@@ -8,6 +8,6 @@
 
         public bool Status { get; set; }
 
-        public List<Account> Accounts { get; set; }
+        public virtual List<Account>? Accounts { get; set; }
     }
 }

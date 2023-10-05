@@ -6,8 +6,8 @@
         public Guid? AccountId { get; set; }
         public bool Status { get; set; }
 
-        public List<CartDetail> Details { get; set; }
-        public Account? Account { get; set; }
+        public virtual IQueryable<CartDetail>? Details { get; set; }
+        public virtual Account? Account { get; set; }
         
     }
 }
