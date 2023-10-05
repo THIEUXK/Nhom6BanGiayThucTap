@@ -13,10 +13,10 @@
 
 
 
-        public Role? Role { get; set; }
-        public List<Address> Address { get; set; }
-        public List<Order> Order { get; set; }
-        public List<Cart> Carts { get; set; }
+        public virtual Role? Role { get; set; }
+        public virtual IQueryable<Address>? Address { get; set; }
+        public virtual IQueryable<Order>? Order { get; set; }
+        public virtual IQueryable<Cart>? Carts { get; set; }
 
     }
 }

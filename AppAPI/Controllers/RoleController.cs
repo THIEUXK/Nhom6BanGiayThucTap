@@ -13,73 +13,49 @@ namespace API.Controllers
     [ApiController]
     public class RoleController : ControllerBase
     {
-        private readonly IAllServices<Role> services;
-        DbSet<Role> dbSet;
-        DBnhom6TT context = new DBnhom6TT();
+       private readonly IAllServices<Role> services;
+
         public RoleController()
         {
-            dbSet = context.Role;
-            AllServices<Role> all = new AllServices<Role>(context, dbSet);
-            services = all;
+            services = new AllServices<Role>();
         }
 
-        // GET: api/<RoleController>
-        [HttpGet]
-        public List<Role> Get()
+        [HttpGet("get-all-role")]
+        public async Task<IActionResult> GetAllRole()
         {
-            return services.GetAll();
+            var lstRole = await services.GetAllAsync();
+            if (lstRole == null)
+            {
+                return NotFound();
+            }
+            return Ok(lstRole);
         }
 
-        // GET api/<RoleController>/5
-        [HttpGet("{id}")]
-        public Role GetById(Guid id)
+        [HttpGet("get-role-{id}")]
+        public async Task<IActionResult> GetRole(Guid id)
         {
-            return services.GetAll().FirstOrDefault(x => x.id == id);
+            var role = await services.GetByIdAsync(id);
+            if (role == null)
+            {
+                return BadRequest();
+            }
+            return Ok(role);
         }
 
-        // POST api/<RoleController>
-        [HttpPost]
-        public bool Post(Role a)
+        [HttpPost("create-role")]
+        public async Task<bool> CreateRole(Role role)
         {
-            try
-            {
-                return services.Add(a);
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
+            return await services.CreateAsync(role);
         }
-        // PUT api/< PaymentMethodController>/5
-        [HttpPut("{id}")]
-        public bool Put(Role a)
+        [HttpPost("update-role")]
+        public async Task<bool> UpdateRole(Role role)
         {
-            try
-            {
-                return services.Update(a);
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
+            return await services.UpdateAsync(role);
         }
-        //aaaaaa
-        //delete
-        // DELETE api/< PaymentMethodController>/5
-        [HttpDelete("{id}")]
-        public bool Delete(Guid id)
+        [HttpDelete("delete-role-{id}")]
+        public async Task<bool> DeleteRole(Guid id)
         {
-            try
-            {
-                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-                return services.Delete(sv);
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
+            return await services.DeleteAsync(id);
         }
     }
 }

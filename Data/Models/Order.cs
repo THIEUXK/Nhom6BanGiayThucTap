@@ -17,9 +17,9 @@
         public bool Status { get; set; }
 
 
-        public List<OrderDetail> Details { get; set; }
-        public List<PaymentMethod> PaymentMethods { get; set; }
-        public Account? Account { get; set; }
+        public virtual IQueryable<OrderDetail>? Details { get; set; }
+        public virtual IQueryable<PaymentMethod>? PaymentMethods { get; set; }
+        public virtual Account? Account { get; set; }
 
     }
 }

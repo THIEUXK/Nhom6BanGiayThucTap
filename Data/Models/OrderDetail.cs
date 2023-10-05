@@ -10,8 +10,8 @@
         public float Discount { get; set; }
         public bool Status { get; set; }
 
-        public Order? Order { get; set; }
-        public ShoeDetail? ShoeDetail { get; set; }
+        public virtual Order? Order { get; set; }
+        public virtual ShoeDetail? ShoeDetail { get; set; }
 
     }
 }
