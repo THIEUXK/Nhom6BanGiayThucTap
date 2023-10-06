@@ -9,11 +9,9 @@ namespace View_Admin.Controllers.QuanLy
 {
     public class AccountController : Controller
     {
-        // GET: AccountController
-        [HttpGet]
         public async Task<ActionResult> Index()
         {
-            string requesURL = $"https://localhost:7021/api/SanPham/get-all-SanPham";
+            string requesURL = $"https://localhost:7268/api/Account";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(requesURL);
             string apiData = await response.Content.ReadAsStringAsync();
@@ -21,11 +19,10 @@ namespace View_Admin.Controllers.QuanLy
             return View(lst);
         }
 
-        // GET: AccountController/Details/5
-        [HttpGet]
+        // GET: RoleController/Details/5
         public async Task<ActionResult> Details(Guid id)
         {
-            var url = $"https://localhost:7021/api/ChatLieu/get-by-chatlieu?id={id}";
+            var url = $"https://localhost:7268/api/Role/{id}";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(url);
             var dataApi = await response.Content.ReadAsStringAsync();
@@ -33,7 +30,7 @@ namespace View_Admin.Controllers.QuanLy
             return View(lst);
         }
 
-        // GET: AccountController/Create
+        // GET: RoleController/Create
         public ActionResult Create()
         {
             if (ModelState.IsValid)
@@ -44,14 +41,14 @@ namespace View_Admin.Controllers.QuanLy
             return BadRequest();
         }
 
-        // POST: AccountController/Create
+        // POST: RoleController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Account a)
         {
             try
             {
-                var url = $"h";
+                var url = $"https://localhost:7268/api/Account/Add";
                 var httpClient = new HttpClient();
                 var content = new StringContent(JsonConvert.SerializeObject(a), Encoding.UTF8, "application/json");
                 var respose = await httpClient.PostAsync(url, content);
@@ -59,6 +56,7 @@ namespace View_Admin.Controllers.QuanLy
                 {
                     return RedirectToAction("Index");
                 }
+
                 return View();
 
             }
@@ -68,12 +66,12 @@ namespace View_Admin.Controllers.QuanLy
             }
         }
 
-        // GET: AccountController/Edit/5
+        // GET: RoleController/Edit/5
         public async Task<ActionResult> Edit(Guid id)
         {
             if (ModelState.IsValid)
             {
-                var url = $"https://localhost:7021/api/ChatLieu/get-by-chatlieu?id={id}";
+                var url = $"https://localhost:7268/api/Account/{id}";
                 var httpClient = new HttpClient();
                 var response = await httpClient.GetAsync(url);
                 var dataApi = await response.Content.ReadAsStringAsync();
@@ -84,21 +82,22 @@ namespace View_Admin.Controllers.QuanLy
             return BadRequest();
         }
 
-        // POST: AccountController/Edit/5
+        // POST: RoleController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(Account a)
         {
             try
             {
-                var url = $"";
+                var url = $"https://localhost:7268/api/Account/Update";
                 var httpClient = new HttpClient();
                 var content = new StringContent(JsonConvert.SerializeObject(a), Encoding.UTF8, "application/json");
-                var respose = await httpClient.PostAsync(url, content);
+                var respose = await httpClient.PutAsync(url, content);
                 if (respose.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
                 }
+
                 return View();
             }
             catch (Exception e)
@@ -107,17 +106,19 @@ namespace View_Admin.Controllers.QuanLy
             }
         }
 
-        // GET: AccountController/Delete/5
+        // GET: RoleController/Delete/5
         public async Task<ActionResult> Delete(Guid id)
         {
-            var url = $"https://localhost:7021/api/ChatLieu/delete-chatlieu/{id}";
+            var url = $"https://localhost:7268/api/Account/delete/{id}";
             var httpClient = new HttpClient();
             var respose = await httpClient.DeleteAsync(url);
             if (respose.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
+
             return BadRequest();
         }
+
     }
 }

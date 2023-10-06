@@ -10,7 +10,9 @@ namespace MCV.Configurations
         {
             builder.HasKey(c => c.id);
             builder.HasOne(c => c.Account).WithMany(c => c.Order).HasForeignKey(c => c.AccountId);
-            
+            builder.HasOne(c => c.Addresss).WithMany(c => c.Orders).HasForeignKey(c => c.AccouAddressId);
+            builder.HasOne(c => c.PaymentMethod).WithMany(c => c.Orders).HasForeignKey(c => c.PaymentMethodId);
+
         }
 
     }

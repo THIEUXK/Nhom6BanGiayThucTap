@@ -3,13 +3,11 @@
     public class PaymentMethod
     {
         public Guid id { get; set; }
-        public Guid? Orderid { get; set; }
         public string Method { get; set; }
 
-        public float Total { get; set; }
         public bool Status { get; set; }
         public string Note { get; set; }
 
-        public virtual Order? Order { get; set; }
+        public virtual List<Order>? Orders { get; set; }
     }
 }

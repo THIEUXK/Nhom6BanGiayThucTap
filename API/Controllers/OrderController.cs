@@ -40,7 +40,7 @@ namespace AppAPI.Controllers
         }
 
         // POST api/<OrderController>
-        [HttpPost]
+        [HttpPost("Add")]
         public bool Post(Order a)
         {
             try
@@ -53,8 +53,7 @@ namespace AppAPI.Controllers
             }
 
         }
-        // PUT api/< PaymentMethodController>/5
-        [HttpPut("{id}")]
+        [HttpPut("Update")]
         public bool Put(Order a)
         {
             try
@@ -70,7 +69,7 @@ namespace AppAPI.Controllers
         //aaaaaa
         //delete
         // DELETE api/< PaymentMethodController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public bool Delete(Guid id)
         {
             try

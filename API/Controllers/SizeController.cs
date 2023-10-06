@@ -36,8 +36,7 @@ namespace API.Controllers
         {
             return services.GetAll().FirstOrDefault(x => x.id == id);
         }
-
-        [HttpPost]
+        [HttpPost("Add")]
         public bool Post(Size a)
         {
             try
@@ -51,7 +50,7 @@ namespace API.Controllers
 
         }
         // PUT api/< PaymentMethodController>/5
-        [HttpPut("{id}")]
+        [HttpPut("Update")]
         public bool Put(Size a)
         {
             try
@@ -67,7 +66,7 @@ namespace API.Controllers
         //aaaaaa
         //delete
         // DELETE api/< PaymentMethodController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public bool Delete(Guid id)
         {
             try

@@ -9,7 +9,7 @@ namespace MCV.Configurations
         public void Configure(EntityTypeBuilder<PaymentMethod> builder)
         {
             builder.HasKey(c => c.id);
-            builder.HasOne(c => c.Order).WithMany(c => c.PaymentMethods).HasForeignKey(c => c.Orderid);
+           
         }
     }
 }

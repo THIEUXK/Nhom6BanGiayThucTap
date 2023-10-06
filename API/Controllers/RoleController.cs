@@ -38,7 +38,7 @@ namespace API.Controllers
         }
 
         // POST api/<RoleController>
-        [HttpPost]
+        [HttpPost("Add")]
         public bool Post(Role a)
         {
             try
@@ -52,7 +52,7 @@ namespace API.Controllers
 
         }
         // PUT api/< PaymentMethodController>/5
-        [HttpPut("{id}")]
+        [HttpPut("Update")]
         public bool Put(Role a)
         {
             try
@@ -68,7 +68,7 @@ namespace API.Controllers
         //aaaaaa
         //delete
         // DELETE api/< PaymentMethodController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public bool Delete(Guid id)
         {
             try

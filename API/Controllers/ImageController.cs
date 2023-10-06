@@ -23,7 +23,7 @@ namespace API.Controllers
             services = all;
         }
         // GET: api/<BrandController>
-        [HttpGet]
+        [HttpPost("Add")]
         public List<Image> Get()
         {
             return services.GetAll();
@@ -51,7 +51,7 @@ namespace API.Controllers
 
         }
         // PUT api/< PaymentMethodController>/5
-        [HttpPut("{id}")]
+        [HttpPut("Update")]
         public bool Put(Image a)
         {
             try
@@ -67,7 +67,7 @@ namespace API.Controllers
         //aaaaaa
         //delete
         // DELETE api/< PaymentMethodController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public bool Delete(Guid id)
         {
             try
