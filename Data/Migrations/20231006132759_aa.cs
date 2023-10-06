@@ -198,34 +198,6 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Order",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    AccountId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ShipFee = table.Column<float>(type: "real", nullable: false),
-                    MoneyReduce = table.Column<float>(type: "real", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PayDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ShipDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ReceiveDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Order", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Order_Accounts_AccountId",
-                        column: x => x.AccountId,
-                        principalTable: "Accounts",
-                        principalColumn: "id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Image",
                 columns: table => new
                 {
@@ -268,6 +240,40 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Order",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AccountId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    PaymentMethodId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    AccouAddressId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
+                    ShipFee = table.Column<float>(type: "real", nullable: false),
+                    MoneyReduce = table.Column<float>(type: "real", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PayDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ShipDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ReceiveDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Order", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Order_Accounts_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "Accounts",
+                        principalColumn: "id");
+                    table.ForeignKey(
+                        name: "FK_Order_Address_AccouAddressId",
+                        column: x => x.AccouAddressId,
+                        principalTable: "Address",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OrderDetail",
                 columns: table => new
                 {
@@ -299,11 +305,10 @@ namespace Data.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Orderid = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Method = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Total = table.Column<float>(type: "real", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
-                    Note = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Note = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Orderid = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -341,9 +346,19 @@ namespace Data.Migrations
                 column: "ShoeDetailId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Order_AccouAddressId",
+                table: "Order",
+                column: "AccouAddressId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Order_AccountId",
                 table: "Order",
                 column: "AccountId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Order_PaymentMethodId",
+                table: "Order",
+                column: "PaymentMethodId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetail_OrderId",
@@ -359,12 +374,36 @@ namespace Data.Migrations
                 name: "IX_ShoeDetail_ShoeId",
                 table: "ShoeDetail",
                 column: "ShoeId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Order_PaymentMethod_PaymentMethodId",
+                table: "Order",
+                column: "PaymentMethodId",
+                principalTable: "PaymentMethod",
+                principalColumn: "id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Address");
+            migrationBuilder.DropForeignKey(
+                name: "FK_Accounts_Role_RoleId",
+                table: "Accounts");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Address_Accounts_AccountId",
+                table: "Address");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Order_Accounts_AccountId",
+                table: "Order");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Order_Address_AccouAddressId",
+                table: "Order");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Order_PaymentMethod_PaymentMethodId",
+                table: "Order");
 
             migrationBuilder.DropTable(
                 name: "CartDetail");
@@ -376,16 +415,10 @@ namespace Data.Migrations
                 name: "OrderDetail");
 
             migrationBuilder.DropTable(
-                name: "PaymentMethod");
-
-            migrationBuilder.DropTable(
                 name: "Carts");
 
             migrationBuilder.DropTable(
                 name: "ShoeDetail");
-
-            migrationBuilder.DropTable(
-                name: "Order");
 
             migrationBuilder.DropTable(
                 name: "Brands");
@@ -403,10 +436,19 @@ namespace Data.Migrations
                 name: "Size");
 
             migrationBuilder.DropTable(
+                name: "Role");
+
+            migrationBuilder.DropTable(
                 name: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "Role");
+                name: "Address");
+
+            migrationBuilder.DropTable(
+                name: "PaymentMethod");
+
+            migrationBuilder.DropTable(
+                name: "Order");
         }
     }
 }

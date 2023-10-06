@@ -36,10 +36,9 @@ namespace API.Controllers
                 return services.GetAll().FirstOrDefault(x => x.id == id);
             }
 
-            // POST api/<BrandController>
-            [HttpPost]
-        [HttpPost]
-            public bool Post(Brand a)
+        // POST api/<BrandController>
+        [HttpPost("Add")]
+public bool Post(Brand a)
             {
                 try
                 {
@@ -51,9 +50,9 @@ namespace API.Controllers
                 }
 
             }
-            // PUT api/< PaymentMethodController>/5
-            [HttpPut("{id}")]
-            public bool Put(Brand a)
+        // PUT api/< PaymentMethodController>/5
+        [HttpPut("Update")]
+public bool Put(Brand a)
             {
                 try
                 {
@@ -65,11 +64,11 @@ namespace API.Controllers
                 }
 
             }
-            //aaaaaa
-            //delete
-            // DELETE api/< PaymentMethodController>/5
-            [HttpDelete("{id}")]
-            public bool Delete(Guid id)
+        //aaaaaa
+        //delete
+        // DELETE api/< PaymentMethodController>/5
+        [HttpDelete("delete/{id}")]
+public bool Delete(Guid id)
             {
                 try
                 {

@@ -222,12 +222,11 @@ namespace Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("AccountId")
+                    b.Property<Guid?>("AccouAddressId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid?>("AccountId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -246,6 +245,9 @@ namespace Data.Migrations
                     b.Property<DateTime>("PayDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("PaymentMethodId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
 
@@ -263,7 +265,11 @@ namespace Data.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("AccouAddressId");
+
                     b.HasIndex("AccountId");
+
+                    b.HasIndex("PaymentMethodId");
 
                     b.ToTable("Order");
                 });
@@ -318,9 +324,6 @@ namespace Data.Migrations
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
-
-                    b.Property<float>("Total")
-                        .HasColumnType("real");
 
                     b.HasKey("id");
 
@@ -480,11 +483,23 @@ namespace Data.Migrations
 
             modelBuilder.Entity("MCV.Models.Order", b =>
                 {
+                    b.HasOne("MCV.Models.Address", "Addresss")
+                        .WithMany("Orders")
+                        .HasForeignKey("AccouAddressId");
+
                     b.HasOne("MCV.Models.Account", "Account")
                         .WithMany("Order")
                         .HasForeignKey("AccountId");
 
+                    b.HasOne("MCV.Models.PaymentMethod", "PaymentMethod")
+                        .WithMany("Orders")
+                        .HasForeignKey("PaymentMethodId");
+
                     b.Navigation("Account");
+
+                    b.Navigation("Addresss");
+
+                    b.Navigation("PaymentMethod");
                 });
 
             modelBuilder.Entity("MCV.Models.OrderDetail", b =>
@@ -504,11 +519,9 @@ namespace Data.Migrations
 
             modelBuilder.Entity("MCV.Models.PaymentMethod", b =>
                 {
-                    b.HasOne("MCV.Models.Order", "Order")
+                    b.HasOne("MCV.Models.Order", null)
                         .WithMany("PaymentMethods")
                         .HasForeignKey("Orderid");
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("MCV.Models.ShoeDetail", b =>
@@ -553,6 +566,11 @@ namespace Data.Migrations
                     b.Navigation("Order");
                 });
 
+            modelBuilder.Entity("MCV.Models.Address", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
             modelBuilder.Entity("MCV.Models.Brand", b =>
                 {
                     b.Navigation("ShoeDetails");
@@ -578,6 +596,11 @@ namespace Data.Migrations
                     b.Navigation("Details");
 
                     b.Navigation("PaymentMethods");
+                });
+
+            modelBuilder.Entity("MCV.Models.PaymentMethod", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("MCV.Models.Role", b =>

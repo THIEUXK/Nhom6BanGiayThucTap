@@ -12,7 +12,7 @@ namespace View_Admin.Controllers.QuanLy
         // GET: RoleController
         public async Task<ActionResult> Index()
         {
-            string requesURL = $"https://localhost:7268/api/Role/get-all-role";
+            string requesURL = $"https://localhost:7268/api/Role";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(requesURL);
             string apiData = await response.Content.ReadAsStringAsync();
@@ -23,7 +23,7 @@ namespace View_Admin.Controllers.QuanLy
         // GET: RoleController/Details/5
         public async Task<ActionResult> Details(Guid id)
         {
-            var url = $"https://localhost:7021/api/ChatLieu/get-by-chatlieu?id={id}";
+            var url = $"https://localhost:7268/api/Role/{id}";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(url);
             var dataApi = await response.Content.ReadAsStringAsync();
@@ -48,16 +48,11 @@ namespace View_Admin.Controllers.QuanLy
         {
             try
             {
-
-                var client = new HttpClient();
-                var apiUrl = $"https://localhost:7268/api/Role/create-role";
-
-                var request = new HttpRequestMessage(HttpMethod.Post, apiUrl);// nhận giá trị truyền vào
-                request.Content = new StringContent(JsonConvert.SerializeObject(a), Encoding.UTF8, "application/json");
-                var response = await client.SendAsync(request);
-
-              
-                if (response.IsSuccessStatusCode)
+                var url = $"https://localhost:7268/api/Role/Add";
+                var httpClient = new HttpClient();
+                var content = new StringContent(JsonConvert.SerializeObject(a), Encoding.UTF8, "application/json");
+                var respose = await httpClient.PostAsync(url, content);
+                if (respose.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
                 }
@@ -75,11 +70,11 @@ namespace View_Admin.Controllers.QuanLy
         {
             if (ModelState.IsValid)
             {
-                var url = $"https://localhost:7021/api/ChatLieu/get-by-chatlieu?id={id}";
+                var url = $"https://localhost:7268/api/Role/{id}";
                 var httpClient = new HttpClient();
                 var response = await httpClient.GetAsync(url);
                 var dataApi = await response.Content.ReadAsStringAsync();
-                var lst = JsonConvert.DeserializeObject<Account>(dataApi);
+                var lst = JsonConvert.DeserializeObject<Role>(dataApi);
                 return View(lst);
             }
 
@@ -93,10 +88,10 @@ namespace View_Admin.Controllers.QuanLy
         {
             try
             {
-                var url = $"";
+                var url = $"https://localhost:7268/api/Role/Update";
                 var httpClient = new HttpClient();
                 var content = new StringContent(JsonConvert.SerializeObject(a), Encoding.UTF8, "application/json");
-                var respose = await httpClient.PostAsync(url, content);
+                var respose = await httpClient.PutAsync(url, content);
                 if (respose.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
@@ -112,7 +107,7 @@ namespace View_Admin.Controllers.QuanLy
         // GET: RoleController/Delete/5
         public async Task<ActionResult> Delete(Guid id)
         {
-            var url = $"https://localhost:7021/api/ChatLieu/delete-chatlieu/{id}";
+            var url = $"https://localhost:7268/api/Role/delete/{id}";
             var httpClient = new HttpClient();
             var respose = await httpClient.DeleteAsync(url);
             if (respose.IsSuccessStatusCode)

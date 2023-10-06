@@ -13,6 +13,7 @@
         public string Note { get; set; }
 
         public virtual Account? Account { get; set; }
-        
+        public virtual List<Order>? Orders { get; set; }
+
     }
 }

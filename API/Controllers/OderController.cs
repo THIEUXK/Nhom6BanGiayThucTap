@@ -1,10 +1,11 @@
-﻿using API.IServices;
-using API.Services;
+﻿
+using AppAPI.Services;
 using MCV.Models;
 using MCV.Models.DBnhom6;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ShopOganicAPI.IServices;
 
 namespace API.Controllers
 {
@@ -38,52 +39,46 @@ namespace API.Controllers
         }
 
         // POST api/<OrderController>
-        [HttpPost]
-        public bool Post(Order obj)
+        [HttpPost("Add")]
+        public bool Post(Order a)
         {
-            Order order = new Order();
-            order.id = obj.id;
-            order.AccountId = obj.AccountId;
-            order.Code = obj.Code;
-            order.CustomerName = obj.CustomerName;
-            order.PhoneNumber = obj.PhoneNumber;
-            order.Address = obj.Address;
-            order.ShipFee = obj.ShipFee;
-            order.MoneyReduce = obj.MoneyReduce;
-            order.CreateDate = obj.CreateDate;
-            order.PayDate = obj.PayDate;
-            order.ShipDate = obj.ShipDate;
-            order.ReceiveDate = obj.ReceiveDate;
-            order.Status = obj.Status;
-            return services.Add(order);
+            try
+            {
+                return services.Add(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
         // PUT api/<OrderController>/5
         [HttpPut("{id}")]
-        public bool Put(Order obj)
+        public bool Put(Order a)
         {
-            Order order = services.GetAll().FirstOrDefault(x => x.id == obj.id);
-            order.AccountId = obj.AccountId;
-            order.Code = obj.Code;
-            order.CustomerName = obj.CustomerName;
-            order.PhoneNumber = obj.PhoneNumber;
-            order.Address = obj.Address;
-            order.ShipFee = obj.ShipFee;
-            order.MoneyReduce = obj.MoneyReduce;
-            order.CreateDate = obj.CreateDate;
-            order.PayDate = obj.PayDate;
-            order.ShipDate = obj.ShipDate;
-            order.ReceiveDate = obj.ReceiveDate;
-            order.Status = obj.Status;
-            return services.Update(order);
+            try
+            {
+                return services.Update(a);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
         // DELETE api/<OrderController>/5
         [HttpDelete("{id}")]
         public bool Delete(Guid id)
         {
-            var sv = services.GetAll().FirstOrDefault(x => x.id == id);
-            return services.Delete(sv);
+            try
+            {
+                var sv = services.GetAll().FirstOrDefault(x => x.id == id);
+                return services.Delete(sv);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }
