@@ -1,19 +1,16 @@
-﻿
+﻿@model IEnumerable<MCV.Models.ShoeDetail>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-@model IEnumerable<MCV.Models.Address>
 
-@{
-    ViewData["Title"] = "Index";
-}
 
+                
 <div class="row">
     <div class="col-md-9">
         <br></br>
         <br></br>
-
 
 
         <h1>Index</h1>
@@ -28,28 +25,34 @@
                         @Html.DisplayNameFor(model => model.id)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.AccountId)
+                        @Html.DisplayNameFor(model => model.ShoeId)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Name)
+                        @Html.DisplayNameFor(model => model.SizeId)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                        @Html.DisplayNameFor(model => model.BrandId)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.SpecificAddress)
+                        @Html.DisplayNameFor(model => model.CategoryId)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Ward)
+                        @Html.DisplayNameFor(model => model.ColorId)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.District)
+                        @Html.DisplayNameFor(model => model.Code)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Province)
+                        @Html.DisplayNameFor(model => model.PriceInput)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Note)
+                        @Html.DisplayNameFor(model => model.PriceOutput)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
                     </th>
                     <th></th>
                 </tr>
@@ -62,28 +65,34 @@
                             @Html.DisplayFor(modelItem => item.id)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.AccountId)
+                            @Html.DisplayFor(modelItem => item.ShoeId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.DisplayFor(modelItem => item.SizeId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            @Html.DisplayFor(modelItem => item.BrandId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.SpecificAddress)
+                            @Html.DisplayFor(modelItem => item.CategoryId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Ward)
+                            @Html.DisplayFor(modelItem => item.ColorId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.District)
+                            @Html.DisplayFor(modelItem => item.Code)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Province)
+                            @Html.DisplayFor(modelItem => item.PriceInput)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Note)
+                            @Html.DisplayFor(modelItem => item.PriceOutput)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id= item.id}) |
@@ -99,4 +108,5 @@
 
     </div>
 </div>
+
 

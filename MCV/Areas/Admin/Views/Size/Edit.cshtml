@@ -1,25 +1,23 @@
-﻿@model MCV.Models.Color
+﻿@model MCV.Models.Size
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-   
-            
+
+
+
 <div class="row">
     <div class="col-md-9">
         <br></br>
         <br></br>
+        <h1>Edit</h1>
 
-      
-        
-        <h1>Create</h1>
-
-        <h4>Color</h4>
+        <h4>Size</h4>
         <hr />
         <div class="row">
             <div class="col-md-9">
-                <form asp-action="Create">
+                <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="id" class="control-label"></label>
@@ -37,7 +35,7 @@
                         </label>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="submit" value="Save" class="btn btn-primary" />
                     </div>
                 </form>
             </div>
@@ -47,7 +45,8 @@
             <a asp-action="Index">Back to List</a>
         </div>
 
-
+      
+        
 
     </div>
 </div>

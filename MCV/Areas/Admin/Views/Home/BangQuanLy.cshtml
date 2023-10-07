@@ -4,5 +4,33 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>BangQuanLy</h1>
+
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Normal buttons</h4>
+                <br></br>
+                <p class="card-description"><code></code> Quản Lí Các Bảng</p>
+                <div>
+                    <button type="button" class="btn btn-primary btn-fw"><a style="color:white" asp-controller="Account" asp-action="Index">Account</a></button>
+                    <button type="button" class="btn btn-secondary btn-fw"><a style="color:black" asp-controller="Address" asp-action="Index">Address</a></button>
+                    <button type="button" class="btn btn-success btn-fw"><a style="color:white" asp-controller="Brand" asp-action="Index">Brand</a> </button>
+                    <button type="button" class="btn btn-danger btn-fw"><a style="color:white" asp-controller="Category" asp-action="Index">Category</a></button>
+                    <button type="button" class="btn btn-warning btn-fw"><a style="color:white" asp-controller="Color" asp-action="Index">Color</a></button>
+                    <button type="button" class="btn btn-info btn-fw"><a style="color:white" asp-controller="Image" asp-action="Index">Image</a></button>
+                </div>
+                <br></br>
+                <div>
+                    <button type="button" class="btn btn-primary btn-fw"><a style="color:white" asp-controller="PaymentMethod" asp-action="Index">PaymentMethod</a></button>
+                    <button type="button" class="btn btn-secondary btn-fw"><a style="color:black" asp-controller="Role" asp-action="Index">Role</a></button>
+                    <button type="button" class="btn btn-success btn-fw"><a style="color:white" asp-controller="Shoe" asp-action="Index">Shoe</a></button>
+                    <button type="button" class="btn btn-danger btn-fw"><a style="color:white" asp-controller="ShoeDetail" asp-action="Index">ShoeDetail</a> </button>
+                    <button type="button" class="btn btn-warning btn-fw"><a style="color:white" asp-controller="Size" asp-action="Index">Size</a></button>
+                    <button type="button" class="btn btn-info btn-fw"><a style="color:white" asp-controller="Image" asp-action="Index">Image</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
