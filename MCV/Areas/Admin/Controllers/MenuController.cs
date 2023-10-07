@@ -4,11 +4,11 @@ using System.Diagnostics;
 namespace View_Admin.Controllers
 {
     [Area("admin")]
-    public class HomeController : Controller
+    public class MenuController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<MenuController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public MenuController(ILogger<MenuController> logger)
         {
             _logger = logger;
         }
