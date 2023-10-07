@@ -1,0 +1,112 @@
+﻿@model IEnumerable<MCV.Models.ShoeDetail>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+                
+<div class="row">
+    <div class="col-md-9">
+        <br></br>
+        <br></br>
+
+
+        <h1>Index</h1>
+
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShoeId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SizeId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BrandId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CategoryId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ColorId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Code)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PriceInput)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PriceOutput)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ShoeId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SizeId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BrandId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CategoryId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ColorId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Code)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PriceInput)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PriceOutput)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id= item.id}) |
+                            @Html.ActionLink("Details", "Details", new {id= item.id }) |
+                            @Html.ActionLink("Delete", "Delete", new {id= item.id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+    </div>
+</div>
+
+
