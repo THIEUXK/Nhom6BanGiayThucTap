@@ -20,7 +20,6 @@
 
 
         public virtual IQueryable<OrderDetail>? Details { get; set; }
-        public virtual IQueryable<PaymentMethod>? PaymentMethods { get; set; }
         public virtual Account? Account { get; set; }
         public virtual PaymentMethod? PaymentMethod { get; set; }
         public virtual Address? Addresss { get; set; }

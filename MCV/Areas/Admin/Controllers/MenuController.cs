@@ -23,6 +23,12 @@ namespace View_Admin.Controllers
             return View();
         }
 
+        public IActionResult DangNhap()
+        {
+            return View();
+        }
+
+
 
     }
 }

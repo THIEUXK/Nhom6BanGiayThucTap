@@ -117,6 +117,20 @@ namespace Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Brands");
+
+                    b.HasData(
+                        new
+                        {
+                            id = new Guid("803fa31d-3c19-4a71-be9a-a9933eef41a3"),
+                            Status = true,
+                            name = "Adidas"
+                        },
+                        new
+                        {
+                            id = new Guid("558b2e5b-a654-4fa8-b4d2-ab3ebee1ded5"),
+                            Status = true,
+                            name = "Nike"
+                        });
                 });
 
             modelBuilder.Entity("MCV.Models.Cart", b =>
@@ -157,6 +171,8 @@ namespace Data.Migrations
 
                     b.HasIndex("CartId");
 
+                    b.HasIndex("ShoeDetailId");
+
                     b.ToTable("CartDetail");
                 });
 
@@ -176,6 +192,26 @@ namespace Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            id = new Guid("a6fe6958-7860-4070-8f15-08a2e6560e59"),
+                            Status = true,
+                            name = "Đế thấp"
+                        },
+                        new
+                        {
+                            id = new Guid("591de99a-e9aa-4b40-919b-1e00e8bc9f08"),
+                            Status = true,
+                            name = "Đế vừa"
+                        },
+                        new
+                        {
+                            id = new Guid("21acfbab-8f46-4dd8-bf4a-5853f12ba6b1"),
+                            Status = true,
+                            name = "Đế cao"
+                        });
                 });
 
             modelBuilder.Entity("MCV.Models.Color", b =>
@@ -194,6 +230,92 @@ namespace Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Color");
+
+                    b.HasData(
+                        new
+                        {
+                            id = new Guid("aa47a77d-782c-4ba3-ac2b-ea04f95f9ac7"),
+                            Status = true,
+                            name = "Trắng"
+                        },
+                        new
+                        {
+                            id = new Guid("7c9f6a77-cf89-427a-943c-bf0d372ed025"),
+                            Status = true,
+                            name = "Vàng xanh"
+                        },
+                        new
+                        {
+                            id = new Guid("44b5710a-b2ad-4749-90d5-fd03ac7c1dab"),
+                            Status = true,
+                            name = "Xanh đen"
+                        },
+                        new
+                        {
+                            id = new Guid("14d853ce-6d1a-4bd5-9ff6-4a4492f3604b"),
+                            Status = true,
+                            name = "Đỏ đen"
+                        },
+                        new
+                        {
+                            id = new Guid("0fa38a0b-8919-4e80-8004-6e32b0cc2817"),
+                            Status = true,
+                            name = "Đỏ"
+                        },
+                        new
+                        {
+                            id = new Guid("f66bc29c-004a-4059-9d1e-809d9e4fb057"),
+                            Status = true,
+                            name = "Cam"
+                        },
+                        new
+                        {
+                            id = new Guid("2956ee8f-31ab-49f9-bfd2-2beb5da36c1e"),
+                            Status = true,
+                            name = "Vàng"
+                        },
+                        new
+                        {
+                            id = new Guid("5812313b-f0b5-4db1-872f-6557cc61379b"),
+                            Status = true,
+                            name = "Xanh Lục"
+                        },
+                        new
+                        {
+                            id = new Guid("3c8f47ba-3f38-4d45-9b52-8dcf425db25f"),
+                            Status = true,
+                            name = "Xanh Lục Đậm"
+                        },
+                        new
+                        {
+                            id = new Guid("9036e6ad-f1e5-40e2-a3eb-85dcc55da78b"),
+                            Status = true,
+                            name = "Tràm"
+                        },
+                        new
+                        {
+                            id = new Guid("8795fa3d-aab4-43f7-a6ff-30e62a74295b"),
+                            Status = true,
+                            name = "Tím"
+                        },
+                        new
+                        {
+                            id = new Guid("f9aaebd0-7828-46ed-877c-2352dfc5b487"),
+                            Status = true,
+                            name = "Trắng cam"
+                        },
+                        new
+                        {
+                            id = new Guid("3bff2837-1983-4a82-91ec-49adb3289a19"),
+                            Status = true,
+                            name = "Tráng Hồng"
+                        },
+                        new
+                        {
+                            id = new Guid("709ea84b-6f58-46d3-baff-52c1899970d2"),
+                            Status = true,
+                            name = "Đen"
+                        });
                 });
 
             modelBuilder.Entity("MCV.Models.Image", b =>
@@ -226,6 +348,9 @@ namespace Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("AccountId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("Addresssid")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
@@ -265,9 +390,9 @@ namespace Data.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("AccouAddressId");
-
                     b.HasIndex("AccountId");
+
+                    b.HasIndex("Addresssid");
 
                     b.HasIndex("PaymentMethodId");
 
@@ -302,6 +427,8 @@ namespace Data.Migrations
 
                     b.HasIndex("OrderId");
 
+                    b.HasIndex("ShoeDetailId");
+
                     b.ToTable("OrderDetail");
                 });
 
@@ -319,17 +446,42 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("Orderid")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
                     b.HasKey("id");
 
-                    b.HasIndex("Orderid");
-
                     b.ToTable("PaymentMethod");
+
+                    b.HasData(
+                        new
+                        {
+                            id = new Guid("d16ac357-3ced-4c2c-bcdc-d38971214417"),
+                            Method = "Thanh toán khi nhận hàng",
+                            Note = "",
+                            Status = true
+                        },
+                        new
+                        {
+                            id = new Guid("d16ac357-3ced-4c2c-bcdc-d38971214418"),
+                            Method = "Thanh toán qua VNpay",
+                            Note = "",
+                            Status = true
+                        },
+                        new
+                        {
+                            id = new Guid("d16ac357-3ced-4c2c-bcdc-d38971214419"),
+                            Method = "Thanh toán tại cửa hàng",
+                            Note = "",
+                            Status = true
+                        },
+                        new
+                        {
+                            id = new Guid("d16ac357-3ced-4c2c-bcdc-d38971214420"),
+                            Method = "Thanh toán qua chuyển khoảng",
+                            Note = "",
+                            Status = true
+                        });
                 });
 
             modelBuilder.Entity("MCV.Models.Role", b =>
@@ -348,6 +500,26 @@ namespace Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Role");
+
+                    b.HasData(
+                        new
+                        {
+                            id = new Guid("d16ac357-3ced-4c2c-bcdc-d38971214414"),
+                            Status = true,
+                            name = "QuanLy"
+                        },
+                        new
+                        {
+                            id = new Guid("d16ac357-3ced-4c2c-bcdc-d38971214415"),
+                            Status = true,
+                            name = "NhanVien"
+                        },
+                        new
+                        {
+                            id = new Guid("d16ac357-3ced-4c2c-bcdc-d38971214416"),
+                            Status = true,
+                            name = "KhachHang"
+                        });
                 });
 
             modelBuilder.Entity("MCV.Models.Shoe", b =>
@@ -366,6 +538,68 @@ namespace Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Shoe");
+
+                    b.HasData(
+                        new
+                        {
+                            id = new Guid("37a99446-aa67-4e5b-9367-51c6dd7dd795"),
+                            Status = true,
+                            name = "Adidas_X9000-KARLIE-KLOSS_Trang"
+                        },
+                        new
+                        {
+                            id = new Guid("1eeedefa-8af6-47f2-abbe-275e8a15d030"),
+                            Status = true,
+                            name = "Nike_Nike-Metcon-8-AMP_VangXam"
+                        },
+                        new
+                        {
+                            id = new Guid("467f33be-d804-444a-8a8e-a1e0ccb23dde"),
+                            Status = true,
+                            name = "Nike_Nike-Metcon-8-FlyEase_DenXanh"
+                        },
+                        new
+                        {
+                            id = new Guid("1132c77a-8d4c-482c-945c-e7e10ad46b3c"),
+                            Status = true,
+                            name = "Nike_Nike-Metcon-8-MF_DoDen"
+                        },
+                        new
+                        {
+                            id = new Guid("a761025b-dda3-4952-bd39-3a19fb0665c2"),
+                            Status = true,
+                            name = "Nike_Nike-Pegasus-Turbo_Do"
+                        },
+                        new
+                        {
+                            id = new Guid("62e04651-5f55-42d2-97e7-5b5c84130e07"),
+                            Status = true,
+                            name = "Nike_Nike-SuperRep-Cycle-2-Next-Nature_Cam"
+                        },
+                        new
+                        {
+                            id = new Guid("4b2a1c55-2f1a-4d85-985c-9f079e8798e3"),
+                            Status = true,
+                            name = "Nike_Nike-Zegama_Den"
+                        },
+                        new
+                        {
+                            id = new Guid("0db3ed50-cb51-471b-bca9-31f0575a5399"),
+                            Status = true,
+                            name = "NIke_Nike-Zoom-Bella-6-Premium_Trang"
+                        },
+                        new
+                        {
+                            id = new Guid("fb122078-f51d-46bf-84b0-f7d64fad6424"),
+                            Status = true,
+                            name = "Nike_Nike-Winflo-9_TrangCam"
+                        },
+                        new
+                        {
+                            id = new Guid("4451531e-06d5-46b2-85da-3f58cc4a16da"),
+                            Status = true,
+                            name = "Adidas_ULTRABOOST-20_HongTrang"
+                        });
                 });
 
             modelBuilder.Entity("MCV.Models.ShoeDetail", b =>
@@ -407,7 +641,15 @@ namespace Data.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ColorId");
+
                     b.HasIndex("ShoeId");
+
+                    b.HasIndex("SizeId");
 
                     b.ToTable("ShoeDetail");
                 });
@@ -428,6 +670,68 @@ namespace Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Size");
+
+                    b.HasData(
+                        new
+                        {
+                            id = new Guid("4003dee2-2188-44a8-9be3-12801bccd8eb"),
+                            Status = true,
+                            name = "34"
+                        },
+                        new
+                        {
+                            id = new Guid("9c6bcead-5d8c-43c1-b0d2-818a86cf0884"),
+                            Status = true,
+                            name = "35"
+                        },
+                        new
+                        {
+                            id = new Guid("cf583d54-6b4f-4007-b187-228b7a6daf9e"),
+                            Status = true,
+                            name = "36"
+                        },
+                        new
+                        {
+                            id = new Guid("cfbe4973-b899-4158-902b-f26dde332880"),
+                            Status = true,
+                            name = "37"
+                        },
+                        new
+                        {
+                            id = new Guid("34b19311-482c-4cef-b7b0-8a1bfdcc1dfb"),
+                            Status = true,
+                            name = "38"
+                        },
+                        new
+                        {
+                            id = new Guid("fcfd172a-279d-4ae6-860b-0f097a2300ee"),
+                            Status = true,
+                            name = "39"
+                        },
+                        new
+                        {
+                            id = new Guid("9be00d69-562a-46b1-82b4-b960bdfa8a08"),
+                            Status = true,
+                            name = "40"
+                        },
+                        new
+                        {
+                            id = new Guid("2b763a78-b52d-4cd6-a701-975f95710549"),
+                            Status = true,
+                            name = "41"
+                        },
+                        new
+                        {
+                            id = new Guid("c5821fd0-943f-46e0-aea3-8f669fea4315"),
+                            Status = true,
+                            name = "42"
+                        },
+                        new
+                        {
+                            id = new Guid("02788047-302b-48db-89ff-92446889c4e3"),
+                            Status = true,
+                            name = "43"
+                        });
                 });
 
             modelBuilder.Entity("MCV.Models.Account", b =>
@@ -465,7 +769,7 @@ namespace Data.Migrations
 
                     b.HasOne("MCV.Models.ShoeDetail", "ShoeDetail")
                         .WithMany("Carts")
-                        .HasForeignKey("CartId");
+                        .HasForeignKey("ShoeDetailId");
 
                     b.Navigation("Cart");
 
@@ -483,13 +787,13 @@ namespace Data.Migrations
 
             modelBuilder.Entity("MCV.Models.Order", b =>
                 {
-                    b.HasOne("MCV.Models.Address", "Addresss")
-                        .WithMany("Orders")
-                        .HasForeignKey("AccouAddressId");
-
                     b.HasOne("MCV.Models.Account", "Account")
                         .WithMany("Order")
                         .HasForeignKey("AccountId");
+
+                    b.HasOne("MCV.Models.Address", "Addresss")
+                        .WithMany("Orders")
+                        .HasForeignKey("Addresssid");
 
                     b.HasOne("MCV.Models.PaymentMethod", "PaymentMethod")
                         .WithMany("Orders")
@@ -510,33 +814,26 @@ namespace Data.Migrations
 
                     b.HasOne("MCV.Models.ShoeDetail", "ShoeDetail")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("ShoeDetailId");
 
                     b.Navigation("Order");
 
                     b.Navigation("ShoeDetail");
                 });
 
-            modelBuilder.Entity("MCV.Models.PaymentMethod", b =>
-                {
-                    b.HasOne("MCV.Models.Order", null)
-                        .WithMany("PaymentMethods")
-                        .HasForeignKey("Orderid");
-                });
-
             modelBuilder.Entity("MCV.Models.ShoeDetail", b =>
                 {
                     b.HasOne("MCV.Models.Brand", "Brand")
                         .WithMany("ShoeDetails")
-                        .HasForeignKey("ShoeId");
+                        .HasForeignKey("BrandId");
 
                     b.HasOne("MCV.Models.Category", "Category")
                         .WithMany("ShoeDetails")
-                        .HasForeignKey("ShoeId");
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("MCV.Models.Color", "Color")
                         .WithMany("ShoeDetails")
-                        .HasForeignKey("ShoeId");
+                        .HasForeignKey("ColorId");
 
                     b.HasOne("MCV.Models.Shoe", "Shoe")
                         .WithMany("ShoeDetails")
@@ -544,7 +841,7 @@ namespace Data.Migrations
 
                     b.HasOne("MCV.Models.Size", "Size")
                         .WithMany("ShoeDetails")
-                        .HasForeignKey("ShoeId");
+                        .HasForeignKey("SizeId");
 
                     b.Navigation("Brand");
 
@@ -594,8 +891,6 @@ namespace Data.Migrations
             modelBuilder.Entity("MCV.Models.Order", b =>
                 {
                     b.Navigation("Details");
-
-                    b.Navigation("PaymentMethods");
                 });
 
             modelBuilder.Entity("MCV.Models.PaymentMethod", b =>

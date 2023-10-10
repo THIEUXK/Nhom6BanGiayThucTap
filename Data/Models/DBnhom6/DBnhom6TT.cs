@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Data.Models.DBnhom6;
 
 namespace MCV.Models.DBnhom6
 {
@@ -27,12 +28,12 @@ namespace MCV.Models.DBnhom6
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=MSI;Initial Catalog =bainhom6tt;User ID=sa;Password=thieu12345");
+            optionsBuilder.UseSqlServer("Data Source=MSI;Initial Catalog=BaiTTnhom6;User ID=sa;Password=thieu12345");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Send();
         }
     }
 }
