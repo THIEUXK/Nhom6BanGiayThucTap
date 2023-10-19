@@ -20,7 +20,7 @@
 
        
 
-        public virtual List<Image> Images { get; set; }
+        public virtual List<Image>? Images { get; set; }
         public virtual Size? Size { get; set; }
         public virtual Category? Category { get; set; }
         public virtual Brand? Brand { get; set; }

@@ -11,7 +11,7 @@ namespace MCV.Configurations
             builder.HasKey(c => c.id);
 
             builder.HasOne(c => c.Order).WithMany(c => c.Details).HasForeignKey(c => c.OrderId);
-            builder.HasOne(c => c.ShoeDetail).WithMany(c => c.OrderDetails).HasForeignKey(c => c.OrderId);
+            builder.HasOne(c => c.ShoeDetail).WithMany(c => c.OrderDetails).HasForeignKey(c => c.ShoeDetailId);
 
         }
     

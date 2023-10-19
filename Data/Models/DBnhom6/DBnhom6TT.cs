@@ -33,6 +33,7 @@ namespace MCV.Models.DBnhom6
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             modelBuilder.Send();
         }
     }

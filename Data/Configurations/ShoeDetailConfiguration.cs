@@ -10,10 +10,10 @@ namespace MCV.Configurations
         {
             builder.HasKey(c => c.id);
             builder.HasOne(c => c.Shoe).WithMany(c => c.ShoeDetails).HasForeignKey(c => c.ShoeId);
-            builder.HasOne(c => c.Size).WithMany(c => c.ShoeDetails).HasForeignKey(c => c.ShoeId);
-            builder.HasOne(c => c.Category).WithMany(c => c.ShoeDetails).HasForeignKey(c => c.ShoeId);
-            builder.HasOne(c => c.Brand).WithMany(c => c.ShoeDetails).HasForeignKey(c => c.ShoeId);
-            builder.HasOne(c => c.Color).WithMany(c => c.ShoeDetails).HasForeignKey(c => c.ShoeId);
+            builder.HasOne(c => c.Size).WithMany(c => c.ShoeDetails).HasForeignKey(c => c.SizeId);
+            builder.HasOne(c => c.Category).WithMany(c => c.ShoeDetails).HasForeignKey(c => c.CategoryId);
+            builder.HasOne(c => c.Brand).WithMany(c => c.ShoeDetails).HasForeignKey(c => c.BrandId);
+            builder.HasOne(c => c.Color).WithMany(c => c.ShoeDetails).HasForeignKey(c => c.ColorId);
         }
     
     }
