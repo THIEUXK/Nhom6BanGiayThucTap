@@ -6,8 +6,9 @@
 
         public string name { get; set; }
 
-        public bool Status { get; set; }
+		public bool Status { get; set; }
+		public string avata { get; set; }
 
-        public virtual List<ShoeDetail>? ShoeDetails { get; set; }
+		public virtual List<ShoeDetail>? ShoeDetails { get; set; }
     }
 }
