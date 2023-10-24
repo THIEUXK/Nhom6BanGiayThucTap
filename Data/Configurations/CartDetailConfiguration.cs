@@ -10,7 +10,7 @@ namespace MCV.Configurations
         {
             builder.HasKey(c => c.id);
             builder.HasOne(c => c.Cart).WithMany(c => c.Details).HasForeignKey(c => c.CartId);
-            builder.HasOne(c => c.ShoeDetail).WithMany(c => c.Carts).HasForeignKey(c => c.CartId);
+            builder.HasOne(c => c.ShoeDetail).WithMany(c => c.Carts).HasForeignKey(c => c.ShoeDetailId);
         }
     }
 }

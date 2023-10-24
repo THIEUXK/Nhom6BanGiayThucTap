@@ -67,7 +67,7 @@ namespace Data.Models.DBnhom6
                 new Role() { id = Guid.Parse("d16ac357-3ced-4c2c-bcdc-d38971214416"), name = "KhachHang", Status = true }
             );
             modelBuilder.Entity<PaymentMethod>().HasData(
-                new PaymentMethod() { id = Guid.Parse("d16ac357-3ced-4c2c-bcdc-d38971214417"),Method = "Thanh toán khi nhận hàng", Status = true ,Note = ""},
+                new PaymentMethod() { id = Guid.Parse("d16ac357-3ced-4c2c-bcdc-d38971214417"), Method = "Thanh toán khi nhận hàng", Status = true, Note = "" },
                 new PaymentMethod() { id = Guid.Parse("d16ac357-3ced-4c2c-bcdc-d38971214418"), Method = "Thanh toán qua VNpay", Status = true, Note = "" },
                 new PaymentMethod() { id = Guid.Parse("d16ac357-3ced-4c2c-bcdc-d38971214419"), Method = "Thanh toán tại cửa hàng", Status = true, Note = "" },
             new PaymentMethod() { id = Guid.Parse("d16ac357-3ced-4c2c-bcdc-d38971214420"), Method = "Thanh toán qua chuyển khoảng", Status = true, Note = "" }
