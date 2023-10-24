@@ -112,7 +112,6 @@ namespace MCV.Areas.Admin.Controllers.BanHang
             {
                 var a = new ShoeDetail()
                 {
-                    id = Guid.NewGuid(),
                     ShoeId = b.ShoeId,
                     SizeId = b.SizeId,
                     BrandId = b.BrandId,

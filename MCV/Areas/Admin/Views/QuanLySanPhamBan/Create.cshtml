@@ -59,7 +59,7 @@
                 <label asp-for="ColorId">Color</label>
                 <select asp-for="ColorId" class="form-control">
                     <option value="">-- Select Color --</option>
-                    @foreach (var a in Model.CategoryItems)
+                    @foreach (var a in Model.ColorItems)
                     {
                         <option value="@a.Value">@a.Text</option>
                     }
