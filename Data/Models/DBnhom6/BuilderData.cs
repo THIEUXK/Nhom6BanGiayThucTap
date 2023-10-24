@@ -13,16 +13,16 @@ namespace Data.Models.DBnhom6
         public static void Send(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Shoe>().HasData(
-                new Shoe() { id = Guid.NewGuid(), name = "Adidas_X9000-KARLIE-KLOSS_Trang", Status = true },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8-AMP_VangXam", Status = true },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8-FlyEase_DenXanh", Status = true },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8-MF_DoDen", Status = true },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Pegasus-Turbo_Do", Status = true },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-SuperRep-Cycle-2-Next-Nature_Cam", Status = true },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Zegama_Den", Status = true },
-                new Shoe() { id = Guid.NewGuid(), name = "NIke_Nike-Zoom-Bella-6-Premium_Trang", Status = true },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Winflo-9_TrangCam", Status = true },
-                new Shoe() { id = Guid.NewGuid(), name = "Adidas_ULTRABOOST-20_HongTrang", Status = true }
+                new Shoe() { id = Guid.NewGuid(), name = "Adidas_X9000-KARLIE-KLOSS_Trang", Status = true, avata = "" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8-AMP_VangXam", Status = true, avata = "" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8-FlyEase_DenXanh", Status = true, avata = "" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8-MF_DoDen", Status = true, avata = "" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Pegasus-Turbo_Do", Status = true, avata = "" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-SuperRep-Cycle-2-Next-Nature_Cam", Status = true ,avata = ""},
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Zegama_Den", Status = true, avata = "" },
+                new Shoe() { id = Guid.NewGuid(), name = "NIke_Nike-Zoom-Bella-6-Premium_Trang", Status = true, avata = "" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Winflo-9_TrangCam", Status = true, avata = "" },
+                new Shoe() { id = Guid.NewGuid(), name = "Adidas_ULTRABOOST-20_HongTrang", Status = true, avata = "" }
             );
             modelBuilder.Entity<Size>().HasData(
                 new Size() { id = Guid.NewGuid(), name = "34", Status = true },
