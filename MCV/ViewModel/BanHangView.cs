@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using MCV.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MCV.ViewModel
 {
@@ -9,6 +10,8 @@ namespace MCV.ViewModel
         public List<SelectListItem> CategoryItems { get; set; }
         public List<SelectListItem> BrandItems { get; set; }
         public List<SelectListItem> ColorItems { get; set; }
+
+        
 
         public Guid id { get; set; }
 
@@ -25,5 +28,6 @@ namespace MCV.ViewModel
         public int PriceOutput { get; set; }
         public int Quantity { get; set; }
         public bool Status { get; set; }
+        public Color Colors { get; set; }
     }
 }
