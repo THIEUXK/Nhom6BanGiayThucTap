@@ -66,7 +66,7 @@ namespace MCV.Controllers
 
 			return View(view);
         }
-        public async Task<IActionResult> HienThiSanPhamChiTiet()
+        public async Task<IActionResult> HienThiSanPhamChiTiet(Guid id)
         {
             string requesURL = $"https://localhost:7268/api/ShoeDetail";
             var httpClient = new HttpClient();
@@ -122,10 +122,14 @@ namespace MCV.Controllers
                                      }).ToList();
 
 
-
-            return View(view);
+            var viewct = view.FirstOrDefault(c => c.ShoeDetail.id == id);
+            return View(viewct);
         }
-       
+		public async Task<IActionResult> ThemVaoGio(Guid id)
+		{
+			return View();
+		}
+
 
 	}
 }
