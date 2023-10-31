@@ -34,6 +34,21 @@
                 <span asp-validation-for="avata" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceInput" class="control-label"></label>
+                <input asp-for="PriceInput" class="form-control" />
+                <span asp-validation-for="PriceInput" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceOutput" class="control-label"></label>
+                <input asp-for="PriceOutput" class="form-control" />
+                <span asp-validation-for="PriceOutput" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

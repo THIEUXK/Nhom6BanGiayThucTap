@@ -116,10 +116,7 @@ namespace MCV.Areas.Admin.Controllers.BanHang
                     SizeId = b.SizeId,
                     BrandId = b.BrandId,
                     CategoryId = b.CategoryId,
-                    ColorId = b.ColorId,
-                    Code = b.Code,
-                    PriceInput = b.PriceInput,
-                    PriceOutput = b.PriceOutput,
+                    ColorId = b.ColorId,               
                     Quantity = b.Quantity,
                     Status = b.Status
                 };

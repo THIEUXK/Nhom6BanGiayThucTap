@@ -1,4 +1,4 @@
-﻿@model List<MCV.ViewModel.SanPhamBan>
+﻿@model IEnumerable<MCV.Models.Shoe>
 @{
     ViewData["Title"] = "HienThiSanPham";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -241,14 +241,14 @@
                             {
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single-product">
-                                        @if (System.IO.Path.GetExtension(sp.Shoes.avata) == ".jpg" ||
-                                             System.IO.Path.GetExtension(sp.Shoes.avata) == ".png" ||
-                                             System.IO.Path.GetExtension(sp.Shoes.avata) == ".jpeg" ||
-                                             System.IO.Path.GetExtension(sp.Shoes.avata) == ".tiff" ||
-                                             System.IO.Path.GetExtension(sp.Shoes.avata) == ".webp" ||
-                                             System.IO.Path.GetExtension(sp.Shoes.avata) == ".gif")
+                                        @if (System.IO.Path.GetExtension(sp.avata) == ".jpg" ||
+                                             System.IO.Path.GetExtension(sp.avata) == ".png" ||
+                                             System.IO.Path.GetExtension(sp.avata) == ".jpeg" ||
+                                             System.IO.Path.GetExtension(sp.avata) == ".tiff" ||
+                                             System.IO.Path.GetExtension(sp.avata) == ".webp" ||
+                                             System.IO.Path.GetExtension(sp.avata) == ".gif")
                                         {
-                                            <img class="img-fluid"  src="~/image/@sp.Shoes.avata" height="300">
+                                            <img class="img-fluid"  src="~/image/@sp.avata" height="300">
                                         }
                                         else
                                         {
@@ -256,11 +256,11 @@
                                         }
                                         <div class="product-details">
                                             <h6>
-                                                <a style="color: (internal value);"> @Html.ActionLink(sp.Shoes.name, "HienThiSanPhamChiTiet", new { id = sp.ShoeDetail.id}) </a>
+											<a style="color: (internal value);"> @Html.ActionLink(sp.name, "HienThiSanPhamChiTiet", new { id = sp.id},new { @class = "custom-edit-link" }) </a>
                                             </h6>
                                             <div class="price">
 
-                                                <h6 >@FormatCurrency(sp.ShoeDetail.PriceOutput)</h6>
+                                                <h6 >@FormatCurrency(sp.PriceOutput)</h6>
 													
                                             </div>
                                             <div class="prd-bottom">
@@ -288,146 +288,7 @@
                             }
                         }
                   
-					<!-- single product -->
-					<div class="col-lg-4 col-md-6">
-						<div class="single-product">
-							<img class="img-fluid" src="~/image/Adidas_4DFWD-2.0_Trang(2).jpg" alt="">
-							<div class="product-details">
-								<h6>
-									addidas New Hammer sole
-									for Sports person
-								</h6>
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<div class="prd-bottom">
-
-									<a href="" class="social-info">
-										<span class="ti-bag"></span>
-										<p class="hover-text">add to bag</p>
-									</a>
-									<a href="" class="social-info">
-										<span class="lnr lnr-heart"></span>
-										<p class="hover-text">Wishlist</p>
-									</a>
-									<a href="" class="social-info">
-										<span class="lnr lnr-sync"></span>
-										<p class="hover-text">compare</p>
-									</a>
-									<a href="" class="social-info">
-										<span class="lnr lnr-move"></span>
-										<p class="hover-text">view more</p>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- single product -->
-					<div class="col-lg-4 col-md-6">
-						<div class="single-product">
-							<img class="img-fluid" src="~/img/product/p4.jpg" alt="">
-							<div class="product-details">
-								<h6>
-									addidas New Hammer sole
-									for Sports person
-								</h6>
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<div class="prd-bottom">
-
-									<a href="" class="social-info">
-										<span class="ti-bag"></span>
-										<p class="hover-text">add to bag</p>
-									</a>
-									<a href="" class="social-info">
-										<span class="lnr lnr-heart"></span>
-										<p class="hover-text">Wishlist</p>
-									</a>
-									<a href="" class="social-info">
-										<span class="lnr lnr-sync"></span>
-										<p class="hover-text">compare</p>
-									</a>
-									<a href="" class="social-info">
-										<span class="lnr lnr-move"></span>
-										<p class="hover-text">view more</p>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- single product -->
-					<div class="col-lg-4 col-md-6">
-						<div class="single-product">
-							<img class="img-fluid" src="~/img/product/p5.jpg" alt="">
-							<div class="product-details">
-								<h6>
-									addidas New Hammer sole
-									for Sports person
-								</h6>
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<div class="prd-bottom">
-
-									<a href="" class="social-info">
-										<span class="ti-bag"></span>
-										<p class="hover-text">add to bag</p>
-									</a>
-									<a href="" class="social-info">
-										<span class="lnr lnr-heart"></span>
-										<p class="hover-text">Wishlist</p>
-									</a>
-									<a href="" class="social-info">
-										<span class="lnr lnr-sync"></span>
-										<p class="hover-text">compare</p>
-									</a>
-									<a href="" class="social-info">
-										<span class="lnr lnr-move"></span>
-										<p class="hover-text">view more</p>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- single product -->
-					<div class="col-lg-4 col-md-6">
-						<div class="single-product">
-							<img class="img-fluid" src="~/img/product/p6.jpg" alt="">
-							<div class="product-details">
-								<h6>
-									addidas New Hammer sole
-									for Sports person
-								</h6>
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<div class="prd-bottom">
-
-									<a href="" class="social-info">
-										<span class="ti-bag"></span>
-										<p class="hover-text">add to bag</p>
-									</a>
-									<a href="" class="social-info">
-										<span class="lnr lnr-heart"></span>
-										<p class="hover-text">Wishlist</p>
-									</a>
-									<a href="" class="social-info">
-										<span class="lnr lnr-sync"></span>
-										<p class="hover-text">compare</p>
-									</a>
-									<a href="" class="social-info">
-										<span class="lnr lnr-move"></span>
-										<p class="hover-text">view more</p>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
+		
 				</div>
 			</section>
 			<!-- End Best Seller -->
@@ -604,3 +465,9 @@
 
 
 </script>
+<style>
+	.custom-edit-link {
+		color: black; /* Màu đỏ */
+		/* Các thuộc tính CSS khác nếu cần */
+	}
+</style>

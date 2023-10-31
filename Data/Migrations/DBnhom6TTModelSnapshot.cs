@@ -121,13 +121,13 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            id = new Guid("f969603c-faf3-43aa-a1cb-7e3c95f2f7a8"),
+                            id = new Guid("78ca7f85-4f41-4f64-9192-40cd744fd1c5"),
                             Status = true,
                             name = "Adidas"
                         },
                         new
                         {
-                            id = new Guid("d9b39c70-576a-4dba-9bc3-ffd3a37daea0"),
+                            id = new Guid("bf2e479e-4688-4d90-817e-278cef6a1e9e"),
                             Status = true,
                             name = "Nike"
                         });
@@ -196,19 +196,19 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            id = new Guid("7fc75f8b-cf13-472c-8339-cbc535ceab41"),
+                            id = new Guid("b2a472f2-5d21-489d-9727-81e80c2abb8b"),
                             Status = true,
                             name = "Đế thấp"
                         },
                         new
                         {
-                            id = new Guid("91e4730d-3bf2-4874-960f-d41625390068"),
+                            id = new Guid("13879ab6-03ac-4770-bb71-d1a16cec5cdb"),
                             Status = true,
                             name = "Đế vừa"
                         },
                         new
                         {
-                            id = new Guid("8f9249a1-87c1-4a5e-a113-54f2cd1a94e3"),
+                            id = new Guid("fa3dc767-3bdc-416f-ba14-865797f5014d"),
                             Status = true,
                             name = "Đế cao"
                         });
@@ -234,85 +234,85 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            id = new Guid("4ede5c90-692f-4993-b7bc-9a5f408bf263"),
+                            id = new Guid("ff628d0c-7be0-47b5-aea8-0908a43889dc"),
                             Status = true,
                             name = "Trắng"
                         },
                         new
                         {
-                            id = new Guid("6daf6980-4711-4ac4-8f14-aa703fa16d4e"),
+                            id = new Guid("63b98fad-4716-4f18-b026-12ebbb4f9fb6"),
                             Status = true,
                             name = "Vàng xanh"
                         },
                         new
                         {
-                            id = new Guid("cbaaeca1-c028-4e58-9903-71e185a8be8f"),
+                            id = new Guid("74fa3999-2293-4082-a37a-6028f7d8ef86"),
                             Status = true,
                             name = "Xanh đen"
                         },
                         new
                         {
-                            id = new Guid("8eda6c69-caac-4529-8ada-6923c9c51b13"),
+                            id = new Guid("c508d955-2b7a-431d-acbd-4bc1b56e0292"),
                             Status = true,
                             name = "Đỏ đen"
                         },
                         new
                         {
-                            id = new Guid("09542299-9fa2-49e6-be55-0704449c7b1d"),
+                            id = new Guid("5ea806eb-dfff-4bed-9bea-de151ad9b256"),
                             Status = true,
                             name = "Đỏ"
                         },
                         new
                         {
-                            id = new Guid("6a78a332-84f8-4c8a-8967-7afc79273fe3"),
+                            id = new Guid("f02db20a-789d-4a0f-b9eb-4d237acaeb73"),
                             Status = true,
                             name = "Cam"
                         },
                         new
                         {
-                            id = new Guid("3b6de8b6-62c7-4822-959b-4f94a7b665f2"),
+                            id = new Guid("f0d56ceb-be5a-4382-bd5d-00578fe6fd2f"),
                             Status = true,
                             name = "Vàng"
                         },
                         new
                         {
-                            id = new Guid("3929944e-06ae-411a-8b21-acf94ac679f5"),
+                            id = new Guid("76544509-f525-4121-995a-cddb1e69f945"),
                             Status = true,
                             name = "Xanh Lục"
                         },
                         new
                         {
-                            id = new Guid("427664e7-8f6b-40df-806b-ff4dc2952679"),
+                            id = new Guid("aba13838-9209-4460-9e64-a422dacd6b7c"),
                             Status = true,
                             name = "Xanh Lục Đậm"
                         },
                         new
                         {
-                            id = new Guid("885a4d00-1f9d-4e9b-b1a9-08ba43f0656b"),
+                            id = new Guid("7aa822d7-67ff-4889-bcda-44594fc0d3d5"),
                             Status = true,
                             name = "Tràm"
                         },
                         new
                         {
-                            id = new Guid("cdcbfc88-10f9-46e4-a881-fe37b2e7a5d9"),
+                            id = new Guid("16620522-4585-49e7-baba-8b313f04014f"),
                             Status = true,
                             name = "Tím"
                         },
                         new
                         {
-                            id = new Guid("149347ed-334d-4add-a4e4-adf7a49b5b83"),
+                            id = new Guid("42b6a353-9797-440f-89bb-3c3c2613a037"),
                             Status = true,
                             name = "Trắng cam"
                         },
                         new
                         {
-                            id = new Guid("e44a3bc6-ded6-4805-b51f-518f46a399d3"),
+                            id = new Guid("44645e7e-1d1c-4a27-8b53-aea58e6ea4cb"),
                             Status = true,
                             name = "Tráng Hồng"
                         },
                         new
                         {
-                            id = new Guid("db506394-70f5-4645-8a0c-e3e81f4b3979"),
+                            id = new Guid("47ab32ca-87b2-40de-85fe-3171a10e943e"),
                             Status = true,
                             name = "Đen"
                         });
@@ -525,6 +525,16 @@ namespace Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PriceInput")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PriceOutput")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
@@ -543,73 +553,103 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            id = new Guid("72c73a32-40c3-4ee7-a40b-b751796aaeee"),
+                            id = new Guid("167f6b83-ba95-47f8-81bd-fa0e38024408"),
+                            Code = "001",
+                            PriceInput = 120,
+                            PriceOutput = 150,
                             Status = true,
-                            avata = "",
-                            name = "Adidas_X9000-KARLIE-KLOSS_Trang"
+                            avata = "Nike_Nike-SuperRep-Cycle-2-Next-Nature_Cam(3).webp",
+                            name = "Nike_Nike-SuperRep-Cycle-2"
                         },
                         new
                         {
-                            id = new Guid("e15e69cb-1737-419d-a4d2-0651b5fd6987"),
+                            id = new Guid("98dcb961-5643-4a6b-b8dd-8c4428d1ff70"),
+                            Code = "002",
+                            PriceInput = 130,
+                            PriceOutput = 155,
                             Status = true,
-                            avata = "",
-                            name = "Nike_Nike-Metcon-8-AMP_VangXam"
+                            avata = "Nike_Nike-Winflo-9_TrangCam(3).webp",
+                            name = "Nike_Nike-Winflo-9"
                         },
                         new
                         {
-                            id = new Guid("b679e154-9606-4121-82fc-4b202ca84c03"),
+                            id = new Guid("2cc3fa26-83db-4ac0-8e00-4fa9c27278be"),
+                            Code = "003",
+                            PriceInput = 125,
+                            PriceOutput = 140,
                             Status = true,
-                            avata = "",
-                            name = "Nike_Nike-Metcon-8-FlyEase_DenXanh"
+                            avata = "Nike_Nike-Zegama_Den(3).webp",
+                            name = "Nike_Nike-Zegama"
                         },
                         new
                         {
-                            id = new Guid("a1208e73-ffdd-4035-8ecf-f5a7fde8b89e"),
+                            id = new Guid("c707835c-efa4-414d-80dc-6ddea9dedf02"),
+                            Code = "004",
+                            PriceInput = 120,
+                            PriceOutput = 151,
                             Status = true,
-                            avata = "",
+                            avata = "Nike_Nike-React-Infinity-3-Premium_BayMau(3).webp",
+                            name = "Nike_Nike-React-Infinity-3"
+                        },
+                        new
+                        {
+                            id = new Guid("06a9bd9c-6004-4c48-bba6-87e03ce79f9a"),
+                            Code = "005",
+                            PriceInput = 150,
+                            PriceOutput = 170,
+                            Status = true,
+                            avata = "Nike_Nike-Pegasus-Turbo_Do(3).webp",
+                            name = "Nike_Nike-Pegasus-Turbo"
+                        },
+                        new
+                        {
+                            id = new Guid("5a1100f7-edc4-4bd4-ad43-4a1e13b1cf0a"),
+                            Code = "006",
+                            PriceInput = 120,
+                            PriceOutput = 150,
+                            Status = true,
+                            avata = "Nike_Nike-Metcon-8-Premium_Bac(3).webp",
+                            name = "Nike_Nike-Metcon-8-Premium_Bac"
+                        },
+                        new
+                        {
+                            id = new Guid("a33dcaf0-0a00-4364-9dfe-95df68f0d9bd"),
+                            Code = "007",
+                            PriceInput = 120,
+                            PriceOutput = 148,
+                            Status = true,
+                            avata = "Nike_Nike-Metcon-8-MF_DoDen(3).webp",
                             name = "Nike_Nike-Metcon-8-MF_DoDen"
                         },
                         new
                         {
-                            id = new Guid("6b9c1d94-08f2-4f89-8713-16fc0b58f728"),
+                            id = new Guid("4931d60a-3219-4344-a317-5f5916a7f9ba"),
+                            Code = "008",
+                            PriceInput = 120,
+                            PriceOutput = 133,
                             Status = true,
-                            avata = "",
-                            name = "Nike_Nike-Pegasus-Turbo_Do"
+                            avata = "Nike_Nike-Metcon-8-AMP_VangXam(3).webp",
+                            name = "Nike_Nike-Metcon-8-AMP_VangXam"
                         },
                         new
                         {
-                            id = new Guid("71a84f34-f805-40d0-9e2c-8110433962dd"),
+                            id = new Guid("b9acbf78-96d7-4e2e-8f47-a2ea515169a4"),
+                            Code = "009",
+                            PriceInput = 120,
+                            PriceOutput = 143,
                             Status = true,
-                            avata = "",
-                            name = "Nike_Nike-SuperRep-Cycle-2-Next-Nature_Cam"
+                            avata = "Nike_Nike-Metcon-8_Xanh(3).webp",
+                            name = "Nike_Nike-Metcon-8_Xanh"
                         },
                         new
                         {
-                            id = new Guid("3aca2cad-f2b7-45a4-bf49-362b2411de61"),
+                            id = new Guid("934171ae-c61a-411a-b92a-45cde60efae3"),
+                            Code = "010",
+                            PriceInput = 120,
+                            PriceOutput = 160,
                             Status = true,
-                            avata = "",
-                            name = "Nike_Nike-Zegama_Den"
-                        },
-                        new
-                        {
-                            id = new Guid("3f30ffd5-c728-4c30-91ca-9d250316a500"),
-                            Status = true,
-                            avata = "",
-                            name = "NIke_Nike-Zoom-Bella-6-Premium_Trang"
-                        },
-                        new
-                        {
-                            id = new Guid("8832b161-9230-41c7-ab51-f4335b79946f"),
-                            Status = true,
-                            avata = "",
-                            name = "Nike_Nike-Winflo-9_TrangCam"
-                        },
-                        new
-                        {
-                            id = new Guid("ea56bf4d-770f-40b6-8189-94f21b7739ba"),
-                            Status = true,
-                            avata = "",
-                            name = "Adidas_ULTRABOOST-20_HongTrang"
+                            avata = "Nike_Ja-1-Hunger-EP_XanhDo(3).webp",
+                            name = "Nike_Ja-1-Hunger-EP_XanhDo"
                         });
                 });
 
@@ -625,18 +665,8 @@ namespace Data.Migrations
                     b.Property<Guid?>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid?>("ColorId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("PriceInput")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PriceOutput")
-                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -685,61 +715,61 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            id = new Guid("fe65aac8-aa0c-4692-b084-e44937e79c36"),
+                            id = new Guid("7ede1fbd-a32a-4dff-9a7f-b47d4465e6b1"),
                             Status = true,
                             name = "34"
                         },
                         new
                         {
-                            id = new Guid("ef27421e-0cc2-43c6-bc19-88281d6f40ea"),
+                            id = new Guid("74e25b7f-e91d-4e39-94a3-d9e669ae0f4d"),
                             Status = true,
                             name = "35"
                         },
                         new
                         {
-                            id = new Guid("fe454829-5663-4d1c-951a-12ea1708c91a"),
+                            id = new Guid("5681a5ac-d016-4e00-ab49-4e9f1bda3a12"),
                             Status = true,
                             name = "36"
                         },
                         new
                         {
-                            id = new Guid("aad5226f-1c2e-4862-b152-d24c60f5d960"),
+                            id = new Guid("93a4d540-b890-4374-80fe-d434b04196be"),
                             Status = true,
                             name = "37"
                         },
                         new
                         {
-                            id = new Guid("cb480d98-b088-4080-a16e-a77f6d1b35f1"),
+                            id = new Guid("a8c94660-5361-4b62-832f-b0b665e4e6d9"),
                             Status = true,
                             name = "38"
                         },
                         new
                         {
-                            id = new Guid("7ab87e35-bb3b-49c4-9a6f-04994200a37a"),
+                            id = new Guid("02cbadc1-780b-42d0-a173-f701b24f4983"),
                             Status = true,
                             name = "39"
                         },
                         new
                         {
-                            id = new Guid("b5165034-41cf-406c-ac04-c979b5c5819a"),
+                            id = new Guid("4ab097ed-1bc2-4730-8b58-6d4f8273274f"),
                             Status = true,
                             name = "40"
                         },
                         new
                         {
-                            id = new Guid("b68dc7af-1323-4382-a8f5-f8fb5df429c2"),
+                            id = new Guid("8b6e770d-6532-467b-80a0-4e91b5a3cf9c"),
                             Status = true,
                             name = "41"
                         },
                         new
                         {
-                            id = new Guid("60a40a93-f52f-4b7c-b652-2e091a8a8f94"),
+                            id = new Guid("5fa3469c-8ed0-489f-99d6-7775324be806"),
                             Status = true,
                             name = "42"
                         },
                         new
                         {
-                            id = new Guid("e27c5c4a-fd38-424e-87c0-366ae7217d41"),
+                            id = new Guid("47c30eb0-6366-4de7-b4e9-90eeb532ad05"),
                             Status = true,
                             name = "43"
                         });

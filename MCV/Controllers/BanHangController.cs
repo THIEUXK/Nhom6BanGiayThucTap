@@ -64,7 +64,7 @@ namespace MCV.Controllers
            
       
 
-			return View(view);
+			return View(lst1);
         }
         public async Task<IActionResult> HienThiSanPhamChiTiet(Guid id)
         {
@@ -122,7 +122,7 @@ namespace MCV.Controllers
                                      }).ToList();
 
 
-            var viewct = view.FirstOrDefault(c => c.ShoeDetail.id == id);
+            var viewct = view.FirstOrDefault(c => c.Shoes.id == id);
             return View(viewct);
         }
 		public async Task<IActionResult> ThemVaoGio(Guid id)
