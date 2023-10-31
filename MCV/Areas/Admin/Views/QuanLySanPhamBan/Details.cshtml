@@ -1,4 +1,4 @@
-﻿@model MCV.Models.ShoeDetail
+﻿@model MCV.ViewModel.BanHangView
 
 @{
     ViewData["Title"] = "Details";
@@ -14,52 +14,52 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id)
+        id
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id)
+            @Html.DisplayFor(model => model.sanPhamBan.ShoeDetail.id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ShoeId)
+            ShoeId
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ShoeId)
+            @Html.DisplayFor(model => model.sanPhamBan.Shoes.name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SizeId)
+            SizeId
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SizeId)
+            @Html.DisplayFor(model => model.sanPhamBan.Sizes.name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BrandId)
+            BrandId
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BrandId)
+            @Html.DisplayFor(model => model.sanPhamBan.Brands.name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CategoryId)
+           CategoryId
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CategoryId)
+            @Html.DisplayFor(model => model.sanPhamBan.Categories.name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ColorId)
+          ColorId
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ColorId)
+            @Html.DisplayFor(model => model.sanPhamBan.Color.name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
+           Quantity
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Quantity)
+            @Html.DisplayFor(model => model.sanPhamBan.ShoeDetail.Quantity)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
+           Status
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status)
+            @Html.DisplayFor(model => model.ShoeDetail.Status)
         </dd>
     </dl>
 </div>
@@ -67,3 +67,43 @@
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
 </div>
+
+@foreach (var a in Model.Anh)
+{
+    <td>
+        @if (System.IO.Path.GetExtension(a.ImgUrl) == ".jpg" ||
+       System.IO.Path.GetExtension(a.ImgUrl) == ".png" ||
+       System.IO.Path.GetExtension(a.ImgUrl) == ".jpeg" ||
+       System.IO.Path.GetExtension(a.ImgUrl) == ".tiff" ||
+       System.IO.Path.GetExtension(a.ImgUrl) == ".webp" ||
+       System.IO.Path.GetExtension(a.ImgUrl) == ".gif")
+        {
+            <img src="~/image/@a.ImgUrl" height="100">
+           
+        }
+        else
+        {
+            <span>Ảnh lỗi rồi =)))</span>
+            <a>@a.id.ToString()</a>
+        }
+    </td>
+    <td>
+        @Html.ActionLink("Xóa", "XoaAnh", new { id=a.id,IdSp=a.ShoeDetailId}) |
+    </td>
+
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+<form asp-action="AddAnh" method="post" enctype="multipart/form-data">
+    <div class="m-b-15">
+        <input type="hidden" name="IdSP" value="@Model.sanPhamBan.ShoeDetail.id" />
+        <input name="imageFile" type="file" class="form-control-file" />
+        <button id="btnUpload" class="btn btn-primary">
+            <i class="anticon anticon-save"></i>
+        </button>
+        <button type="submit">Thêm ảnh</button>
+    </div>
+</form>
