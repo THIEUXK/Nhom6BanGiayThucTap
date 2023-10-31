@@ -10,11 +10,7 @@
         public Guid? CategoryId { get; set; }
 
         public Guid? ColorId { get; set; }
-        public string Code { get; set; }
-
-        public int PriceInput { get; set; }
-
-        public int PriceOutput { get; set; }
+   
         public int Quantity { get; set; }
         public bool Status { get; set;}
 

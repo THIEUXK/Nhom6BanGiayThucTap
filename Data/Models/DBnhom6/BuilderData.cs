@@ -13,16 +13,16 @@ namespace Data.Models.DBnhom6
         public static void Send(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Shoe>().HasData(
-                new Shoe() { id = Guid.NewGuid(), name = "Adidas_X9000-KARLIE-KLOSS_Trang", Status = true, avata = "" },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8-AMP_VangXam", Status = true, avata = "" },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8-FlyEase_DenXanh", Status = true, avata = "" },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8-MF_DoDen", Status = true, avata = "" },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Pegasus-Turbo_Do", Status = true, avata = "" },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-SuperRep-Cycle-2-Next-Nature_Cam", Status = true ,avata = ""},
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Zegama_Den", Status = true, avata = "" },
-                new Shoe() { id = Guid.NewGuid(), name = "NIke_Nike-Zoom-Bella-6-Premium_Trang", Status = true, avata = "" },
-                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Winflo-9_TrangCam", Status = true, avata = "" },
-                new Shoe() { id = Guid.NewGuid(), name = "Adidas_ULTRABOOST-20_HongTrang", Status = true, avata = "" }
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-SuperRep-Cycle-2", Status = true, avata = "Nike_Nike-SuperRep-Cycle-2-Next-Nature_Cam(3).webp", PriceInput=120,PriceOutput=150,Code="001"},
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Winflo-9", Status = true, avata = "Nike_Nike-Winflo-9_TrangCam(3).webp", PriceInput = 130, PriceOutput = 155, Code = "002" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Zegama", Status = true, avata = "Nike_Nike-Zegama_Den(3).webp", PriceInput = 125, PriceOutput = 140, Code = "003" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-React-Infinity-3", Status = true, avata = "Nike_Nike-React-Infinity-3-Premium_BayMau(3).webp", PriceInput = 120, PriceOutput = 151, Code = "004" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Pegasus-Turbo", Status = true, avata = "Nike_Nike-Pegasus-Turbo_Do(3).webp", PriceInput = 150, PriceOutput = 170, Code = "005" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8-Premium_Bac", Status = true ,avata = "Nike_Nike-Metcon-8-Premium_Bac(3).webp", PriceInput = 120, PriceOutput = 150, Code = "006" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8-MF_DoDen", Status = true, avata = "Nike_Nike-Metcon-8-MF_DoDen(3).webp", PriceInput = 120, PriceOutput = 148, Code = "007" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8-AMP_VangXam", Status = true, avata = "Nike_Nike-Metcon-8-AMP_VangXam(3).webp", PriceInput = 120, PriceOutput = 133, Code = "008" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Nike-Metcon-8_Xanh", Status = true, avata = "Nike_Nike-Metcon-8_Xanh(3).webp", PriceInput = 120, PriceOutput = 143, Code = "009" },
+                new Shoe() { id = Guid.NewGuid(), name = "Nike_Ja-1-Hunger-EP_XanhDo", Status = true, avata = "Nike_Ja-1-Hunger-EP_XanhDo(3).webp", PriceInput = 120, PriceOutput = 160, Code = "010" }
             );
             modelBuilder.Entity<Size>().HasData(
                 new Size() { id = Guid.NewGuid(), name = "34", Status = true },

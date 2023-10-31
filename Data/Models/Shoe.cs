@@ -9,6 +9,12 @@
 		public bool Status { get; set; }
 		public string avata { get; set; }
 
-		public virtual List<ShoeDetail>? ShoeDetails { get; set; }
+        public string Code { get; set; }
+
+        public int PriceInput { get; set; }
+
+        public int PriceOutput { get; set; }
+
+        public virtual List<ShoeDetail>? ShoeDetails { get; set; }
     }
 }

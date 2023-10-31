@@ -25,6 +25,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.avata)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceInput)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceOutput)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -44,9 +53,18 @@
                 @Html.DisplayFor(modelItem => item.avata)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceInput)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceOutput)
+            </td>
+            <td>
                 @Html.ActionLink("Edit", "Edit", new {  id=item.id  }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.id   }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.id  })
+                @Html.ActionLink("Details", "Details", new {  id=item.id  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.id  })
             </td>
         </tr>
 }
