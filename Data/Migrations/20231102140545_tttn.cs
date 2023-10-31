@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class a : Migration
+    public partial class tttn : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -325,8 +325,8 @@ namespace Data.Migrations
                 columns: new[] { "id", "Status", "name" },
                 values: new object[,]
                 {
-                    { new Guid("78ca7f85-4f41-4f64-9192-40cd744fd1c5"), true, "Adidas" },
-                    { new Guid("bf2e479e-4688-4d90-817e-278cef6a1e9e"), true, "Nike" }
+                    { new Guid("268f2def-ebb5-4a5f-a639-d6b98ab69130"), true, "Nike" },
+                    { new Guid("e45d58da-6a80-4e1e-8d9e-d7ebfb1f2646"), true, "Adidas" }
                 });
 
             migrationBuilder.InsertData(
@@ -334,9 +334,9 @@ namespace Data.Migrations
                 columns: new[] { "id", "Status", "name" },
                 values: new object[,]
                 {
-                    { new Guid("13879ab6-03ac-4770-bb71-d1a16cec5cdb"), true, "Đế vừa" },
-                    { new Guid("b2a472f2-5d21-489d-9727-81e80c2abb8b"), true, "Đế thấp" },
-                    { new Guid("fa3dc767-3bdc-416f-ba14-865797f5014d"), true, "Đế cao" }
+                    { new Guid("16948774-676c-4819-9e1f-712c1f8ec153"), true, "Đế cao" },
+                    { new Guid("a8346b54-746f-4faa-9671-ef77a3d39812"), true, "Đế thấp" },
+                    { new Guid("f57e63dc-3625-4a46-98fc-39af9a63a96d"), true, "Đế vừa" }
                 });
 
             migrationBuilder.InsertData(
@@ -344,20 +344,20 @@ namespace Data.Migrations
                 columns: new[] { "id", "Status", "name" },
                 values: new object[,]
                 {
-                    { new Guid("16620522-4585-49e7-baba-8b313f04014f"), true, "Tím" },
-                    { new Guid("42b6a353-9797-440f-89bb-3c3c2613a037"), true, "Trắng cam" },
-                    { new Guid("44645e7e-1d1c-4a27-8b53-aea58e6ea4cb"), true, "Tráng Hồng" },
-                    { new Guid("47ab32ca-87b2-40de-85fe-3171a10e943e"), true, "Đen" },
-                    { new Guid("5ea806eb-dfff-4bed-9bea-de151ad9b256"), true, "Đỏ" },
-                    { new Guid("63b98fad-4716-4f18-b026-12ebbb4f9fb6"), true, "Vàng xanh" },
-                    { new Guid("74fa3999-2293-4082-a37a-6028f7d8ef86"), true, "Xanh đen" },
-                    { new Guid("76544509-f525-4121-995a-cddb1e69f945"), true, "Xanh Lục" },
-                    { new Guid("7aa822d7-67ff-4889-bcda-44594fc0d3d5"), true, "Tràm" },
-                    { new Guid("aba13838-9209-4460-9e64-a422dacd6b7c"), true, "Xanh Lục Đậm" },
-                    { new Guid("c508d955-2b7a-431d-acbd-4bc1b56e0292"), true, "Đỏ đen" },
-                    { new Guid("f02db20a-789d-4a0f-b9eb-4d237acaeb73"), true, "Cam" },
-                    { new Guid("f0d56ceb-be5a-4382-bd5d-00578fe6fd2f"), true, "Vàng" },
-                    { new Guid("ff628d0c-7be0-47b5-aea8-0908a43889dc"), true, "Trắng" }
+                    { new Guid("243e84a6-8fa2-45e8-a490-147e7d6d2b90"), true, "Tràm" },
+                    { new Guid("296f2955-05b1-4655-8b78-147915786084"), true, "Đỏ đen" },
+                    { new Guid("5e167aa4-8c70-4ae1-a00b-546f6820e2f1"), true, "Tím" },
+                    { new Guid("608017b7-b707-48fc-95c7-b66253b01ed6"), true, "Đỏ" },
+                    { new Guid("68c59dd2-a26e-476a-a00f-080316f79c9b"), true, "Xanh đen" },
+                    { new Guid("744abed9-7232-4ebd-beb5-c22c4b8b5990"), true, "Vàng" },
+                    { new Guid("755fb6cc-a370-4012-b65c-0586374ab789"), true, "Trắng" },
+                    { new Guid("7f0f7307-6059-4d51-b8c3-323b091773fc"), true, "Đen" },
+                    { new Guid("97f7b8a9-71be-4fc1-af4d-a716d8224c5a"), true, "Trắng cam" },
+                    { new Guid("a3414d2f-a72f-4480-b97b-191d4120ba3e"), true, "Tráng Hồng" },
+                    { new Guid("ac8c0d6d-db54-4450-a098-2269158683aa"), true, "Vàng xanh" },
+                    { new Guid("bad353af-7c04-4eb3-8651-721a5ed0ff97"), true, "Cam" },
+                    { new Guid("e08f84e6-2caa-4ba2-b790-916ff4ecd111"), true, "Xanh Lục Đậm" },
+                    { new Guid("e51be330-4f1b-4bcf-97f1-bfab6556fc21"), true, "Xanh Lục" }
                 });
 
             migrationBuilder.InsertData(
@@ -386,16 +386,16 @@ namespace Data.Migrations
                 columns: new[] { "id", "Code", "PriceInput", "PriceOutput", "Status", "avata", "name" },
                 values: new object[,]
                 {
-                    { new Guid("06a9bd9c-6004-4c48-bba6-87e03ce79f9a"), "005", 150, 170, true, "Nike_Nike-Pegasus-Turbo_Do(3).webp", "Nike_Nike-Pegasus-Turbo" },
-                    { new Guid("167f6b83-ba95-47f8-81bd-fa0e38024408"), "001", 120, 150, true, "Nike_Nike-SuperRep-Cycle-2-Next-Nature_Cam(3).webp", "Nike_Nike-SuperRep-Cycle-2" },
-                    { new Guid("2cc3fa26-83db-4ac0-8e00-4fa9c27278be"), "003", 125, 140, true, "Nike_Nike-Zegama_Den(3).webp", "Nike_Nike-Zegama" },
-                    { new Guid("4931d60a-3219-4344-a317-5f5916a7f9ba"), "008", 120, 133, true, "Nike_Nike-Metcon-8-AMP_VangXam(3).webp", "Nike_Nike-Metcon-8-AMP_VangXam" },
-                    { new Guid("5a1100f7-edc4-4bd4-ad43-4a1e13b1cf0a"), "006", 120, 150, true, "Nike_Nike-Metcon-8-Premium_Bac(3).webp", "Nike_Nike-Metcon-8-Premium_Bac" },
-                    { new Guid("934171ae-c61a-411a-b92a-45cde60efae3"), "010", 120, 160, true, "Nike_Ja-1-Hunger-EP_XanhDo(3).webp", "Nike_Ja-1-Hunger-EP_XanhDo" },
-                    { new Guid("98dcb961-5643-4a6b-b8dd-8c4428d1ff70"), "002", 130, 155, true, "Nike_Nike-Winflo-9_TrangCam(3).webp", "Nike_Nike-Winflo-9" },
-                    { new Guid("a33dcaf0-0a00-4364-9dfe-95df68f0d9bd"), "007", 120, 148, true, "Nike_Nike-Metcon-8-MF_DoDen(3).webp", "Nike_Nike-Metcon-8-MF_DoDen" },
-                    { new Guid("b9acbf78-96d7-4e2e-8f47-a2ea515169a4"), "009", 120, 143, true, "Nike_Nike-Metcon-8_Xanh(3).webp", "Nike_Nike-Metcon-8_Xanh" },
-                    { new Guid("c707835c-efa4-414d-80dc-6ddea9dedf02"), "004", 120, 151, true, "Nike_Nike-React-Infinity-3-Premium_BayMau(3).webp", "Nike_Nike-React-Infinity-3" }
+                    { new Guid("0b28726b-b6fe-4b0b-bfd1-9231009254b5"), "004", 120, 151, true, "Nike_Nike-React-Infinity-3-Premium_BayMau(3).webp", "Nike_Nike-React-Infinity-3" },
+                    { new Guid("0f1456ee-6a0d-4ece-80cb-bf09639fd843"), "007", 120, 148, true, "Nike_Nike-Metcon-8-MF_DoDen(3).webp", "Nike_Nike-Metcon-8-MF_DoDen" },
+                    { new Guid("0f262e85-ba4f-43c2-aa33-90d6fb1a6269"), "002", 130, 155, true, "Nike_Nike-Winflo-9_TrangCam(3).webp", "Nike_Nike-Winflo-9" },
+                    { new Guid("196f33a1-5705-4f5f-9dfa-74ba192ac260"), "009", 120, 143, true, "Nike_Nike-Metcon-8_Xanh(3).webp", "Nike_Nike-Metcon-8_Xanh" },
+                    { new Guid("33db29f6-88a2-4eaa-ad48-d1f5437d2fdb"), "001", 120, 150, true, "Nike_Nike-SuperRep-Cycle-2-Next-Nature_Cam(3).webp", "Nike_Nike-SuperRep-Cycle-2" },
+                    { new Guid("7a5205a3-2c0c-498e-aafe-4ca2f9940462"), "005", 150, 170, true, "Nike_Nike-Pegasus-Turbo_Do(3).webp", "Nike_Nike-Pegasus-Turbo" },
+                    { new Guid("a03a99df-f472-4064-abd3-f8492ff4b54b"), "003", 125, 140, true, "Nike_Nike-Zegama_Den(3).webp", "Nike_Nike-Zegama" },
+                    { new Guid("c7ae3b5a-6d06-4237-8322-d05b0ecb3782"), "010", 120, 160, true, "Nike_Ja-1-Hunger-EP_XanhDo(3).webp", "Nike_Ja-1-Hunger-EP_XanhDo" },
+                    { new Guid("cfd7418a-3e1d-431f-8cc7-cf0d0fa1b5a6"), "008", 120, 133, true, "Nike_Nike-Metcon-8-AMP_VangXam(3).webp", "Nike_Nike-Metcon-8-AMP_VangXam" },
+                    { new Guid("e720d106-8001-4407-8fca-0ad52dd6faaf"), "006", 120, 150, true, "Nike_Nike-Metcon-8-Premium_Bac(3).webp", "Nike_Nike-Metcon-8-Premium_Bac" }
                 });
 
             migrationBuilder.InsertData(
@@ -403,12 +403,12 @@ namespace Data.Migrations
                 columns: new[] { "id", "Status", "name" },
                 values: new object[,]
                 {
-                    { new Guid("02cbadc1-780b-42d0-a173-f701b24f4983"), true, "39" },
-                    { new Guid("47c30eb0-6366-4de7-b4e9-90eeb532ad05"), true, "43" },
-                    { new Guid("4ab097ed-1bc2-4730-8b58-6d4f8273274f"), true, "40" },
-                    { new Guid("5681a5ac-d016-4e00-ab49-4e9f1bda3a12"), true, "36" },
-                    { new Guid("5fa3469c-8ed0-489f-99d6-7775324be806"), true, "42" },
-                    { new Guid("74e25b7f-e91d-4e39-94a3-d9e669ae0f4d"), true, "35" }
+                    { new Guid("1065b2d6-0d33-4e9a-bb17-5b20dc42957c"), true, "38" },
+                    { new Guid("61ec9d3a-9c74-4f09-82c5-8a2ad15522dc"), true, "35" },
+                    { new Guid("63221382-5155-48d6-848b-33c28e4c1602"), true, "40" },
+                    { new Guid("8ed8d9f5-8054-47ad-939a-c41acddfaf11"), true, "34" },
+                    { new Guid("a2ddc2f3-f04c-492c-9564-e01b5e00eccd"), true, "42" },
+                    { new Guid("b3fee61a-fd4b-410d-82bd-43437de1a008"), true, "36" }
                 });
 
             migrationBuilder.InsertData(
@@ -416,10 +416,10 @@ namespace Data.Migrations
                 columns: new[] { "id", "Status", "name" },
                 values: new object[,]
                 {
-                    { new Guid("7ede1fbd-a32a-4dff-9a7f-b47d4465e6b1"), true, "34" },
-                    { new Guid("8b6e770d-6532-467b-80a0-4e91b5a3cf9c"), true, "41" },
-                    { new Guid("93a4d540-b890-4374-80fe-d434b04196be"), true, "37" },
-                    { new Guid("a8c94660-5361-4b62-832f-b0b665e4e6d9"), true, "38" }
+                    { new Guid("c6b1b89a-3ee8-4aa0-a827-833d5850592b"), true, "43" },
+                    { new Guid("eb53d8ae-c491-4700-be8b-ef00c1d82987"), true, "41" },
+                    { new Guid("ecbe3baa-a979-45dd-81c9-c8060b196282"), true, "39" },
+                    { new Guid("f11a3249-0b74-44cc-9016-0f099ff48337"), true, "37" }
                 });
 
             migrationBuilder.CreateIndex(

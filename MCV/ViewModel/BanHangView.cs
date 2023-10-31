@@ -10,6 +10,9 @@ namespace MCV.ViewModel
         public List<SelectListItem> CategoryItems { get; set; }
         public List<SelectListItem> BrandItems { get; set; }
         public List<SelectListItem> ColorItems { get; set; }
+        public List<Image> Anh { get; set; } 
+        public ShoeDetail ShoeDetail { get; set; }
+        public SanPhamBan sanPhamBan { get; set; }
 
         
 

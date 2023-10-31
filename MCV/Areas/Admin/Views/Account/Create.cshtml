@@ -25,14 +25,19 @@
             <div class="col-md-9">
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                 
                     <div class="form-group">
-                        <label asp-for="id" class="control-label"></label>
-                        <input asp-for="id" class="form-control" />
-                        <span asp-validation-for="id" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="RoleId" class="control-label"></label>
-                        <input asp-for="RoleId" class="form-control" />
+                        <label class="control-label">Role</label>
+                        <select asp-for="RoleId" class="form-select" aria-label="Default select example">
+                            <option selected>Chọn Role</option>
+                            @{
+                                var role = await ViewBag.Role;
+                                foreach (var item in role)
+                                {
+                                    <option value="@item.id">@item.name</option>
+                                }
+                            }
+                        </select>
                         <span asp-validation-for="RoleId" class="text-danger"></span>
                     </div>
                     <div class="form-group">

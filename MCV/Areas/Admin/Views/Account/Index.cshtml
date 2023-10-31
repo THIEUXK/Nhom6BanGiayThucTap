@@ -33,11 +33,9 @@
                     <table class="table">
                         <thead>
                             <tr>
+                             
                                 <th>
-                                    @Html.DisplayNameFor(model => model.id)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.RoleId)
+                                  <p>Role</p>
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Name)
@@ -61,11 +59,23 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
+                                   
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.id)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.RoleId)
+                                        @{
+                                            var role = await ViewBag.Role;
+                                            foreach (var x in role)
+                                            {
+                                                if (x.id == item.RoleId)
+
+                                                {
+
+                                                    <p>@x.name</p>
+                                                }
+
+                                            }
+
+
+                                        }
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Name)

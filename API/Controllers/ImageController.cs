@@ -23,10 +23,10 @@ namespace API.Controllers
             services = all;
         }
         // GET: api/<BrandController>
-        [HttpPost("Add")]
+        [HttpGet]
         public List<Image> Get()
         {
-            return services.GetAll();
+            return services.GetAll().ToList();
         }
 
         // GET api/<BrandController>/5
@@ -37,7 +37,7 @@ namespace API.Controllers
         }
 
         // POST api/<BrandController>
-        [HttpPost]
+        [HttpPost("Add")]
         public bool Post(Image a)
         {
             try

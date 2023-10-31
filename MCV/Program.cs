@@ -1,7 +1,19 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddAuthentication(
+    CookieAuthenticationDefaults.AuthenticationScheme
+    ).AddCookie(options =>
+    {
+        options.LoginPath = "/Home/login";
+
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(2);
+    });
+
 
 var app = builder.Build();
 
@@ -17,8 +29,10 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
+
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
