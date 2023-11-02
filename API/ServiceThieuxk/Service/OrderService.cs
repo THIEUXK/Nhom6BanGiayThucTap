@@ -2,32 +2,31 @@
 using MCV.Models.DBnhom6;
 using MCV.Services.IService;
 
-namespace MCV.Services
+namespace MCV.Services.Service
 {
-    public class CartService:ICartService
+    public class OrderService : IOrderService
     {
         public DBnhom6TT _db;
 
-        public CartService()
+        public OrderService()
         {
             _db = new DBnhom6TT();
-
         }
-        public List<Cart> GetAll()
+        public List<Order> GetAll()
         {
-            return _db.Carts.ToList();
+            return _db.Order.ToList();
         }
 
-        public Cart GetById(Guid id)
+        public Order GetById(Guid id)
         {
             return GetAll().FirstOrDefault(c => c.id == id);
         }
 
-        public bool Create(Cart a)
+        public bool Create(Order a)
         {
             try
             {
-                _db.Carts.Add(a);
+                _db.Order.Add(a);
                 _db.SaveChanges();
                 return true;
             }
@@ -37,11 +36,11 @@ namespace MCV.Services
             }
         }
 
-        public bool Update(Cart a)
+        public bool Update(Order a)
         {
             try
             {
-                _db.Carts.Update(a);
+                _db.Order.Update(a);
                 _db.SaveChanges();
                 return true;
             }
@@ -56,7 +55,7 @@ namespace MCV.Services
             try
             {
                 var b = GetById(id);
-                _db.Carts.Remove(b);
+                _db.Order.Remove(b);
                 _db.SaveChanges();
                 return true;
             }

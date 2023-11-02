@@ -2,31 +2,30 @@
 using MCV.Models.DBnhom6;
 using MCV.Services.IService;
 
-namespace MCV.Services
+namespace MCV.Services.Service
 {
-    public class ShoeDetailService:IShoeDetailService
+    public class BrandService : IBrandService
     {
         public DBnhom6TT _db;
-
-        public ShoeDetailService()
+        public BrandService()
         {
             _db = new DBnhom6TT();
         }
-        public List<ShoeDetail> GetAll()
+        public List<Brand> GetAll()
         {
-            return _db.ShoeDetail.ToList();
+            return _db.Brands.ToList();
         }
 
-        public ShoeDetail GetById(Guid id)
+        public Brand GetById(Guid id)
         {
             return GetAll().FirstOrDefault(c => c.id == id);
         }
 
-        public bool Create(ShoeDetail a)
+        public bool Create(Brand a)
         {
             try
             {
-                _db.ShoeDetail.Add(a);
+                _db.Brands.Add(a);
                 _db.SaveChanges();
                 return true;
             }
@@ -36,11 +35,11 @@ namespace MCV.Services
             }
         }
 
-        public bool Update(ShoeDetail a)
+        public bool Update(Brand a)
         {
             try
             {
-                _db.ShoeDetail.Update(a);
+                _db.Brands.Update(a);
                 _db.SaveChanges();
                 return true;
             }
@@ -55,7 +54,7 @@ namespace MCV.Services
             try
             {
                 var b = GetById(id);
-                _db.ShoeDetail.Remove(b);
+                _db.Brands.Remove(b);
                 _db.SaveChanges();
                 return true;
             }

@@ -2,7 +2,7 @@
 using MCV.Models.DBnhom6;
 using MCV.Services.IService;
 
-namespace MCV.Services
+namespace MCV.Services.Service
 {
     public class RoleService : IRoleService
     {

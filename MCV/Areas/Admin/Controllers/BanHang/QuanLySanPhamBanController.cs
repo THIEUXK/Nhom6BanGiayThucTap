@@ -95,44 +95,52 @@ namespace MCV.Areas.Admin.Controllers.BanHang
 
             var view1 = new BanHangView()
             {
-                Anh= lst51/*.Where(c=>c.ShoeDetailId==id)*/.ToList(),
+                Anh= lst51.Where(c => c.ShoeDetailId == id).ToList(),
                 sanPhamBan =SPCT,
             };
             return View(view1);
         }
         [HttpPost]
-        public async Task<ActionResult> AddAnh(Guid IdSP, [Bind] IFormFile imageFile)
+        public async Task<ActionResult> AddAnh(Guid IdSP, List<IFormFile> imageFile,Guid Id)
         {
-            if (imageFile != null && imageFile.Length > 0) // Không null và không trống
+            foreach (var aa in imageFile)
             {
-                //Trỏ tới thư mục wwwroot để lát nữa thực hiện việc Copy sang
-                var path = Path.Combine(
-                    Directory.GetCurrentDirectory(), "wwwroot", "image", imageFile.FileName);
-                using (var stream = new FileStream(path, FileMode.Create))
+                if (aa != null && aa.Length > 0) // Không null và không trống
                 {
-                    imageFile.CopyTo(stream);
-                }
-
-            }
-
-            if (imageFile != null)
-            {
-                {
-                    var a=new Image()
+                    //Trỏ tới thư mục wwwroot để lát nữa thực hiện việc Copy sang
+                    var path = Path.Combine(
+                        Directory.GetCurrentDirectory(), "wwwroot", "image", aa.FileName);
+                    using (var stream = new FileStream(path, FileMode.Create))
                     {
-                        ShoeDetailId = IdSP,                 
-                        ImgUrl = imageFile.FileName
-                    };
-                    var url = $"https://localhost:7268/api/Image/Add";
-                    var httpClient = new HttpClient();
-                    var content = new StringContent(JsonConvert.SerializeObject(a), Encoding.UTF8, "application/json");
-                    var respose = await httpClient.PostAsync(url, content);
+                        aa.CopyTo(stream);
+                    }
 
                 }
+                string requesURL = $"https://localhost:7268/api/ShoeDetail";
+                var httpClient = new HttpClient();
+                var response = await httpClient.GetAsync(requesURL);
+                string apiData = await response.Content.ReadAsStringAsync();
+                var lst = JsonConvert.DeserializeObject<List<ShoeDetail>>(apiData);
+                foreach (var b in lst.Where(c=>c.ShoeId==IdSP))
+                {
+                    if (imageFile != null)
+                    {
+                        {
+                            var a = new Image()
+                            {
+                                ShoeDetailId = b.id,
+                                ImgUrl = aa.FileName
+                            };
+                            var url1= $"https://localhost:7268/api/Image/Add";
+                            var httpClient1 = new HttpClient();
+                            var content1 = new StringContent(JsonConvert.SerializeObject(a), Encoding.UTF8, "application/json");
+                            var respose1 = await httpClient1.PostAsync(url1, content1);
+                        }
+                    }
+                }
+              
             }
-
-
-            return RedirectToAction("Details", new { id = IdSP });
+            return RedirectToAction("Details", new { id = Id });
         }
 
         // GET: QuanLySanPhamBanController/Create
