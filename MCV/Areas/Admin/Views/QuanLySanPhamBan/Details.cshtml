@@ -99,8 +99,9 @@
 }
 <form asp-action="AddAnh" method="post" enctype="multipart/form-data">
     <div class="m-b-15">
-        <input type="hidden" name="IdSP" value="@Model.sanPhamBan.ShoeDetail.id" />
-        <input name="imageFile" type="file" class="form-control-file" />
+        <input type="hidden" name="IdSP" value="@Model.sanPhamBan.Shoes.id" />
+        <input type="hidden" name="Id" value="@Model.sanPhamBan.ShoeDetail.id" />
+        <input name="imageFile" type="file" multiple class="form-control-file" />
         <button id="btnUpload" class="btn btn-primary">
             <i class="anticon anticon-save"></i>
         </button>

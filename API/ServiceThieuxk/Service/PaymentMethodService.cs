@@ -2,31 +2,32 @@
 using MCV.Models.DBnhom6;
 using MCV.Services.IService;
 
-namespace MCV.Services
+namespace MCV.Services.Service
 {
-    public class ImageService:IImageService
+    public class PaymentMethodService : IPaymentMethodService
     {
         public DBnhom6TT _db;
 
-        public ImageService()
+        public PaymentMethodService()
         {
             _db = new DBnhom6TT();
+
         }
-        public List<Image> GetAll()
+        public List<PaymentMethod> GetAll()
         {
-            return _db.Image.ToList();
+            return _db.PaymentMethod.ToList();
         }
 
-        public Image GetById(Guid id)
+        public PaymentMethod GetById(Guid id)
         {
             return GetAll().FirstOrDefault(c => c.id == id);
         }
 
-        public bool Create(Image a)
+        public bool Create(PaymentMethod a)
         {
             try
             {
-                _db.Image.Add(a);
+                _db.PaymentMethod.Add(a);
                 _db.SaveChanges();
                 return true;
             }
@@ -36,11 +37,11 @@ namespace MCV.Services
             }
         }
 
-        public bool Update(Image a)
+        public bool Update(PaymentMethod a)
         {
             try
             {
-                _db.Image.Update(a);
+                _db.PaymentMethod.Update(a);
                 _db.SaveChanges();
                 return true;
             }
@@ -55,7 +56,7 @@ namespace MCV.Services
             try
             {
                 var b = GetById(id);
-                _db.Image.Remove(b);
+                _db.PaymentMethod.Remove(b);
                 _db.SaveChanges();
                 return true;
             }

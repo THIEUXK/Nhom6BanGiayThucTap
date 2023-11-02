@@ -2,30 +2,31 @@
 using MCV.Models.DBnhom6;
 using MCV.Services.IService;
 
-namespace MCV.Services
+namespace MCV.Services.Service
 {
-    public class BrandService:IBrandService
+    public class CategoryService : ICategoryService
     {
         public DBnhom6TT _db;
-        public BrandService()
+
+        public CategoryService()
         {
-            _db = new DBnhom6TT();
+
         }
-        public List<Brand> GetAll()
+        public List<Category> GetAll()
         {
-            return _db.Brands.ToList();
+            return _db.Categories.ToList();
         }
 
-        public Brand GetById(Guid id)
+        public Category GetById(Guid id)
         {
             return GetAll().FirstOrDefault(c => c.id == id);
         }
 
-        public bool Create(Brand a)
+        public bool Create(Category a)
         {
             try
             {
-                _db.Brands.Add(a);
+                _db.Categories.Add(a);
                 _db.SaveChanges();
                 return true;
             }
@@ -35,11 +36,11 @@ namespace MCV.Services
             }
         }
 
-        public bool Update(Brand a)
+        public bool Update(Category a)
         {
             try
             {
-                _db.Brands.Update(a);
+                _db.Categories.Update(a);
                 _db.SaveChanges();
                 return true;
             }
@@ -54,7 +55,7 @@ namespace MCV.Services
             try
             {
                 var b = GetById(id);
-                _db.Brands.Remove(b);
+                _db.Categories.Remove(b);
                 _db.SaveChanges();
                 return true;
             }

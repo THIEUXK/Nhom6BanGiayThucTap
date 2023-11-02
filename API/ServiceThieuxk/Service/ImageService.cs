@@ -2,31 +2,31 @@
 using MCV.Models.DBnhom6;
 using MCV.Services.IService;
 
-namespace MCV.Services
+namespace MCV.Services.Service
 {
-    public class ColorService:IColorService
+    public class ImageService : IImageService
     {
         public DBnhom6TT _db;
 
-        public ColorService()
+        public ImageService()
         {
             _db = new DBnhom6TT();
         }
-        public List<Color> GetAll()
+        public List<Image> GetAll()
         {
-            return _db.Color.ToList();
+            return _db.Image.ToList();
         }
 
-        public Color GetById(Guid id)
+        public Image GetById(Guid id)
         {
             return GetAll().FirstOrDefault(c => c.id == id);
         }
 
-        public bool Create(Color a)
+        public bool Create(Image a)
         {
             try
             {
-                _db.Color.Add(a);
+                _db.Image.Add(a);
                 _db.SaveChanges();
                 return true;
             }
@@ -36,11 +36,11 @@ namespace MCV.Services
             }
         }
 
-            public bool Update(Color a)
+        public bool Update(Image a)
         {
             try
             {
-                _db.Color.Update(a);
+                _db.Image.Update(a);
                 _db.SaveChanges();
                 return true;
             }
@@ -55,7 +55,7 @@ namespace MCV.Services
             try
             {
                 var b = GetById(id);
-                _db.Color.Remove(b);
+                _db.Image.Remove(b);
                 _db.SaveChanges();
                 return true;
             }
