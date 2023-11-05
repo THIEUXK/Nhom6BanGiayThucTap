@@ -86,7 +86,7 @@ namespace MCV.Controllers
             {
                 List<Claim> claims = new List<Claim>()
                   {
-                      new Claim(ClaimTypes.Name,acc.Name),
+                      new Claim(ClaimTypes.Name,acc.Name)
 
                   };
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
