@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(DBnhom6TT))]
-    [Migration("20231031104849_a")]
-    partial class a
+    [Migration("20231102140545_tttn")]
+    partial class tttn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,13 +123,13 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            id = new Guid("78ca7f85-4f41-4f64-9192-40cd744fd1c5"),
+                            id = new Guid("e45d58da-6a80-4e1e-8d9e-d7ebfb1f2646"),
                             Status = true,
                             name = "Adidas"
                         },
                         new
                         {
-                            id = new Guid("bf2e479e-4688-4d90-817e-278cef6a1e9e"),
+                            id = new Guid("268f2def-ebb5-4a5f-a639-d6b98ab69130"),
                             Status = true,
                             name = "Nike"
                         });
@@ -198,19 +198,19 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            id = new Guid("b2a472f2-5d21-489d-9727-81e80c2abb8b"),
+                            id = new Guid("a8346b54-746f-4faa-9671-ef77a3d39812"),
                             Status = true,
                             name = "Đế thấp"
                         },
                         new
                         {
-                            id = new Guid("13879ab6-03ac-4770-bb71-d1a16cec5cdb"),
+                            id = new Guid("f57e63dc-3625-4a46-98fc-39af9a63a96d"),
                             Status = true,
                             name = "Đế vừa"
                         },
                         new
                         {
-                            id = new Guid("fa3dc767-3bdc-416f-ba14-865797f5014d"),
+                            id = new Guid("16948774-676c-4819-9e1f-712c1f8ec153"),
                             Status = true,
                             name = "Đế cao"
                         });
@@ -236,85 +236,85 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            id = new Guid("ff628d0c-7be0-47b5-aea8-0908a43889dc"),
+                            id = new Guid("755fb6cc-a370-4012-b65c-0586374ab789"),
                             Status = true,
                             name = "Trắng"
                         },
                         new
                         {
-                            id = new Guid("63b98fad-4716-4f18-b026-12ebbb4f9fb6"),
+                            id = new Guid("ac8c0d6d-db54-4450-a098-2269158683aa"),
                             Status = true,
                             name = "Vàng xanh"
                         },
                         new
                         {
-                            id = new Guid("74fa3999-2293-4082-a37a-6028f7d8ef86"),
+                            id = new Guid("68c59dd2-a26e-476a-a00f-080316f79c9b"),
                             Status = true,
                             name = "Xanh đen"
                         },
                         new
                         {
-                            id = new Guid("c508d955-2b7a-431d-acbd-4bc1b56e0292"),
+                            id = new Guid("296f2955-05b1-4655-8b78-147915786084"),
                             Status = true,
                             name = "Đỏ đen"
                         },
                         new
                         {
-                            id = new Guid("5ea806eb-dfff-4bed-9bea-de151ad9b256"),
+                            id = new Guid("608017b7-b707-48fc-95c7-b66253b01ed6"),
                             Status = true,
                             name = "Đỏ"
                         },
                         new
                         {
-                            id = new Guid("f02db20a-789d-4a0f-b9eb-4d237acaeb73"),
+                            id = new Guid("bad353af-7c04-4eb3-8651-721a5ed0ff97"),
                             Status = true,
                             name = "Cam"
                         },
                         new
                         {
-                            id = new Guid("f0d56ceb-be5a-4382-bd5d-00578fe6fd2f"),
+                            id = new Guid("744abed9-7232-4ebd-beb5-c22c4b8b5990"),
                             Status = true,
                             name = "Vàng"
                         },
                         new
                         {
-                            id = new Guid("76544509-f525-4121-995a-cddb1e69f945"),
+                            id = new Guid("e51be330-4f1b-4bcf-97f1-bfab6556fc21"),
                             Status = true,
                             name = "Xanh Lục"
                         },
                         new
                         {
-                            id = new Guid("aba13838-9209-4460-9e64-a422dacd6b7c"),
+                            id = new Guid("e08f84e6-2caa-4ba2-b790-916ff4ecd111"),
                             Status = true,
                             name = "Xanh Lục Đậm"
                         },
                         new
                         {
-                            id = new Guid("7aa822d7-67ff-4889-bcda-44594fc0d3d5"),
+                            id = new Guid("243e84a6-8fa2-45e8-a490-147e7d6d2b90"),
                             Status = true,
                             name = "Tràm"
                         },
                         new
                         {
-                            id = new Guid("16620522-4585-49e7-baba-8b313f04014f"),
+                            id = new Guid("5e167aa4-8c70-4ae1-a00b-546f6820e2f1"),
                             Status = true,
                             name = "Tím"
                         },
                         new
                         {
-                            id = new Guid("42b6a353-9797-440f-89bb-3c3c2613a037"),
+                            id = new Guid("97f7b8a9-71be-4fc1-af4d-a716d8224c5a"),
                             Status = true,
                             name = "Trắng cam"
                         },
                         new
                         {
-                            id = new Guid("44645e7e-1d1c-4a27-8b53-aea58e6ea4cb"),
+                            id = new Guid("a3414d2f-a72f-4480-b97b-191d4120ba3e"),
                             Status = true,
                             name = "Tráng Hồng"
                         },
                         new
                         {
-                            id = new Guid("47ab32ca-87b2-40de-85fe-3171a10e943e"),
+                            id = new Guid("7f0f7307-6059-4d51-b8c3-323b091773fc"),
                             Status = true,
                             name = "Đen"
                         });
@@ -555,7 +555,7 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            id = new Guid("167f6b83-ba95-47f8-81bd-fa0e38024408"),
+                            id = new Guid("33db29f6-88a2-4eaa-ad48-d1f5437d2fdb"),
                             Code = "001",
                             PriceInput = 120,
                             PriceOutput = 150,
@@ -565,7 +565,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            id = new Guid("98dcb961-5643-4a6b-b8dd-8c4428d1ff70"),
+                            id = new Guid("0f262e85-ba4f-43c2-aa33-90d6fb1a6269"),
                             Code = "002",
                             PriceInput = 130,
                             PriceOutput = 155,
@@ -575,7 +575,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            id = new Guid("2cc3fa26-83db-4ac0-8e00-4fa9c27278be"),
+                            id = new Guid("a03a99df-f472-4064-abd3-f8492ff4b54b"),
                             Code = "003",
                             PriceInput = 125,
                             PriceOutput = 140,
@@ -585,7 +585,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            id = new Guid("c707835c-efa4-414d-80dc-6ddea9dedf02"),
+                            id = new Guid("0b28726b-b6fe-4b0b-bfd1-9231009254b5"),
                             Code = "004",
                             PriceInput = 120,
                             PriceOutput = 151,
@@ -595,7 +595,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            id = new Guid("06a9bd9c-6004-4c48-bba6-87e03ce79f9a"),
+                            id = new Guid("7a5205a3-2c0c-498e-aafe-4ca2f9940462"),
                             Code = "005",
                             PriceInput = 150,
                             PriceOutput = 170,
@@ -605,7 +605,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            id = new Guid("5a1100f7-edc4-4bd4-ad43-4a1e13b1cf0a"),
+                            id = new Guid("e720d106-8001-4407-8fca-0ad52dd6faaf"),
                             Code = "006",
                             PriceInput = 120,
                             PriceOutput = 150,
@@ -615,7 +615,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            id = new Guid("a33dcaf0-0a00-4364-9dfe-95df68f0d9bd"),
+                            id = new Guid("0f1456ee-6a0d-4ece-80cb-bf09639fd843"),
                             Code = "007",
                             PriceInput = 120,
                             PriceOutput = 148,
@@ -625,7 +625,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            id = new Guid("4931d60a-3219-4344-a317-5f5916a7f9ba"),
+                            id = new Guid("cfd7418a-3e1d-431f-8cc7-cf0d0fa1b5a6"),
                             Code = "008",
                             PriceInput = 120,
                             PriceOutput = 133,
@@ -635,7 +635,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            id = new Guid("b9acbf78-96d7-4e2e-8f47-a2ea515169a4"),
+                            id = new Guid("196f33a1-5705-4f5f-9dfa-74ba192ac260"),
                             Code = "009",
                             PriceInput = 120,
                             PriceOutput = 143,
@@ -645,7 +645,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            id = new Guid("934171ae-c61a-411a-b92a-45cde60efae3"),
+                            id = new Guid("c7ae3b5a-6d06-4237-8322-d05b0ecb3782"),
                             Code = "010",
                             PriceInput = 120,
                             PriceOutput = 160,
@@ -717,61 +717,61 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            id = new Guid("7ede1fbd-a32a-4dff-9a7f-b47d4465e6b1"),
+                            id = new Guid("8ed8d9f5-8054-47ad-939a-c41acddfaf11"),
                             Status = true,
                             name = "34"
                         },
                         new
                         {
-                            id = new Guid("74e25b7f-e91d-4e39-94a3-d9e669ae0f4d"),
+                            id = new Guid("61ec9d3a-9c74-4f09-82c5-8a2ad15522dc"),
                             Status = true,
                             name = "35"
                         },
                         new
                         {
-                            id = new Guid("5681a5ac-d016-4e00-ab49-4e9f1bda3a12"),
+                            id = new Guid("b3fee61a-fd4b-410d-82bd-43437de1a008"),
                             Status = true,
                             name = "36"
                         },
                         new
                         {
-                            id = new Guid("93a4d540-b890-4374-80fe-d434b04196be"),
+                            id = new Guid("f11a3249-0b74-44cc-9016-0f099ff48337"),
                             Status = true,
                             name = "37"
                         },
                         new
                         {
-                            id = new Guid("a8c94660-5361-4b62-832f-b0b665e4e6d9"),
+                            id = new Guid("1065b2d6-0d33-4e9a-bb17-5b20dc42957c"),
                             Status = true,
                             name = "38"
                         },
                         new
                         {
-                            id = new Guid("02cbadc1-780b-42d0-a173-f701b24f4983"),
+                            id = new Guid("ecbe3baa-a979-45dd-81c9-c8060b196282"),
                             Status = true,
                             name = "39"
                         },
                         new
                         {
-                            id = new Guid("4ab097ed-1bc2-4730-8b58-6d4f8273274f"),
+                            id = new Guid("63221382-5155-48d6-848b-33c28e4c1602"),
                             Status = true,
                             name = "40"
                         },
                         new
                         {
-                            id = new Guid("8b6e770d-6532-467b-80a0-4e91b5a3cf9c"),
+                            id = new Guid("eb53d8ae-c491-4700-be8b-ef00c1d82987"),
                             Status = true,
                             name = "41"
                         },
                         new
                         {
-                            id = new Guid("5fa3469c-8ed0-489f-99d6-7775324be806"),
+                            id = new Guid("a2ddc2f3-f04c-492c-9564-e01b5e00eccd"),
                             Status = true,
                             name = "42"
                         },
                         new
                         {
-                            id = new Guid("47c30eb0-6366-4de7-b4e9-90eeb532ad05"),
+                            id = new Guid("c6b1b89a-3ee8-4aa0-a827-833d5850592b"),
                             Status = true,
                             name = "43"
                         });

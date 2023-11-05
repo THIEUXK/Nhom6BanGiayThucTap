@@ -37,8 +37,17 @@ namespace API.Controllers
         public bool Post(Account a)
         {
             try
-            {
-                return services.Add(a);
+            {   Account x = new Account();
+                x.id = Guid.NewGuid();
+              
+                x.RoleId = a.RoleId;    
+                x.Name = a.Name;
+                x.Email = a.Email;
+                x.Password = a.Password;
+                x.Status = a.Status;
+                x.Avatar = a.Avatar;
+             
+                return services.Add(x);
             }
             catch (Exception e)
             {

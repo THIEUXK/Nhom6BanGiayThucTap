@@ -12,6 +12,7 @@ namespace View_Admin.Controllers.QuanLy
     {
         public async Task<ActionResult> Index()
         {
+            ViewBag.Role = LRole();
             string requesURL = $"https://localhost:7268/api/Account";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(requesURL);
@@ -19,11 +20,21 @@ namespace View_Admin.Controllers.QuanLy
             var lst = JsonConvert.DeserializeObject<List<Account>>(apiData);
             return View(lst);
         }
+        public async Task<List<Role>> LRole()
+        {
 
+            string requesURL = $"https://localhost:7268/api/Role";
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync(requesURL);
+            string apiData = await response.Content.ReadAsStringAsync();
+            var lst = JsonConvert.DeserializeObject<List<Role>>(apiData);
+            return lst;
+        }
         // GET: RoleController/Details/5
         public async Task<ActionResult> Details(Guid id)
         {
-            var url = $"https://localhost:7268/api/Role/{id}";
+            ViewBag.Role = LRole();
+            var url = $"https://localhost:7268/api/Account/{id}";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(url);
             var dataApi = await response.Content.ReadAsStringAsync();
@@ -34,6 +45,7 @@ namespace View_Admin.Controllers.QuanLy
         // GET: RoleController/Create
         public ActionResult Create()
         {
+            ViewBag.Role = LRole();
             if (ModelState.IsValid)
             {
                 return View();
@@ -47,8 +59,10 @@ namespace View_Admin.Controllers.QuanLy
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Account a)
         {
+            
             try
             {
+                ViewBag.Role = LRole();
                 var url = $"https://localhost:7268/api/Account/Add";
                 var httpClient = new HttpClient();
                 var content = new StringContent(JsonConvert.SerializeObject(a), Encoding.UTF8, "application/json");
@@ -72,6 +86,7 @@ namespace View_Admin.Controllers.QuanLy
         {
             if (ModelState.IsValid)
             {
+                ViewBag.Role = LRole();
                 var url = $"https://localhost:7268/api/Account/{id}";
                 var httpClient = new HttpClient();
                 var response = await httpClient.GetAsync(url);

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace View_Admin.Controllers
@@ -26,6 +28,12 @@ namespace View_Admin.Controllers
         public IActionResult DangNhap()
         {
             return View();
+        }
+        public async Task<IActionResult> logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            var url = Url.Action("login", "Home", new { area = "" });
+            return Redirect(url);
         }
 
 
