@@ -12,10 +12,10 @@
         public int PhoneNumber { get; set; }
         public float ShipFee { get; set; }
         public float MoneyReduce { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime PayDate { get; set; }
-        public DateTime ShipDate { get; set; }
-        public DateTime ReceiveDate { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public DateTime? PayDate { get; set; }
+        public DateTime? ShipDate { get; set; }
+        public DateTime? ReceiveDate { get; set; }
         public bool Status { get; set; }
 
 

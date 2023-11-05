@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,13 @@ builder.Services.AddAuthentication(
     });
 
 
+builder.Services.AddSession(option =>
+{
+	//option.IdleTimeout = TimeSpan.FromSeconds(60);
+	// Định hình Session này tồn tại trong 30 giây
+}); // Thêm cái này để dùng Session
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +33,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -32,6 +41,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseSession();
 
 app.UseEndpoints(endpoints =>
 {

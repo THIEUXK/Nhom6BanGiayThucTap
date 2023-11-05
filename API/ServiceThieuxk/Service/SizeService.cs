@@ -2,31 +2,31 @@
 using MCV.Models.DBnhom6;
 using MCV.Services.IService;
 
-namespace MCV.Services
+namespace MCV.Services.Service
 {
-    public class AccountService:IAccountService
+    public class SizeService : ISizeService
     {
         public DBnhom6TT _db;
 
-        public AccountService()
+        public SizeService()
         {
-            _db=new DBnhom6TT();
+            _db = new DBnhom6TT();
         }
-        public List<Account> GetAll()
+        public List<Size> GetAll()
         {
-            return _db.Accounts.ToList();
+            return _db.Size.ToList();
         }
 
-        public Account GetById(Guid id)
+        public Size GetById(Guid id)
         {
             return GetAll().FirstOrDefault(c => c.id == id);
         }
 
-        public bool Create(Account a)
+        public bool Create(Size a)
         {
             try
             {
-                _db.Accounts.Add(a);
+                _db.Size.Add(a);
                 _db.SaveChanges();
                 return true;
             }
@@ -36,11 +36,11 @@ namespace MCV.Services
             }
         }
 
-        public bool Update(Account a)
+        public bool Update(Size a)
         {
             try
             {
-                _db.Accounts.Update(a);
+                _db.Size.Update(a);
                 _db.SaveChanges();
                 return true;
             }
@@ -54,9 +54,9 @@ namespace MCV.Services
         {
             try
             {
-               var b= GetById(id);
-               _db.Accounts.Remove(b);
-               _db.SaveChanges();
+                var b = GetById(id);
+                _db.Size.Remove(b);
+                _db.SaveChanges();
                 return true;
             }
             catch (Exception e)
