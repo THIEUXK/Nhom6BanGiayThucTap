@@ -13,16 +13,16 @@ namespace API.Controllers.BanHang
 	public class banHangController : Controller
 	{
 		public ICartDetailService _cartDetailService { get; set; }
-	public IShoeDetailService _shoeDetailService { get; set; }
-	 //GET: banHangController
+		public IShoeDetailService _shoeDetailService { get; set; }
+		//GET: banHangController
 		public DBnhom6TT _db;
-        public banHangController()
-        {
-            _db = new DBnhom6TT();
+		public banHangController()
+		{
+			_db = new DBnhom6TT();
 			_cartDetailService = new CartDetailService();
-		_shoeDetailService =new ShoeDetailService();
+			_shoeDetailService = new ShoeDetailService();
 		}
-        public ActionResult Index()
+		public ActionResult Index()
 		{
 			return View();
 		}
@@ -34,7 +34,7 @@ namespace API.Controllers.BanHang
 		}
 		[HttpPost("ThemGioHang")]
 		// GET: banHangController/Create
-		public bool ThemGioHang(Guid idSP, Guid idSize, int soluong, Guid id,Guid idKhachHang)
+		public bool ThemGioHang(Guid idSP, Guid idSize, int soluong, Guid id, Guid idKhachHang)
 		{
 			try
 			{
@@ -54,7 +54,7 @@ namespace API.Controllers.BanHang
 						_db.SaveChanges();
 					}
 					{
-						var shoedt = _db.ShoeDetail.FirstOrDefault(c=>c.ShoeId==idSP&&c.SizeId==idSize);
+						var shoedt = _db.ShoeDetail.FirstOrDefault(c => c.ShoeId == idSP && c.SizeId == idSize);
 						var SP = _db.CartDetail.FirstOrDefault(c => c.ShoeDetailId == shoedt.id);
 						if (SP == null)
 						{
@@ -93,9 +93,9 @@ namespace API.Controllers.BanHang
 					return false;
 				}
 				else
-				return false;
+					return false;
 			}
-			catch 
+			catch
 			{
 				return false;
 			}
@@ -207,7 +207,9 @@ namespace API.Controllers.BanHang
 			//	var c = _sanPhamCuaHangService.GetById(idSP);
 
 			//	return RedirectToAction("HienThiSanPhamChiTiet", "HienThiSanPham", c);
-			}
+		}
+	}
+}
 
 		// POST: banHangController/Create
 		
