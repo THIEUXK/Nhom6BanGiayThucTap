@@ -18,8 +18,8 @@ builder.Services.AddAuthentication(
 
 builder.Services.AddSession(option =>
 {
-	//option.IdleTimeout = TimeSpan.FromSeconds(60);
-	// Định hình Session này tồn tại trong 30 giây
+    //option.IdleTimeout = TimeSpan.FromSeconds(60);
+    // Định hình Session này tồn tại trong 30 giây
 }); // Thêm cái này để dùng Session
 
 

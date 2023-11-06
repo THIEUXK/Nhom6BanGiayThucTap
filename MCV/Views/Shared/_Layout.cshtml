@@ -1,7 +1,16 @@
-﻿@using MCV.Services;
-@using Microsoft.AspNetCore.Mvc;
-@using Microsoft.AspNetCore.Mvc.Rendering;
-@using Microsoft.AspNetCore.Http
+﻿@{
+	using MCV.Migrations;
+	using MCV.Models;
+	using MCV.Services;
+	using MCV.ViewModel;
+	using Microsoft.AspNetCore.Mvc;
+	using Microsoft.AspNetCore.Mvc.Rendering;
+	using Microsoft.EntityFrameworkCore.Metadata.Internal;
+	using Newtonsoft.Json;
+	using System.Text;
+	c
+}
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -118,6 +127,26 @@
 					
 							
 								<li class="nav-item"><a class="nav-link" asp-controller="DangNhap" asp-action="Index">Đăng nhập</a></li>
+								
+
+								
+							@if (User.Identity.IsAuthenticated)
+							{
+								<li class="nav-item submenu dropdown">
+									<a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+									   aria-expanded="false"><a class="nav-link" asp-controller="Home" asp-action="Index">Welcome, @User.Identity.Name!</a></a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="UserDetail">Quản Lí Thông Tin</a></li>
+										<li class="nav-item"><a class="nav-link" asp-controller="SanPhamYeuThich" asp-action="Index">Danh sách yêu thích</a></li>
+										<li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Logout">Đăng Xuất</a></li>
+									</ul>
+								</li>
+							}
+							else
+							{
+								<li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="login">Đăng Nhập</a></li>
+
+							}
 						
                         </ul>
 						<ul class="nav navbar-nav navbar-right">

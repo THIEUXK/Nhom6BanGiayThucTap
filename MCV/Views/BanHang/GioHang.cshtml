@@ -1,4 +1,4 @@
-﻿
+﻿@model MCV.ViewModel.ListGioHangView
 
 <!-- End Header Area -->
 <!-- Start Banner Area -->
@@ -35,20 +35,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                       @* @foreach (var a in Model.GioHangChiTiets)
+                        @foreach (var a in Model.gioHangHungViews)
                         {
                             <tr>
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            @if (System.IO.Path.GetExtension(a.SanPhamChiTiet.SanPham.AnhDaiDien) == ".jpg" ||
-                                           System.IO.Path.GetExtension(a.SanPhamChiTiet.SanPham.AnhDaiDien) == ".png" ||
-                                           System.IO.Path.GetExtension(a.SanPhamChiTiet.SanPham.AnhDaiDien) == ".jpeg" ||
-                                           System.IO.Path.GetExtension(a.SanPhamChiTiet.SanPham.AnhDaiDien) == ".tiff" ||
-                                           System.IO.Path.GetExtension(a.SanPhamChiTiet.SanPham.AnhDaiDien) == ".webp" ||
-                                           System.IO.Path.GetExtension(a.SanPhamChiTiet.SanPham.AnhDaiDien) == ".gif")
+                                            @if (System.IO.Path.GetExtension(a.Shoes.avata) == ".jpg" ||
+                                           System.IO.Path.GetExtension(a.Shoes.avata) == ".png" ||
+                                           System.IO.Path.GetExtension(a.Shoes.avata) == ".jpeg" ||
+                                           System.IO.Path.GetExtension(a.Shoes.avata) == ".tiff" ||
+                                           System.IO.Path.GetExtension(a.Shoes.avata) == ".webp" ||
+                                           System.IO.Path.GetExtension(a.Shoes.avata) == ".gif")
                                             {
-                                                <img src="~/image/@a.SanPhamChiTiet.SanPham.AnhDaiDien" height="300">
+                                                <img src="~/image/@a.Shoes.avata" height="300">
                                             }
                                             else
                                             {
@@ -56,18 +56,18 @@
                                             }
                                         </div>
                                         <div class="media-body">
-                                            <p>@a.SanPhamChiTiet.SanPham.TenSanPham</p>
+                                            <p>@a.Shoes.name</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>@FormatCurrency(a.SanPhamChiTiet.SanPham.GiaNiemYet)</h5>
+                                    <h5>@FormatCurrency(a.Shoes.PriceOutput)</h5>
                                 </td>
 
 
                                 <td>
                                     <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="@a.SoLuong" title="Quantity:"
+                                        <input type="text" name="qty" id="sst" maxlength="12" value="@a.CartDetail.Quantity" title="Quantity:"
                                                class="input-text qty">
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                                                 class="increase items-count" type="button">
@@ -80,14 +80,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>@FormatCurrency(a.SanPhamChiTiet.SanPham.GiaNiemYet *a.SoLuong)</h5>
+                                    <h5>@FormatCurrency(a.Shoes.PriceOutput *a.CartDetail.Quantity)</h5>
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Xóa", "XoaChiTietGioHang", new { id=a.Id})
+                                    @Html.ActionLink("Xóa", "XoaChiTietGioHang", new { id=a.CartDetail.id})
                                 </td>
 
                             </tr>
-                        }*@
+                        }
 
                         <tr class="bottom_button">
                             <td>
