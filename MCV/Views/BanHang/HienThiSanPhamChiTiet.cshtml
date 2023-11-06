@@ -111,25 +111,38 @@
                         {
                             <div class="alert alert-danger" style="background: #FFFF66">@TempData["soluong"]</div>
                         }
+                        @if (TempData["TB1"] != null)
+                        {
+                            <div class="alert alert-danger" style="background: #33FF33">@TempData["TB1"]</div>
+                        }
+                        @if (TempData["TB2"] != null)
+                        {
+                            <div class="alert alert-danger" style="background: #FF0000">@TempData["TB2"]</div>
+                        }
                         @if (Model.ThongtinCt != null)
                         {
-                            <input type="hidden" name="idSP" value="@Model.ThongtinCt.ShoeDetail.ShoeId">
+                            <input type="hidden" name="idSP1" value="@Model.ThongtinCt.ShoeDetail.ShoeId">
                             <input type="hidden" name="idSize" value="@Model.ThongtinCt.ShoeDetail.SizeId">
-                            <input type="hidden" name="IdKhachHang" value="@Model.Account.id">
+                            @if (@Model.Account != null)
+                            {
+                                <input type="hidden" name="IdKhachHang" value="@Model.Account.id">
+                            }
+                            <input type="hidden" name="IdKhachHang" value="null">
+
                         }
                         else
                         {
-                            <input type="hidden" name="idSP" value="null">
+                            <input type="hidden" name="idSP1" value="null">
                             <input type="hidden" name="idSize" value="null">
                             <input type="hidden" name="IdKhachHang" value="null">
                         }
-                        <input type="hidden" name="id" value="@Model.Shoe.id">
+                        <input type="hidden" name="idSP" value="@Model.Shoe.id">
                         <div class="card_area d-flex align-items-center">
                             <button class="primary-btn" type="submit" href="#">Thêm vào giỏ hàng</button>
                             <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
                             <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
                         </div>
-                        <input type="hidden" name="idSP" value="@Model.Shoe.id">
+
                     </form>
                     <br></br>
                     <br></br>

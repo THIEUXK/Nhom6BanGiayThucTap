@@ -4,7 +4,7 @@ using ShopOganicAPI.IServices;
 
 namespace AppAPI.Services
 {
-    public class AllServices<T> :IAllServices<T> where T : class
+    public class AllServices<T> : IAllServices<T> where T : class
 
     {
         private readonly DBnhom6TT context;
@@ -25,7 +25,6 @@ namespace AppAPI.Services
             try
             {
                 dbSet.Add(item);
-
                 context.SaveChanges();
                 return true;
             }
