@@ -7,7 +7,6 @@
         public Guid? PaymentMethodId { get; set; }
         public Guid? AccouAddressId  { get; set; }
 
-        public string Code { get; set; }
         public string CustomerName { get; set; }
         public int PhoneNumber { get; set; }
         public float ShipFee { get; set; }
