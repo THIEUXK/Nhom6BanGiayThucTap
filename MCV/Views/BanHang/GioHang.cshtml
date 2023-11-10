@@ -29,6 +29,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Product</th>
+                            <th scope="col">Size</th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Total</th>
@@ -59,6 +60,9 @@
                                             <p>@a.Shoes.name</p>
                                         </div>
                                     </div>
+                                </td>
+                                <td>
+                                    <h5>@a.Sizes.name</h5>
                                 </td>
                                 <td>
                                     <h5>@FormatCurrency(a.Shoes.PriceOutput)</h5>
@@ -110,7 +114,7 @@
                                 <h5>Tổng tiền :</h5>
                             </td>
                             <td>
-                               @* <h5>@FormatCurrency(Model.TongTien)</h5>*@
+                                <h5>@FormatCurrency(Model.Tong)</h5>
                             </td>
                         </tr>
                    
@@ -123,7 +127,7 @@
                             </td>
                             <td>
                                 <div class="checkout_btn_inner d-flex align-items-center">
-                                    <a class="gray_btn" asp-controller="HienThiSanPham" asp-action="HienThiSanPham">Tiếp tục mua sắm</a>
+                                    <a class="gray_btn" asp-controller="BanHang" asp-action="HienThiSanPham">Tiếp tục mua sắm</a>
                                     <a class="primary-btn" asp-controller="BanHang" asp-action="ThuTucThanhToan">Tiến hành đặt hàng</a>
                                 </div>
                             </td>
