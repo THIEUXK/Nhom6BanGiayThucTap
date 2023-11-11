@@ -1,4 +1,5 @@
-﻿using MCV.Migrations;
+﻿using Data.ViewModel;
+using MCV.Migrations;
 using MCV.Models;
 using MCV.Services;
 using MCV.ViewModel;
@@ -21,6 +22,62 @@ namespace MCV.Controllers
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Add("token", "fa31ddca-73b0-11ee-b394-8ac29577e80e");
             _httpClient.DefaultRequestHeaders.Add("shop_id", "4189141");
+        }
+
+        public async Task<IActionResult> HoanThanhThanhToan(string name,string DiachiNhanChiTiet,string Sodienthoai,string Email,string addDiaChi, Guid IdAddress,Guid IdPaymentMethod,float tienship,float tongtien)
+        {
+			if (addDiaChi == null)
+			{
+				{
+					var message = "hãy nhớ chọn địa chỉ của bạn";
+					TempData["TB2"] = message;
+					return RedirectToAction("ThuTucThanhToan", "BanHang", new { message });
+				}
+			}
+			if (IdPaymentMethod == Guid.Parse("00000000-0000-0000-0000-000000000000"))
+			{
+				{
+					var message = "hãy nhớ chọn phương thức thanh toán của bạn";
+					TempData["TB1"] = message;
+					return RedirectToAction("ThuTucThanhToan", "BanHang", new { message });
+				}
+			}
+			var acc = SessionServices.LuuAcc(HttpContext.Session, "ACC1");
+			if (acc.Count == 0)
+			{
+				return RedirectToAction("Index", "DangNhap");
+			}
+			var mode = new HoanThanhThanhToanView()
+            {
+                IdKhachhang = acc[0].id,
+                name = name,
+                DiachiNhanChiTiet = DiachiNhanChiTiet,
+                Sodienthoai = Sodienthoai,
+                Email = Email,
+				addDiaChi = addDiaChi,
+                IdAddress = IdAddress,
+                IdPaymentMethod = IdPaymentMethod,
+                tienship = tienship,
+                tongtien = tongtien
+            };
+			var url = $"https://localhost:7268/HoanThanhThanhToan?name={name}&DiachiNhanChiTiet={DiachiNhanChiTiet}&Sodienthoai={Sodienthoai}&Email={Email}&addDiaChi={addDiaChi}&IdAddress={IdAddress}&IdPaymentMethod={IdPaymentMethod}&tienship={tienship}&tongtien={tongtien}&IdKhachhang={acc[0].id}";
+			var httpClient = new HttpClient();
+			var content = new StringContent(JsonConvert.SerializeObject(mode), Encoding.UTF8, "application/json");
+			var respose = await httpClient.PostAsync(url, content);
+			if (respose.IsSuccessStatusCode)
+			{
+				return RedirectToAction("SauThanhToan");
+				
+
+			}
+			var message1 = "Lỗi";
+			TempData["TB1"] = message1;
+			return RedirectToAction("ThuTucThanhToan", new {  message1 });
+
+		}
+        public async Task<IActionResult> SauThanhToan()
+        {
+            return View();
         }
         public async Task<IActionResult> ThuTucThanhToan()
         {

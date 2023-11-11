@@ -1,6 +1,7 @@
 ﻿using MCV.Models;
 using MCV.Models.DBnhom6;
 using MCV.Services.IService;
+using Microsoft.EntityFrameworkCore;
 
 namespace MCV.Services.Service
 {
@@ -14,7 +15,7 @@ namespace MCV.Services.Service
         }
         public List<CartDetail> GetAll()
         {
-            return _db.CartDetail.ToList();
+            return _db.CartDetail.Include(c=>c.ShoeDetail.Shoe).Include(c => c.ShoeDetail).ToList();
         }
 
         public CartDetail GetById(Guid id)
