@@ -8,9 +8,11 @@
         public Guid? AccouAddressId  { get; set; }
 
         public string CustomerName { get; set; }
-        public int PhoneNumber { get; set; }
-        public float ShipFee { get; set; }
-        public float MoneyReduce { get; set; }
+        public string PhoneNumber { get; set; }
+		public string Address { get; set; }
+		
+		public float ShipFee { get; set; }
+        public float TotalMoney { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? PayDate { get; set; }
         public DateTime? ShipDate { get; set; }
