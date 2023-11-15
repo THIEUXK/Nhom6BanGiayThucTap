@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using MCV.ViewModel.HoaDon;
 
 namespace MCV.Controllers
 {
@@ -24,57 +25,89 @@ namespace MCV.Controllers
             _httpClient.DefaultRequestHeaders.Add("shop_id", "4189141");
         }
 
-        public async Task<IActionResult> HoanThanhThanhToan(string name,string DiachiNhanChiTiet,string Sodienthoai,string Email,string addDiaChi, Guid IdAddress,Guid IdPaymentMethod,float tienship,float tongtien)
+        public async Task<IActionResult> HoanThanhThanhToan(string name, string DiachiNhanChiTiet, string Sodienthoai, string Email, string addDiaChi, Guid IdAddress, Guid IdPaymentMethod, float tienship, float tongtien)
         {
-			if (addDiaChi == null)
-			{
-				{
-					var message = "hãy nhớ chọn địa chỉ của bạn";
-					TempData["TB2"] = message;
-					return RedirectToAction("ThuTucThanhToan", "BanHang", new { message });
-				}
-			}
-			if (IdPaymentMethod == Guid.Parse("00000000-0000-0000-0000-000000000000"))
-			{
-				{
-					var message = "hãy nhớ chọn phương thức thanh toán của bạn";
-					TempData["TB1"] = message;
-					return RedirectToAction("ThuTucThanhToan", "BanHang", new { message });
-				}
-			}
-			var acc = SessionServices.LuuAcc(HttpContext.Session, "ACC1");
-			if (acc.Count == 0)
-			{
-				return RedirectToAction("Index", "DangNhap");
-			}
-			var mode = new HoanThanhThanhToanView()
+            if (name == null)
+            {
+                {
+                    var message = "hãy nhớ điền tên cửa bạn";
+                    TempData["TB2"] = message;
+                    return RedirectToAction("ThuTucThanhToan", "BanHang", new { message });
+                }
+            }
+            if (DiachiNhanChiTiet == null)
+            {
+                {
+                    var message = "hãy nhớ điền địa chỉ chi tiết của bạn";
+                    TempData["TB2"] = message;
+                    return RedirectToAction("ThuTucThanhToan", "BanHang", new { message });
+                }
+            }
+            if (Sodienthoai == null)
+            {
+                {
+                    var message = "hãy nhớ điền số điện thoại của bạn";
+                    TempData["TB2"] = message;
+                    return RedirectToAction("ThuTucThanhToan", "BanHang", new { message });
+                }
+            }
+            if (Sodienthoai == null)
+            {
+                {
+                    var message = "hãy nhớ điền số điện thoại của bạn";
+                    TempData["TB2"] = message;
+                    return RedirectToAction("ThuTucThanhToan", "BanHang", new { message });
+                }
+            }
+            if (Email == null)
+            {
+                {
+                    var message = "hãy nhớ điền email của bạn";
+                    TempData["TB2"] = message;
+                    return RedirectToAction("ThuTucThanhToan", "BanHang", new { message });
+                }
+            }
+            if (IdPaymentMethod == Guid.Parse("00000000-0000-0000-0000-000000000000"))
+            {
+                {
+                    var message = "hãy nhớ chọn phương thức thanh toán của bạn";
+                    TempData["TB1"] = message;
+                    return RedirectToAction("ThuTucThanhToan", "BanHang", new { message });
+                }
+            }
+            var acc = SessionServices.LuuAcc(HttpContext.Session, "ACC1");
+            if (acc.Count == 0)
+            {
+                return RedirectToAction("Index", "DangNhap");
+            }
+            var mode = new HoanThanhThanhToanView()
             {
                 IdKhachhang = acc[0].id,
                 name = name,
                 DiachiNhanChiTiet = DiachiNhanChiTiet,
                 Sodienthoai = Sodienthoai,
                 Email = Email,
-				addDiaChi = addDiaChi,
+                addDiaChi = addDiaChi,
                 IdAddress = IdAddress,
                 IdPaymentMethod = IdPaymentMethod,
                 tienship = tienship,
                 tongtien = tongtien
             };
-			var url = $"https://localhost:7268/HoanThanhThanhToan?name={name}&DiachiNhanChiTiet={DiachiNhanChiTiet}&Sodienthoai={Sodienthoai}&Email={Email}&addDiaChi={addDiaChi}&IdAddress={IdAddress}&IdPaymentMethod={IdPaymentMethod}&tienship={tienship}&tongtien={tongtien}&IdKhachhang={acc[0].id}";
-			var httpClient = new HttpClient();
-			var content = new StringContent(JsonConvert.SerializeObject(mode), Encoding.UTF8, "application/json");
-			var respose = await httpClient.PostAsync(url, content);
-			if (respose.IsSuccessStatusCode)
-			{
-				return RedirectToAction("SauThanhToan");
-				
+            var url = $"https://localhost:7268/HoanThanhThanhToan?name={name}&DiachiNhanChiTiet={DiachiNhanChiTiet}&Sodienthoai={Sodienthoai}&Email={Email}&addDiaChi={addDiaChi}&IdAddress={IdAddress}&IdPaymentMethod={IdPaymentMethod}&tienship={tienship}&tongtien={tongtien}&IdKhachhang={acc[0].id}";
+            var httpClient = new HttpClient();
+            var content = new StringContent(JsonConvert.SerializeObject(mode), Encoding.UTF8, "application/json");
+            var respose = await httpClient.PostAsync(url, content);
+            if (respose.IsSuccessStatusCode)
+            {
+                return RedirectToAction("SauThanhToan");
 
-			}
-			var message1 = "Lỗi";
-			TempData["TB1"] = message1;
-			return RedirectToAction("ThuTucThanhToan", new {  message1 });
 
-		}
+            }
+            var message1 = "Lỗi";
+            TempData["TB1"] = message1;
+            return RedirectToAction("ThuTucThanhToan", new { message1 });
+
+        }
         public async Task<IActionResult> SauThanhToan()
         {
             return View();
@@ -173,7 +206,7 @@ namespace MCV.Controllers
             string apiData8 = await response8.Content.ReadAsStringAsync();
             var lst8 = JsonConvert.DeserializeObject<List<PaymentMethod>>(apiData8);
 
-     
+
 
             var gh = lst7.FirstOrDefault(c => c.AccountId == acc[0].id);
             List<GioHangHungView> ghct = gioHang.Where(c => c.CartDetail.CartId == gh.id).ToList();
@@ -198,9 +231,10 @@ namespace MCV.Controllers
                     Value = s.id.ToString(),
                     Text = s.Method.ToString()
                 }).ToList(),
-                AddressItems = lisAdd.Select(s => new SelectListItem{
+                AddressItems = lisAdd.Select(s => new SelectListItem
+                {
                     Value = s.id.ToString(),
-                    Text = s.Name.ToString() + " " + s.SpecificAddress.ToString()
+                    Text = s.Name.ToString()
                 }).ToList(),
                 Account = acc[0],
                 address = lst11.FirstOrDefault(c => c.AccountId == acc[0].id && c.Note == "1"),
@@ -248,7 +282,7 @@ namespace MCV.Controllers
         {
             var acc = SessionServices.LuuAcc(HttpContext.Session, "ACC1");
 
-          
+
             var hang = new TinhTienShip()
             {
                 service_id = shippingOrder.service_id,
@@ -340,7 +374,7 @@ namespace MCV.Controllers
                                                      Cart = g
                                                  }).ToList();
 
-             
+
                 var gh = lst7.FirstOrDefault(c => c.AccountId == acc[0].id);
                 List<GioHangHungView> ghct = gioHang.Where(c => c.CartDetail.CartId == gh.id).ToList();
 
@@ -471,7 +505,7 @@ namespace MCV.Controllers
 
                 var gh = lst7.FirstOrDefault(c => c.AccountId == accnew[0].id);
                 List<GioHangHungView> ghct = gioHang.Where(c => c.CartDetail.CartId == gh.id).ToList();
-                var diaChi = lst8.FirstOrDefault(c => c.AccountId == accnew[0].id&&c.id==idDiaChiKD);
+                var diaChi = lst8.FirstOrDefault(c => c.AccountId == accnew[0].id && c.id == idDiaChiKD);
 
                 foreach (var x in ghct)
                 {
@@ -787,7 +821,7 @@ namespace MCV.Controllers
             string apiData7 = await response7.Content.ReadAsStringAsync();
             var lst7 = JsonConvert.DeserializeObject<List<Cart>>(apiData7);
 
-            
+
 
             List<GioHangHungView> gioHang = (from s in lst6
                                              join a in lst on s.ShoeDetailId equals a.id
@@ -824,7 +858,7 @@ namespace MCV.Controllers
             ListGioHangView view = new ListGioHangView()
             {
                 gioHangHungViews = gioHang.Where(c => c.Cart.AccountId == acc[0].id).ToList(),
-                Tong=tong
+                Tong = tong
             };
 
             return View(view);
@@ -901,8 +935,130 @@ namespace MCV.Controllers
         }
         public async Task<IActionResult> HoaDonChiTiet(Guid id)
         {
-            return View();
+            string requesURL = $"https://localhost:7268/api/ShoeDetail";
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync(requesURL);
+            string apiData = await response.Content.ReadAsStringAsync();
+            var lst = JsonConvert.DeserializeObject<List<ShoeDetail>>(apiData);
+
+            string requesURL1 = $"https://localhost:7268/api/Shoe";
+            var a1 = new HttpClient();
+            var response1 = await a1.GetAsync(requesURL1);
+            string apiData1 = await response1.Content.ReadAsStringAsync();
+            var lst1 = JsonConvert.DeserializeObject<List<Shoe>>(apiData1);
+
+            string requesURL2 = $"https://localhost:7268/api/Size";
+            var a2 = new HttpClient();
+            var response2 = await a2.GetAsync(requesURL2);
+            string apiData2 = await response2.Content.ReadAsStringAsync();
+            var lst2 = JsonConvert.DeserializeObject<List<Size>>(apiData2);
+
+            string requesURL3 = $"https://localhost:7268/api/Category";
+            var a3 = new HttpClient();
+            var response3 = await a3.GetAsync(requesURL3);
+            string apiData3 = await response3.Content.ReadAsStringAsync();
+            var lst3 = JsonConvert.DeserializeObject<List<Category>>(apiData3);
+
+            string requesURL4 = $"https://localhost:7268/api/Brand";
+            var a4 = new HttpClient();
+            var response4 = await a4.GetAsync(requesURL4);
+            string apiData4 = await response4.Content.ReadAsStringAsync();
+            var lst4 = JsonConvert.DeserializeObject<List<Brand>>(apiData4);
+
+            string requesURL5 = $"https://localhost:7268/api/Color";
+            var a5 = new HttpClient();
+            var response5 = await a5.GetAsync(requesURL5);
+            string apiData5 = await response5.Content.ReadAsStringAsync();
+            var lst5 = JsonConvert.DeserializeObject<List<Color>>(apiData5);
+
+            string requesURL6 = $"https://localhost:7268/api/OderDetail";
+            var httpClient6 = new HttpClient();
+            var response6 = await httpClient6.GetAsync(requesURL6);
+            string apiData6 = await response6.Content.ReadAsStringAsync();
+            var lst6 = JsonConvert.DeserializeObject<List<OrderDetail>>(apiData6);
+
+            string requesURL7 = $"https://localhost:7268/api/Order";
+            var httpClient7 = new HttpClient();
+            var response7 = await httpClient7.GetAsync(requesURL7);
+            string apiData7 = await response7.Content.ReadAsStringAsync();
+            var lst7 = JsonConvert.DeserializeObject<List<Order>>(apiData7);
+
+            string requesURL8 = $"https://localhost:7268/api/PaymentMethod";
+            var httpClient8 = new HttpClient();
+            var response8 = await httpClient8.GetAsync(requesURL8);
+            string apiData8 = await response8.Content.ReadAsStringAsync();
+            var lst8 = JsonConvert.DeserializeObject<List<PaymentMethod>>(apiData8);
+
+            string requesURL9 = $"https://localhost:7268/api/Account";
+            var httpClient9 = new HttpClient();
+            var response9 = await httpClient9.GetAsync(requesURL9);
+            string apiData9 = await response9.Content.ReadAsStringAsync();
+            var lst9 = JsonConvert.DeserializeObject<List<Account>>(apiData9);
+
+            string requesURL11 = $"https://localhost:7268/api/Address";
+            var httpClient11 = new HttpClient();
+            var response11 = await httpClient11.GetAsync(requesURL11);
+            string apiData11 = await response11.Content.ReadAsStringAsync();
+            var lst11 = JsonConvert.DeserializeObject<List<Address>>(apiData11);
+
+            List<HoaDonChiTietHungView> orderDT = (from s in lst6
+                                                   join a in lst on s.ShoeDetailId equals a.id
+                                                   join b in lst1 on a.ShoeId equals b.id
+                                                   join c in lst2 on a.SizeId equals c.id
+                                                   join d in lst3 on a.CategoryId equals d.id
+                                                   join e in lst4 on a.BrandId equals e.id
+                                                   join f in lst5 on a.ColorId equals f.id
+                                                   join g in lst7 on s.OrderId equals g.id
+                                                   select new HoaDonChiTietHungView()
+                                                   {
+                                                       OrderDetail = s,
+                                                       ShoeDetail = a,
+                                                       Shoe = b,
+                                                       Size = c,
+                                                       Category = d,
+                                                       Brand = e,
+                                                       Color = f,
+                                                       Order = g
+                                                   }).ToList();
+            List<HoaDonHungView> order = (from s in lst7
+                                          join a in lst8 on s.PaymentMethodId equals a.id
+                                          //join b in lst9 on s.AccountId equals b.id
+                                          //join c in lst11 on s.AccouAddressId equals c.id
+                                          select new HoaDonHungView()
+                                          {
+                                              Order = s,
+                                              PaymentMethod = a,
+                                              //Account = b,
+                                              //Address = c
+                                          }).ToList();
+            var view = new HoaDonViewPro()
+         {
+            HoaDonHungView = order.FirstOrDefault(c=>c.Order.id==id),
+            HoaDonChiTietHungViews = orderDT.Where(c=>c.OrderDetail.OrderId==id).ToList()
+         };
+            return View(view);
         }
 
+        public async Task<IActionResult> huydonKH(Guid id)
+        {
+            string requesURL7 = $"https://localhost:7268/api/Order";
+            var httpClient7 = new HttpClient();
+            var response7 = await httpClient7.GetAsync(requesURL7);
+            string apiData7 = await response7.Content.ReadAsStringAsync();
+            var lst7 = JsonConvert.DeserializeObject<List<Order>>(apiData7);
+
+            var a = lst7.FirstOrDefault(c => c.id == id);
+            a.is_delete = false;
+
+            var url = $"https://localhost:7268/api/Oder/Update";
+            var httpClient = new HttpClient();
+            var content = new StringContent(JsonConvert.SerializeObject(a), Encoding.UTF8, "application/json");
+            var respose = await httpClient.PostAsync(url, content);
+            if (respose.IsSuccessStatusCode)
+            {
+                return RedirectToAction("HoaDonChiTiet", new { id = a.id });
+            }
+            return RedirectToAction("HoaDonChiTiet", new { id = a.id });
+        }
     }
 }

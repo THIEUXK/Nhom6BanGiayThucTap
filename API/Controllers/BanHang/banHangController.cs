@@ -69,7 +69,7 @@ namespace API.Controllers.BanHang
                             PaymentMethodId = hoanThanhThanhToanView.IdPaymentMethod,
                             Status = "Đang chờ xử lí",
                             CreateDate = DateTime.Now,
-
+                            is_delete = true
                         };
                         if (hoanThanhThanhToanView.IdAddress != Guid.Parse("00000000-0000-0000-0000-000000000000"))
                         {

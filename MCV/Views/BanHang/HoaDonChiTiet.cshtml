@@ -1,8 +1,203 @@
-﻿@model dynamic
-
+﻿@model MCV.ViewModel.HoaDon.HoaDonViewPro
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewData["Title"] = "HoaDonChiTiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<br></br>
+<section class="tracking_box_area section_gap">
+    <div class="container">
+        <h1>Hóa đơn chi tiết</h1>
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    Mã đơn hàng
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HoaDonHungView.Order.id)
+                </dd>
+                <dt class="col-sm-2">
+                    Ngày tạo hóa đơn
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HoaDonHungView.Order.CreateDate)
+                </dd>
+                <dt class="col-sm-2">
+                    Tình trạng đơn hàng
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HoaDonHungView.Order.Status)
+                </dd>
+                <dt class="col-sm-2">
+                    Tổng tiền hóa đơn
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.Raw(FormatCurrency(Model.HoaDonHungView.Order.TotalMoney))
+                </dd>
+                <dt class="col-sm-2">
+                    Tiền ship
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.Raw(FormatCurrency(Model.HoaDonHungView.Order.ShipFee))
+                </dd>
+                <dt class="col-sm-2">
+                    Ngày giao
+                </dt>
+                <dd class="col-sm-10">
+                    @if (Model.HoaDonHungView.Order.ShipDate != null)
+                    {
+                        @Html.DisplayFor(model => model.HoaDonHungView.Order.ShipDate)
+                    }
+                    <div>Chưa giao</div>
+                </dd>
+                <dt class="col-sm-2">
+                    Ngày nhận
+                </dt>
+                <dd class="col-sm-10">
+                    @if (Model.HoaDonHungView.Order.ReceiveDate!= null)
+                    {
+                        @Html.DisplayFor(model => model.HoaDonHungView.Order.ReceiveDate)
+                    }
+                    <div>Chưa nhận</div>
 
-<h2>title</h2>
+                </dd>
+                <dt class="col-sm-2">
+                    Tên khách hàng
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HoaDonHungView.Order.CustomerName)
+                </dd>
+                <dt class="col-sm-2">
+                    Số điện thoại người nhận
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HoaDonHungView.Order.PhoneNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    Địa chỉ
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HoaDonHungView.Order.Address)
+                </dd>
+                <dt class="col-sm-2">
+                    Phương thức thanh toán
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HoaDonHungView.PaymentMethod.Method)
+                </dd>
+            </dl>
+        </div>
+        @if (TempData["TB4"] != null)
+        {
+            <div class="alert alert-danger">@TempData["TB4"]</div>
+        }
+        @if (Model.HoaDonHungView.Order.is_delete == true)
+        {
+            <div>
+                <button type="button" class="primary-btn">@Html.ActionLink("Hủy đơn", "huydonKH", new { id = Model.HoaDonHungView.Order.id }, new { @class = "custom-edit-link" })</button>
+            </div>
+        }
+        else
+        {
+            <div style="color:red">Đơn hàng của bạn đã bị hủy</div>
+        }
+
+        <br> <table class="table">
+            <thead>
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        Sản Phẩm
+                    </th>
+                    <th>
+                        Size
+                    </th>
+                    <th>
+                        Màu
+                    </th>
+                    <th>
+                        Số Lượng
+                    </th>
+                    <th>
+                        Giá Tiền
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.HoaDonChiTietHungViews)
+                {
+                    <tr>
+                        <td>
+
+                            @if (System.IO.Path.GetExtension(item.Shoe.avata) == ".jpg" ||
+                           System.IO.Path.GetExtension(item.Shoe.avata) == ".png" ||
+                           System.IO.Path.GetExtension(item.Shoe.avata) == ".jpeg" ||
+                           System.IO.Path.GetExtension(item.Shoe.avata) == ".tiff" ||
+                           System.IO.Path.GetExtension(item.Shoe.avata) == ".webp" ||
+                           System.IO.Path.GetExtension(item.Shoe.avata) == ".gif")
+                            {
+                                <img src="~/image/@item.Shoe.avata" height="100">
+                            }
+                            else
+                            {
+                                <a>ảnh lỗi</a>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Shoe.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Size.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Color.name)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrderDetail.Quantity)
+                        </td>
+                        <td>
+                            @Html.Raw(FormatCurrency(item.OrderDetail.Price))
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table></br>
+
+    </div>
+</section>
+<script>
+    @functions {
+        public string FormatCurrency(float price)
+        {
+            string formattedPrice = string.Format("{0:N0}", price); // Định dạng số và thêm dấu phân cách ngàn
+            return formattedPrice + "VND"; // Thêm ký hiệu đồng (₫) vào cuối
+        }
+    };
+
+
+</script>
+<style>
+    .custom-edit-link {
+        color: black; /* Màu đỏ */
+        /* Các thuộc tính CSS khác nếu cần */
+    }
+</style>
+<script src="~/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.~/js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+<script src="~/js/vendor/bootstrap.min.js"></script>
+<script src="~/js/jquery.ajaxchimp.min.js"></script>
+<script src="~/js/jquery.nice-select.min.js"></script>
+<script src="~/js/jquery.sticky.js"></script>
+<script src="~/js/nouislider.min.js"></script>
+<script src="~/js/countdown.js"></script>
+<script src="~/js/jquery.magnific-popup.min.js"></script>
+<script src="~/js/owl.carousel.min.js"></script>
+<!--gmaps Js-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+<script src="~/js/gmaps.min.js"></script>
+<script src="~/js/main.js"></script>

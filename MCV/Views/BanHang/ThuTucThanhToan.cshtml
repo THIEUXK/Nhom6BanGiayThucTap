@@ -27,6 +27,14 @@
     {
         <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
     }
+    @if (TempData["TB1"] != null)
+    {
+        <div class="alert alert-danger">@TempData["TB1"]</div>
+    }
+    @if (TempData["TB2"] != null)
+    {
+        <div class="alert alert-danger">@TempData["TB2"]</div>
+    }
     <form method="post" asp-controller="BanHang" asp-action="HoanThanhThanhToan">
         <!-- End Banner Area -->
         <!--================Checkout Area =================-->
@@ -63,10 +71,7 @@
                             <input type="text" class="form-control" id="email" value="@Model.Account.Email" name="Email">
 
                         </div>
-                        @if (TempData["TB2"] != null)
-                        {
-                            <div class="alert alert-danger">@TempData["TB2"]</div>
-                        }
+                        
                         @if (Model.address != null)
                         {
                             <div class="col-md-6 form-group p_star">
@@ -120,10 +125,7 @@
                                 <option selected value="0">Chọn Phường Xã</option>
                             </select>
                         </div>
-                        @if (TempData["TB1"] != null)
-                        {
-                            <div class="alert alert-danger">@TempData["TB1"]</div>
-                        }
+                     
                         <div class="col-md-6 form-group">
                             <label>Phương thức thanh toán<span class="text-danger"></span></label>
                             <span class="text-danger"></span>
@@ -134,11 +136,6 @@
                                     <option value="@a.Value">@a.Text</option>
                                 }
                             </select>
-                        </div>
-                        <div class="col-md-6 form-group">
-
-                            <label for="exampleFormControlTextarea1" class="form-label">Ghi chú</label>
-                            <input class="form-control" name="ghiChu" id="note_ck" rows="3"></input>
                         </div>
                     </div>
                 </div>
