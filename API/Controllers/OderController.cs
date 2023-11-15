@@ -53,7 +53,7 @@ namespace API.Controllers
         }
 
         // PUT api/<OrderController>/5
-        [HttpPut("{id}")]
+        [HttpPost("Update")]
         public bool Put(Order a)
         {
             try
