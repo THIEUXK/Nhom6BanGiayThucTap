@@ -91,24 +91,19 @@
                         <div class="col-md-6 form-group">
                             <label>Chọn chọn địa chỉ có sẵn của bạn<span class="text-danger"></span></label>
                             <span class="text-danger"></span>
-                            <select class="custom-select"
-
-                        <select asp-for="IdAddress"  class="form-control" id="diachicosan">
-                            <option value="0"> Chọn chọn địa chỉ có sẵn của bạn</option>
-                                    @foreach (var a in Model.AddressItems)
-                                    {
-                       <option value="@a.Value">@a.Text</option>
-                                    }
-                        </select>
-
-                          </select>
+                            <select asp-for="IdAddress" class="custom-select" id="diachicosan">
+                                <option value="0"> Chọn chọn địa chỉ có sẵn của bạn</option>
+                                @foreach (var a in Model.AddressItems)
+                                {
+                                    <option value="@a.Value">@a.Text</option>
+                                }
+                            </select>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Chọn Tỉnh/thành<span class="text-danger"></span></label>
                             <span class="text-danger" id="mess_provin"></span>
                             <select class="custom-select" asp-items="@ViewBag.Provin" id="provin">
                                 <option selected value="0">Chọn tỉnh thành</option>
-
                             </select>
                         </div>
                         <div class="col-md-6 form-group">
@@ -116,16 +111,13 @@
                             <span class="text-danger" id="mess_district"></span>
                             <select class="custom-select" id="district">
                                 <option selected value="0">Chọn quận huyện </option>
-
                             </select>
                         </div>
-
                         <div class="col-md-6 form-group">
                             <label>Chọn Phường/Xã<span class="text-danger"></span></label>
                             <span class="text-danger" id="mess_ward"></span>
                             <select class="custom-select" id="ward" name="ward">
                                 <option selected value="0">Chọn Phường Xã</option>
-
                             </select>
                         </div>
                         @if (TempData["TB1"] != null)
@@ -135,27 +127,19 @@
                         <div class="col-md-6 form-group">
                             <label>Phương thức thanh toán<span class="text-danger"></span></label>
                             <span class="text-danger"></span>
-                            <select class="custom-select"
-
-                        <select asp-for="IdPaymentMethod" class="form-control">
-                            <option value=""> Chọn phương thức thanh toán</option>
-                                    @foreach (var a in Model.PaymentMethodItems)
-                                    {
-                                                                                    <option value="@a.Value">@a.Text</option>
-                                    }
-                        </select>
-                        </select>
+                            <select asp-for="IdPaymentMethod" class="custom-select">
+                                <option value=""> Chọn phương thức thanh toán</option>
+                                @foreach (var a in Model.PaymentMethodItems)
+                                {
+                                    <option value="@a.Value">@a.Text</option>
+                                }
+                            </select>
                         </div>
-
-
-
                         <div class="col-md-6 form-group">
 
                             <label for="exampleFormControlTextarea1" class="form-label">Ghi chú</label>
                             <input class="form-control" name="ghiChu" id="note_ck" rows="3"></input>
-
                         </div>
-
                     </div>
                 </div>
                 <div class="col-lg-5">
@@ -166,12 +150,7 @@
                                 <li><a href="#">Tên sản Phẩm <span>Giá tiền</span></a></li>
                                 @foreach (var a in Model.gioHangHungViews)
                                 {
-                                    <li><a href="#">@a.Shoes.name x @a.CartDetail.Quantity<span class="last">@FormatCurrency(a.Shoes.PriceOutput *a.ShoeDetail.Quantity)</span></a></li>
-
-                                    <input type="hidden" name="idGHCT" value="@a.CartDetail.id" />
-                                    <input type="hidden" name="idSPCT" value="@a.ShoeDetail.id" />
-                                    <input type="hidden" name="SoLuong" value="@a.CartDetail.Quantity" />
-                                    <input type="hidden" name="idGH" value="@a.Cart.id" />
+                                    <li><a href="#">@a.Shoes.name x @a.CartDetail.Quantity<span class="last">@FormatCurrency(a.Shoes.PriceOutput *a.CartDetail.Quantity)</span></a></li>
                                 }
                             </ul>
                             <br></br>
@@ -192,8 +171,6 @@
                             <input type="hidden" name="tienship" value="" id="tienship1"></input>
                             <input type="hidden" name="tongtien" value="" id="tongtien1"></input>
                             <div class="card border-secondary mb-5">
-
-
                                 <button class="primary-btn" type="submit" href="#">Mua Hàng</button>
                             </div>
                         </div>

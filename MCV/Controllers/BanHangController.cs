@@ -173,12 +173,7 @@ namespace MCV.Controllers
             string apiData8 = await response8.Content.ReadAsStringAsync();
             var lst8 = JsonConvert.DeserializeObject<List<PaymentMethod>>(apiData8);
 
-            string requesURL9 = $"https://localhost:7268/api/Address";
-            var httpClient9 = new HttpClient();
-            var response9 = await httpClient9.GetAsync(requesURL9);
-            string apiData9 = await response9.Content.ReadAsStringAsync();
-            var lst9 = JsonConvert.DeserializeObject<List<Address>>(apiData9);
-
+     
 
             var gh = lst7.FirstOrDefault(c => c.AccountId == acc[0].id);
             List<GioHangHungView> ghct = gioHang.Where(c => c.CartDetail.CartId == gh.id).ToList();
@@ -188,8 +183,13 @@ namespace MCV.Controllers
                 tong += x.Shoes.PriceOutput * (x.CartDetail.Quantity);
 
             }
-
-
+            string requesURL11 = $"https://localhost:7268/api/Address";
+            var httpClient11 = new HttpClient();
+            var response11 = await httpClient11.GetAsync(requesURL11);
+            string apiData11 = await response11.Content.ReadAsStringAsync();
+            var lst11 = JsonConvert.DeserializeObject<List<Address>>(apiData11);
+            var lisAdd = lst11.Where(c => c.AccountId == acc[0].id);
+            /*.Where(c => c.AccountId == acc[0].id)*/
             ListGioHangView view = new ListGioHangView()
             {
                 gioHangHungViews = gioHang.Where(c => c.Cart.AccountId == acc[0].id).ToList(),
@@ -198,14 +198,12 @@ namespace MCV.Controllers
                     Value = s.id.ToString(),
                     Text = s.Method.ToString()
                 }).ToList(),
-                AddressItems = lst9.Where(c => c.AccountId == acc[0].id).Select(s => new SelectListItem
-                {
+                AddressItems = lisAdd.Select(s => new SelectListItem{
                     Value = s.id.ToString(),
                     Text = s.Name.ToString() + " " + s.SpecificAddress.ToString()
                 }).ToList(),
                 Account = acc[0],
-
-                address = lst9.FirstOrDefault(c => c.AccountId == acc[0].id && c.Note == "1"),
+                address = lst11.FirstOrDefault(c => c.AccountId == acc[0].id && c.Note == "1"),
                 Tong = tong,
             };
 
@@ -388,13 +386,12 @@ namespace MCV.Controllers
         }
 
         [HttpGet("/CheckOut/chonDiaChi")]
-        public async Task<JsonResult> chonDiaChi(/*[FromBody] ShippingOrder shippingOrder*/)
+        public async Task<JsonResult> chonDiaChi(Guid idDiaChiKD)
         {
 
             float tong = 0;
-            var acc = SessionServices.LuuAcc(HttpContext.Session, "ACC1");
-
-            if (acc.Count != 0)
+            var accnew = SessionServices.LuuAcc(HttpContext.Session, "ACC1");
+            if (accnew.Count != 0)
             {
                 string requesURL = $"https://localhost:7268/api/ShoeDetail";
                 var httpClient = new HttpClient();
@@ -444,6 +441,12 @@ namespace MCV.Controllers
                 string apiData7 = await response7.Content.ReadAsStringAsync();
                 var lst7 = JsonConvert.DeserializeObject<List<Cart>>(apiData7);
 
+                string requesURL8 = $"https://localhost:7268/api/Address";
+                var httpClient8 = new HttpClient();
+                var response8 = await httpClient8.GetAsync(requesURL8);
+                string apiData8 = await response8.Content.ReadAsStringAsync();
+                var lst8 = JsonConvert.DeserializeObject<List<Address>>(apiData8);
+
 
                 List<GioHangHungView> gioHang = (from s in lst6
                                                  join a in lst on s.ShoeDetailId equals a.id
@@ -465,8 +468,10 @@ namespace MCV.Controllers
                                                      Cart = g
                                                  }).ToList();
 
-                var gh = lst7.FirstOrDefault(c => c.AccountId == acc[0].id);
+
+                var gh = lst7.FirstOrDefault(c => c.AccountId == accnew[0].id);
                 List<GioHangHungView> ghct = gioHang.Where(c => c.CartDetail.CartId == gh.id).ToList();
+                var diaChi = lst8.FirstOrDefault(c => c.AccountId == accnew[0].id&&c.id==idDiaChiKD);
 
                 foreach (var x in ghct)
                 {
@@ -475,15 +480,15 @@ namespace MCV.Controllers
                 }
                 Shipping shipping = new Shipping()
                 {
-                    totaloder = tong + 52000
+                    totaloder = tong + diaChi.tienShip,
+                    TienShip = diaChi.tienShip
                 };
 
                 //shipping.data.totaloder = shipping.data.total + int.Parse(tong.ToString());
-                return Json(shipping.totaloder, new System.Text.Json.JsonSerializerOptions());
+                return Json(shipping, new System.Text.Json.JsonSerializerOptions());
 
             }
             return Json(0, new System.Text.Json.JsonSerializerOptions());
-
         }
         public async Task<IActionResult> HienThiSanPham()
         {
@@ -880,7 +885,24 @@ namespace MCV.Controllers
             }
 
         }
+        public async Task<IActionResult> HoaDon()
+        {
+            string requesURL = $"https://localhost:7268/api/Order";
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync(requesURL);
+            string apiData = await response.Content.ReadAsStringAsync();
+            var lst = JsonConvert.DeserializeObject<List<Order>>(apiData);
 
+            var view = new OrderView()
+            {
+                Orders = lst
+            };
+            return View(view);
+        }
+        public async Task<IActionResult> HoaDonChiTiet(Guid id)
+        {
+            return View();
+        }
 
     }
 }

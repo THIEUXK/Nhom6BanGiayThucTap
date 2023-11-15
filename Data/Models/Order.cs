@@ -17,8 +17,8 @@
         public DateTime? PayDate { get; set; }
         public DateTime? ShipDate { get; set; }
         public DateTime? ReceiveDate { get; set; }
-        public bool Status { get; set; }
-
+        public string Status { get; set; }
+        public bool is_delete { get; set; }
 
         public virtual IQueryable<OrderDetail>? Details { get; set; }
         public virtual Account? Account { get; set; }
