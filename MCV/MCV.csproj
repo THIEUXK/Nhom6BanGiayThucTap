@@ -22,7 +22,6 @@
     <None Include="Views\ThongKe\ThongKeDoanhThuTheoNam.cshtml" />
     <None Include="Views\ThongKe\ThongKeDoanhThuTheoNgay.cshtml" />
     <None Include="Views\ThongKe\ThongKeDoanhThuTheoThang.cshtml" />
-    <None Include="Views\ThongKe\ThongKeKH.cshtml" />
     <None Include="Views\ThongKe\ThongKeSP.cshtml" />
     <None Include="wwwroot\aadim\a1\assets\css\icons\tabler-icons\fonts\tabler-icons.svg" />
     <None Include="wwwroot\aadim\a1\assets\css\icons\tabler-icons\fonts\tabler-icons.woff2" />
