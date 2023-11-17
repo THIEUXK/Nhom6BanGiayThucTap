@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AppData.ViewModels.ThongKe.ThongKeDoanhThu>
+
+@{
+    ViewData["Title"] = "ThongKeDoanhThuTheoThang";
+    Layout = "~/Views/Shared/_LayoutForAdmin.cshtml";
+}
+
+<h2>Thống kê Doanh Thu Theo Tháng</h2>
+
+<form method="get" asp-controller="ThongKe" asp-action="LocThongKeDoanhThuTheoThang">
+    <label for="thangInput"> Bắt Đầu Từ Tháng:</label>
+    <input type="Month" id="thangInput" name="NgayStart">
+    <label for="thangInput">Kết Thúc Đến Tháng: </label>
+   <input type="Month" id="thangInput" name="NgayEnd">
+    <button type="submit">Thống Kê</button>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div>
+    <canvas id="columnChart" ></canvas>
+</div>
+
+<script>
+    let labels = [];
+    let data = [];
+
+    @foreach (var result in Model)
+    {
+        <text>labels.push('@result.Ngay-@result.SoHoaDon ');</text>
+        <text>data.push('@result.DoanhThu');</text>
+    }
+
+    var ctx = document.getElementById('columnChart').getContext('2d');
+    var columnChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Doanh Thu',
+                data: data,
+                backgroundColor: ' #0d6efd',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 0.5
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Tháng - Tổng Số Đơn'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Doanh Thu'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        }
+    });
+</script>

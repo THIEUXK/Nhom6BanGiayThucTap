@@ -1,0 +1,115 @@
+﻿@model IEnumerable<AppData.ViewModels.ThongKe.ThongKeMSSanPhamTheoSoLuong>
+
+@{
+    ViewData["Title"] = "ThongKeSP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thống kê sản phẩm Bán Chạy</h2>
+
+<form method="get" asp-controller="ThongKe" asp-action="ThongKeSPTheoThang">
+    <label for="thangInput">Ngày:</label>
+    <input type="date" id="thangInput" name="ngay">
+    <label for="thangInput">Tháng:</label>
+    <input type="month" id="thangInput" name="thang">
+    <label for="thangInput">Năm:</label>
+    <input type="datetime-local" id="thangInput" name="nam">
+    <button type="submit">Thống Kê</button>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div>
+    <canvas id="columnChart"  style="width:50%;height:50%"></canvas>
+</div>
+<div>
+    <div id="columnChart1"  style="width:50%;height:50%"></div>
+</div>
+
+<script>
+    let labels = [];
+    let data = [];
+
+    @foreach (var result in Model)
+    {
+        <text>labels.push('@result.TenSP-@result.DoanhThu VND ');</text>
+        <text>data.push('@result.SoLuong');</text>
+    }
+
+    var ctx = document.getElementById('columnChart').getContext('2d');
+    var columnChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Số lượng',
+                data: data,
+                backgroundColor: ' #0d6efd',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 0.5
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Tên Sản Phẩm -Doanh Thu'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Số lượng'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        }
+    });
+</script>
+<script>
+    let labels = [];
+    let data = [];
+
+    @foreach (var result in Model)
+    {
+        <text>labels.push('@result.TenSP-@result.DoanhThu VND ');</text>
+        <text>data.push('@result.SoLuong');</text>
+    }
+
+    var ctx = document.getElementById('columnChart1').getContext('2d');
+    var columnChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Số lượng',
+                data: data,
+                backgroundColor: ' #0d6efd',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 0.5
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Tên Sản Phẩm -Doanh Thu'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Số lượng'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        }
+    });
+</script>

@@ -13,8 +13,10 @@
    
         public int Quantity { get; set; }
         public bool Status { get; set;}
+        public int SoLuong { get; set; }
+        public int GiaBan { get; set; }
+        public DateTime NgayTao { get; set; }
 
-       
 
         public virtual List<Image>? Images { get; set; }
         public virtual Size? Size { get; set; }

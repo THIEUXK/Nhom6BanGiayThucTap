@@ -13,7 +13,7 @@
 		
 		public float ShipFee { get; set; }
         public float TotalMoney { get; set; }
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
         public DateTime? PayDate { get; set; }
         public DateTime? ShipDate { get; set; }
         public DateTime? ReceiveDate { get; set; }

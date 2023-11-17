@@ -1,0 +1,524 @@
+﻿@using AppData.ViewModels.ThongKe
+
+@{
+    ViewData["Title"] = "ThongKe";
+    Layout = "~/Views/Shared/_LayoutForAdmin.cshtml";
+    ThongKeSLSPDaBan thongkeslspdaban = ViewBag.ThongKeSLSPDaBan;
+    ThongKeDTTrongThang thongkedttrongthang = ViewBag.ThongKeDTTrongThang;
+    int thongkeslctsp = ViewBag.ThongKeSLCTSP;
+    ThongKeSDonTrongThang thongkesodontrongthang = ViewBag.ThongKeSDonTrongThang;
+    List<ThongKeKHMuaNhieu> thongkekhmuanhieu = ViewBag.ThongKeKHMuaNhieu;
+    List<ThongKeDoanhThu> thongkedoanhthutheongay = ViewBag.ThongKeDoanhThuTheoNgay;
+    List<ThongKeDoanhThu> thongkedoanhthutheothang = ViewBag.ThongKeDoanhThuTheoThang;
+    List<ThongKeMSSanPhamTheoSoLuong> thongkesp = ViewBag.ThongKeMSSanPhamTheoSoLuong;
+
+    int stt = 1;
+
+}
+<!-- Favicon icon -->
+<link rel="shortcut icon" href="~/ThongKe/assets/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="~/ThongKe/assets/images/favicon.ico" type="image/x-icon">
+
+<!-- Google font-->
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
+
+<!-- themify -->
+<link rel="stylesheet" type="text/css" href="~/ThongKe/assets/icon/themify-icons/themify-icons.css">
+
+<!-- iconfont -->
+<link rel="stylesheet" type="text/css" href="~/ThongKe/assets/icon/icofont/css/icofont.css">
+
+<!-- simple line icon -->
+<link rel="stylesheet" type="text/css" href="~/ThongKe/assets/icon/simple-line-icons/css/simple-line-icons.css">
+
+<!-- Required Fremwork -->
+<link rel="stylesheet" type="text/css" href="~/ThongKe/assets/plugins/bootstrap/css/bootstrap.min.css">
+
+<!-- Chartlist chart css -->
+<link rel="stylesheet" href="~/ThongKe/assets/plugins/chartist/dist/chartist.css" type="text/css" media="all">
+
+<!-- Weather css -->
+<link href="~/ThongKe/assets/css/svg-weather.css" rel="stylesheet">
+
+
+<!-- Style.css -->
+<link rel="stylesheet" type="text/css" href="~/ThongKe/assets/css/main.css">
+
+<!-- Responsive.css-->
+<link rel="stylesheet" type="text/css" href="~/ThongKe/assets/css/responsive.css">
+<div class="row">
+    <div class="main-header">
+        <h4>Dashboard</h4>
+    </div>
+</div>
+<!-- 4-blocks row start -->
+<div class="row dashboard-header">
+    <div class="col-lg-3 col-md-6">
+        <div class="card dashboard-product">
+            <span>Số Lượng Sản Phẩm Trong Kho</span>
+            @if(thongkeslctsp!=null){
+                <h2 class="dashboard-total-products">@thongkeslctsp</h2>
+            }
+            else{
+                <h2 class="dashboard-total-products">0</h2>
+            }
+            
+            <span class="label label-warning">Sales</span>Arriving Today
+            <div class="side-box">
+                <i class="ti-signal text-warning-color"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card dashboard-product">
+            <span>Số Đơn Tháng Này</span>
+            @if(thongkedoanhthutheothang!=null){
+                 <h2 class="dashboard-total-products">@thongkesodontrongthang.SoDon</h2>
+            }
+            else{
+                <h2 class="dashboard-total-products">0</h2>
+            }
+           
+            <span class="label label-primary">Views</span>View Today
+            <div class="side-box ">
+                <i class="ti-gift text-primary-color"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card dashboard-product">
+            <span>Số Lượng Sản Phẩm Đã Bán</span>
+            @if(thongkeslspdaban!=null){
+                <h2 class="dashboard-total-products"><span>@thongkeslspdaban.SoLuong</span></h2>
+            }
+            else{
+                 <h2 class="dashboard-total-products"><span>0</span></h2>
+            }
+            <span class="label label-success">Sales</span>Reviews
+            <div class="side-box">
+                <i class="ti-direction-alt text-success-color"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card dashboard-product">
+            <span>Doanh Thu Tháng Này</span>
+            @if(thongkedttrongthang!=null){
+                 <h2 class="dashboard-total-products"><span>@thongkedttrongthang.TongTien.ToString("n0") VND</span></h2>
+            }
+            else{
+                 <h2 class="dashboard-total-products"><span> 0 VND</span></h2>
+            }
+           
+            <span class="label label-danger">Sales</span>Reviews
+            <div class="side-box">
+                <i class="ti-rocket text-danger-color"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 4-blocks row end -->
+<!-- 1-3-block row start -->
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-header-text">Doanh Thu Theo Ngày</h5>
+            </div>
+            <div class="card-block">
+                <canvas id="columnChart" class="ct-chart-line " style="min-width: 250px; height: 330px; margin: 0 auto"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+         <div class="card">
+            <div class="card-header">
+                <h5 class="card-header-text">Doanh Thu Trong Các Tháng Gần Đây</h5>
+            </div>
+            <div class="card-block">
+                <canvas id="piechart111" class="ct-chart-line "  style="min-width: 250px; height: 330px; margin: 0 auto"></canvas>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<!-- 1-3-block row end -->
+<!-- 2-1 block start -->
+<div class="row">
+    <div class="col-xl-8 col-lg-12">
+        <div class="card">
+            <div class="card-block">
+                <div class="table-responsive">
+                    <table class="table m-b-0 photo-table">
+                        <thead>
+                            <tr class="text-uppercase">
+                                <th>STT</th>
+                                <th>Tên Khách Hàng</th>
+                                <th>Số Điện Thoại </th>
+                                <th>Email</th>
+                                <th> Tổng Số Tiền</th>
+                                <th> Tổng Số Đơn</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in thongkekhmuanhieu){
+                                <tr>
+                                    <td>
+                                        <strong style="color:black">@stt</strong>
+                                    </td>
+
+                                    <td>
+                                        <strong style="color:black">@item.Ten</strong>
+                                    </td>
+                                    <td>
+                                        <strong style="color:black">@item.SDT</strong>
+                                    </td>
+                                    <td>
+                                        <strong style="color:black">@item.Email</strong>
+                                    </td>
+                                    <td>
+                                        <strong style="color:red">@item.TongSoTien.ToString("n0") VND</strong>
+                                    </td>
+                                    <td>
+                                        <strong style="color:green">@item.SoDonMua</strong>
+                                    </td>
+                                    @{
+                                        stt ++;
+                                    }
+                                </tr>
+                            }                                                     
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-header-text">Tốp Sản Phẩm Bán Chạy</h5>
+            </div>
+            <div class="card-block">
+                <canvas id="SanPhamBanChay" style="min-width: 150px; height: 230px; margin: 0 auto"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 2-1 block end -->
+<script>
+    var $window = $(window);
+    var nav = $('.fixed-button');
+    $window.scroll(function () {
+        if ($window.scrollTop() >= 200) {
+            nav.addClass('active');
+        }
+        else {
+            nav.removeClass('active');
+        }
+    });
+</script>
+<!-- Required Jqurey -->
+<script src="~/ThongKe/assets/plugins/Jquery/dist/jquery.min.js"></script>
+<script src="~/ThongKe/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="~/ThongKe/assets/plugins/tether/dist/js/tether.min.js"></script>
+
+<!-- Required Fremwork -->
+<script src="~/ThongKe/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Scrollbar JS-->
+<script src="~/ThongKe/assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="~/ThongKe/assets/plugins/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+
+<!--classic JS-->
+<script src="~/ThongKe/assets/plugins/classie/classie.js"></script>
+
+<!-- notification -->
+<script src="~/ThongKe/assets/plugins/notification/js/bootstrap-growl.min.js"></script>
+
+<!-- Sparkline charts -->
+<script src="~/ThongKe/assets/plugins/jquery-sparkline/dist/jquery.sparkline.js"></script>
+
+<!-- Counter js  -->
+<script src="~/ThongKe/assets/plugins/waypoints/jquery.waypoints.min.js"></script>
+<script src="~/ThongKe/assets/plugins/countdown/js/jquery.counterup.js"></script>
+
+<!-- Echart js -->
+<script src="~/ThongKe/assets/plugins/charts/echarts/js/echarts-all.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+<!-- custom js -->
+<script type="text/javascript" src="~/ThongKe/assets/js/main.min.js"></script>
+<script type="text/javascript" src="~/ThongKe/assets/pages/dashboard.js"></script>
+<script type="text/javascript" src="~/ThongKe/assets/pages/elements.js"></script>
+<script src="~/ThongKe/assets/js/menu.min.js"></script>
+<script>
+    
+    Highcharts.chart('piechart', {
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+            //  backgroundColor:'#fff'
+        },
+        title: {
+            text: 'Browser market shares at a specific website, 2014'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                {
+                    name: 'Firefox',
+                    y: 40.0,
+                    sliced: true,
+                    selected: true,
+                    color: '#2BBBAD'
+                },
+                {
+                    name: 'IE',
+                    y: 26.8,
+                    color: '#39444e'
+                },
+                {
+                    name: 'Chrome',
+                    y: 12.8,
+                    color: '#2196F3'
+                },
+                {
+                    name: 'Safari',
+                    y: 8.5,
+                    color: '#3F729B'
+                },
+                {
+                    name: 'Opera',
+                    y: 6.2,
+                    color: '#f57c00'
+                },
+                {
+                    name: 'Others',
+                    y: 5.7,
+                    color: '#aa66cc'
+                }
+            ]
+        }]
+    });
+</script>
+<script>
+    Highcharts.chart('barchart', {
+        title: {
+            text: 'Combination chart'
+        },
+        xAxis: {
+            categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
+        },
+        labels: {
+            items: [{
+                html: 'Total fruit consumption',
+                style: {
+                    left: '130px',
+                    top: '18px',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                }
+            }]
+        },
+        series: [{
+            type: 'column',
+            name: 'Jane',
+            data: [3, 2, 1, 3, 4],
+            color: '#f57c00'
+        }, {
+            type: 'column',
+            name: 'John',
+            data: [4, 3, 5, 7, 6],
+            color: '#2BBBAD'
+        }, {
+            type: 'column',
+            name: 'Joe',
+            data: [3, 4, 2, 9, 5],
+            color: '#39444e'
+        }, {
+            type: 'spline',
+            name: 'Average',
+            data: [3.5, 2.67, 3, 6.33, 3.33],
+            marker: {
+                lineWidth: 2,
+                lineColor: Highcharts.getOptions().colors[3],
+                fillColor: 'white'
+            }
+        }, {
+            type: 'pie',
+            name: 'Total consumption',
+            data: [{
+                name: 'Jane',
+                y: 13,
+                color: '#f57c00'
+            }, {
+                name: 'John',
+                y: 23,
+                color: '#2BBBAD'
+            }, {
+                name: 'Joe',
+                y: 19,
+                color: '#39444e'
+            }],
+            center: [40, 20],
+            size: 100,
+            showInLegend: false,
+            dataLabels: {
+                enabled: false
+            }
+        }]
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script>
+    let labels = [];
+    let data = [];
+    const barColors = ["red", "green","blue","orange","brown","black","gray"];
+
+    @foreach (var result in thongkedoanhthutheongay)
+    {
+        <text>labels.push('@result.Ngay-@result.SoHoaDon ');</text>
+        <text>data.push('@result.DoanhThu');</text>
+    }
+
+    var ctx = document.getElementById('columnChart').getContext('2d');
+    var columnChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Doanh Thu',
+                data: data,
+                backgroundColor: barColors
+               
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Ngày -Tổng Số Đơn'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Doanh Thu'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        }
+    });
+
+
+    let labels1 = [];
+    let data1 = [];
+    const barColors1 = ["red", "green","blue","orange","brown","black","gray"];
+
+    @foreach (var result in thongkedoanhthutheothang)
+    {
+        <text>labels1.push('@result.Ngay-@result.SoHoaDon');</text>
+        <text>data1.push('@result.DoanhThu');</text>
+    }
+
+    var ctx1 = document.getElementById('piechart111').getContext('2d');
+    var columnChart1 = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: labels1,
+            datasets: [{
+                label: 'Doanh Thu',
+                data: data1,
+                backgroundColor: barColors1
+               
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Tháng - Tổng Số Đơn'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Doanh Thu'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        }
+        
+    });
+
+     let labels2 = [];
+    let data2 = [];
+    const barColors2 = ["red", "green","blue","orange","brown","black","gray"];
+
+    @foreach (var result in thongkesp)
+    {
+        <text>labels2.push('@result.TenSP.Trim()-@result.DoanhThu');</text>
+        <text>data2.push('@result.SoLuong');</text>
+    }
+    new Chart("SanPhamBanChay", {
+  type: "pie",
+  data: {
+    labels: labels2,
+    datasets: [{
+      backgroundColor: barColors2,
+      data: data2
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Tốp 7 Sản Phẩm Bán Chạy Trong Tháng"
+    },
+    plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        family: 'Arial', // Thay đổi font thành 'Arial', 'Times New Roman', 'Segoe UI', hoặc font hỗ trợ tiếng Việt khác
+                        size: 14
+                    }
+                }
+            }
+        }
+  }
+});
+</script>
+
+
+  
+  
