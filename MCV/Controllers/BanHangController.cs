@@ -865,6 +865,11 @@ namespace MCV.Controllers
         }
         public async Task<IActionResult> ThemVaoGio(Guid idSP, Guid idSize, int soluong, Guid IdKhachHang,int SoLuongHienCo)
         {
+            var acc = SessionServices.LuuAcc(HttpContext.Session, "ACC1");
+            if (acc.Count == 0)
+            {
+                return RedirectToAction("Index", "DangNhap");
+            }
             if (IdKhachHang != Guid.Parse("00000000-0000-0000-0000-000000000000"))
             {
                 if (soluong>SoLuongHienCo)
@@ -927,6 +932,12 @@ namespace MCV.Controllers
         }
         public async Task<IActionResult> HoaDon()
         {
+            var acc = SessionServices.LuuAcc(HttpContext.Session, "ACC1");
+            if (acc.Count == 0)
+            {
+                return RedirectToAction("Index", "DangNhap");
+            }
+
             string requesURL = $"https://localhost:7268/api/Order";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(requesURL);
@@ -935,12 +946,17 @@ namespace MCV.Controllers
 
             var view = new OrderView()
             {
-                Orders = lst
+                Orders = lst.Where(c => c.AccountId == acc[0].id).ToList()
             };
             return View(view);
         }
         public async Task<IActionResult> HoaDonChiTiet(Guid id)
         {
+            var acc = SessionServices.LuuAcc(HttpContext.Session, "ACC1");
+            if (acc.Count == 0)
+            {
+                return RedirectToAction("Index", "DangNhap");
+            }
             string requesURL = $"https://localhost:7268/api/ShoeDetail";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(requesURL);
@@ -1047,6 +1063,11 @@ namespace MCV.Controllers
 
         public async Task<IActionResult> huydonKH(Guid id)
         {
+            var acc = SessionServices.LuuAcc(HttpContext.Session, "ACC1");
+            if (acc.Count == 0)
+            {
+                return RedirectToAction("Index", "DangNhap");
+            }
             string requesURL7 = $"https://localhost:7268/api/Order";
             var httpClient7 = new HttpClient();
             var response7 = await httpClient7.GetAsync(requesURL7);
