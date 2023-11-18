@@ -863,10 +863,16 @@ namespace MCV.Controllers
 
             return View(view);
         }
-        public async Task<IActionResult> ThemVaoGio(Guid idSP, Guid idSize, int soluong, Guid IdKhachHang)
+        public async Task<IActionResult> ThemVaoGio(Guid idSP, Guid idSize, int soluong, Guid IdKhachHang,int SoLuongHienCo)
         {
             if (IdKhachHang != Guid.Parse("00000000-0000-0000-0000-000000000000"))
             {
+                if (soluong>SoLuongHienCo)
+                {
+                    var message = "Số lương không đủ !";
+                    TempData["ErrorMessage"] = message;
+                    return RedirectToAction("HienThiSanPhamChiTiet", new { id = idSP, message });
+                }
                 if (idSize == Guid.Parse("00000000-0000-0000-0000-000000000000") || idSP == Guid.Parse("00000000-0000-0000-0000-000000000000"))
                 {
                     var message = "hãy chọn size của bạn !";
