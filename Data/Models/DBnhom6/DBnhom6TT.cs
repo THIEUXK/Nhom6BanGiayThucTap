@@ -28,7 +28,7 @@ namespace MCV.Models.DBnhom6
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=THUYNHU\SQLEXPRESS;Initial Catalog=ThucTap;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-9R0SL3PF\SQLEXPRESS;Initial Catalog=ThucTap;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

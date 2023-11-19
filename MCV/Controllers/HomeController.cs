@@ -84,6 +84,18 @@ namespace MCV.Controllers
             
             else if (acc != null&&acc.RoleId==role.id)
             {
+                var accnew = SessionServices.LuuAcc(HttpContext.Session, "ACC1");
+                if (accnew.Count == 0)
+                {
+                    accnew.Add(acc);
+                    SessionServices.SetObjToJson(HttpContext.Session, "ACC1", accnew);
+                }
+                else if (accnew.Count != 0)
+                {
+                    accnew.Clear();
+                    accnew.Add(acc);
+                    SessionServices.SetObjToJson(HttpContext.Session, "ACC1", accnew);
+                }
                 List<Claim> claims = new List<Claim>()
                   {
                       new Claim(ClaimTypes.Name,acc.Name)
@@ -102,6 +114,18 @@ namespace MCV.Controllers
      
             else
             {
+                var accnew = SessionServices.LuuAcc(HttpContext.Session, "ACC1");
+                if (accnew.Count == 0)
+                {
+                    accnew.Add(acc);
+                    SessionServices.SetObjToJson(HttpContext.Session, "ACC1", accnew);
+                }
+                else if (accnew.Count != 0)
+                {
+                    accnew.Clear();
+                    accnew.Add(acc);
+                    SessionServices.SetObjToJson(HttpContext.Session, "ACC1", accnew);
+                }
                 List<Claim> claims = new List<Claim>()
                   {
                       new Claim(ClaimTypes.Name,acc.Name),
